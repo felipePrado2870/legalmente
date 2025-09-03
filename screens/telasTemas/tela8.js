@@ -8,7 +8,7 @@ function Card({ isFlipped, onPress, image, resizeModeType = "cover" }) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.card} activeOpacity={0.8}>
       <Image
-        source={isFlipped ? image : require('../../assets/jogoMemoria/backCard.png')}
+        source={isFlipped ? image : require('../../assets/jogoMemoria/backCard1.jpg')}
         style={styles.image}
         resizeMode={resizeModeType}
       />
@@ -26,14 +26,6 @@ const images = [
   { img: require('../../assets/jogoMemoria/frontCard6.png'), pairId: 6 },
   { img: require('../../assets/jogoMemoria/frontCard7.png'), pairId: 7 },
   { img: require('../../assets/jogoMemoria/frontCard8.png'), pairId: 8 },
-  { img: require('../../assets/jogoMemoria/frontCardImg1.png'), pairId: 1 },
-  { img: require('../../assets/jogoMemoria/frontCardImg2.png'), pairId: 2 },
-  { img: require('../../assets/jogoMemoria/frontCardImg3.png'), pairId: 3 },
-  { img: require('../../assets/jogoMemoria/frontCardImg4.png'), pairId: 4 },
-  { img: require('../../assets/jogoMemoria/frontCardImg5.png'), pairId: 5 },
-  { img: require('../../assets/jogoMemoria/frontCardImg6.png'), pairId: 6 },
-  { img: require('../../assets/jogoMemoria/frontCardImg7.png'), pairId: 7 },
-  { img: require('../../assets/jogoMemoria/frontCardImg8.png'), pairId: 8 },
 ];
 
 // ---------- LISTA DE TÓPICOS ----------
@@ -82,7 +74,10 @@ const familyTopics = [
 
 // ---------- FUNÇÃO PARA EMBARALHAR ----------
 const createShuffledDeck = () => {
-  return images
+  // duplica cada imagem
+  const duplicated = images.flatMap((card) => [card, { ...card }]);
+
+  return duplicated
     .map((card, index) => ({
       id: index + '_' + Math.random(),
       image: card.img,
@@ -90,7 +85,7 @@ const createShuffledDeck = () => {
       isFlipped: false,
       isMatched: false,
     }))
-    .sort(() => Math.random() - 0.5);
+    .sort(() => Math.random() - 0.5); // embaralha
 };
 
 export default function Tela8Screen() {
