@@ -102,7 +102,7 @@ const Tela2Screen = () => {
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Text style={styles.header}>Adoção no Brasil - FAQ</Text>
-        <Image source={require('../../assets/adoçãoImage.png')} style={styles.  imagem1} resizeMode='contain'/>
+        <Image source={require('../../assets/adoçãoImagem.jpg')} style={styles.  imagem1} resizeMode='contain'/>
         {faq.map((item, index) => (
           <View key={index} style={styles.card}>
             <TouchableOpacity onPress={() => toggleAnswer(index)}>
@@ -133,27 +133,31 @@ const styles = StyleSheet.create({
     marginTop: 40, 
   },
   card: { 
-    backgroundColor: 'rgba(255, 255, 255, 0.26)', 
+    backgroundColor: '#FFFFFF', 
     padding: 14, 
     borderRadius: 10, 
     marginBottom: 12 
   },
   question: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginBottom: 5 
+    color: '#5D252A',
+    marginBottom: 5 ,
+    textAlign: "justify", 
   },
   answer: { 
-    fontSize: 14, 
-    color: '#ffffffde', 
+    fontSize: 13, 
+    color: '#000000', 
     lineHeight: 20, 
-    marginTop: 5 
+    marginTop: 5 ,
+     textAlign: "justify", 
   },
   imagem1: {
     width: 250,
-    height:230,
-    alignSelf: 'center',
+    height:250,
+    alignSelf: 'center', 
+    borderRadius: 150,
+    marginVertical: 10,
   },
 });
 

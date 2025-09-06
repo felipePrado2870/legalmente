@@ -88,7 +88,7 @@ const Tela1Screen = () => {
         </View>
         <View style={styles.homeBody}>
           <Image
-            source={require("../../assets/splash1.png")}
+            source={require("../../assets/atosInfracionaisImagem.jpg")}
             style={styles.homeImg}
           />
           <Text style={styles.descriptionText}>
@@ -112,12 +112,19 @@ const Tela1Screen = () => {
         colors={["#A67C7C", "#8B4A52", "#5D252A"]}
         style={styles.container}
       >
-        <Text style={styles.title2}>Fim!</Text>
-        <Text style={styles.question2}>Você viu todas as curiosidades!</Text>
-
-        <TouchableOpacity style={styles.startBtn2} onPress={handleRestart}>
-          <Text style={styles.btnText}>Recomeçar</Text>
-        </TouchableOpacity>
+        <Text style={styles.title2}> 🎉   Parabéns!   🎉  </Text>
+        <Text style={styles.question2}>Você explorou todas as ciriosidades!</Text>
+        <Text style={styles.question3}>Agora você conhece mais sobre ato Infracionais a o ECA!</Text>
+        <View style={styles.rowButtons}>
+          <TouchableOpacity onPress={handleRestart}>
+            <LinearGradient colors={['#8B4A52', '#5D252A', '#5D252A', '#5D252A']}  end={{ x: 1, y: 1 }}style={styles.startBtn2}  >
+              <Text style={styles.btnText}>Ver novamente</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.startBtn3} onPress={handleRestart}>
+            <Text style={styles.btnText}>Menu Principal</Text>
+          </TouchableOpacity>
+        </View>
       </LinearGradient>
     );
   }
@@ -139,21 +146,22 @@ const Tela1Screen = () => {
             <Text style={styles.art}>{current.art}</Text>
           </View>
         )}
+        <View style={styles.rowButtons}>
+          <TouchableOpacity
+            style={styles.toggleBtn}
+            onPress={() => setShowAnswer(!showAnswer)}
+          >
+            <Text style={styles.btnText}>
+              {showAnswer ? "Esconder Resposta" : "Mostrar Resposta"}
+            </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.toggleBtn}
-          onPress={() => setShowAnswer(!showAnswer)}
-        >
-          <Text style={styles.btnText}>
-            {showAnswer ? "Esconder Resposta" : "Mostrar Resposta"}
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.nextBtn} onPress={handleNext}>
-          <Text style={styles.btnText}>
-            {currentIndex < curiosities.length - 1 ? "Próximo" : "Finalizar"}
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.nextBtn} onPress={handleNext}>
+            <Text style={styles.btnText}>
+              {currentIndex < curiosities.length - 1 ? "Próximo" : "Finalizar"}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </LinearGradient>
   );
@@ -175,25 +183,25 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   subTitle: {
-    color: "#f5f5f5",
+    color: '#D4AF37',
     textAlign: "center",
     fontSize: 30,
     fontWeight: "bold",
-    marginBottom: 50,
+    marginBottom: 30,
   },
   homeBody: {
     alignItems: "center",
     paddingVertical: 20,
   },
   homeImg: {
-    width: 300,
-    height: 300,
+    width: 320,
+    height: 320,
     resizeMode: "cover",
-    borderRadius: 50,
+    borderRadius: 200,
     marginBottom: 50,
   },
   descriptionText: {
-    fontSize: 22,
+    fontSize: 15,
     textAlign: "center",
     color: "#fff",
   },
@@ -205,14 +213,25 @@ const styles = StyleSheet.create({
   },
    startBtn2: {
     padding: 15,
-    backgroundColor: "#95575efe",
     borderRadius: 10,
+    marginTop: 20,
+    marginLeft: 10,
+    alignItems: "center",
+  },
+  startBtn3: {
+    backgroundColor: '#ab8085b2',
+    padding: 15,
+    borderRadius: 10,
+    borderColor: "#fff",  
+    borderWidth: 2, 
+    marginTop: 20,
+    marginLeft: 10,
     alignItems: "center",
   },
   btnText: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 22,
+    fontSize:18,
   },
   card: {
     backgroundColor: "#fff",
@@ -241,24 +260,34 @@ const styles = StyleSheet.create({
   question1: {
     fontSize: 18,
     marginBottom: 20,
-    color: "#8B4A52",
+    color: "#000000",
     textAlign: "center",
+    textAlign: "justify", 
+    fontWeight: "bold",
   },
   question2: {
-    fontSize: 18,
+    fontSize: 20,
+    marginBottom: 20,
+    color: "#FFFFFF",
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+  question3: {
+    fontSize: 12,
     marginBottom: 20,
     color: "#FFFFFF",
     textAlign: "center",
   },
   answerBox: {
     padding: 10,
-    backgroundColor: "#f6e0bdf6",
+    backgroundColor:"#f0dee0ff",
     borderRadius: 8,
   },
   answer: {
     fontSize: 18,
-    color: "#552125ff",
+    color: "#000000",
     marginBottom: 5,
+    textAlign: "justify",
   },
   art: {
     fontSize: 16,
@@ -266,18 +295,26 @@ const styles = StyleSheet.create({
     color: "#552125ff",
   },
   toggleBtn: {
-    marginTop: 15,
-    padding: 12,
-    backgroundColor: "#8B4A52",
-    borderRadius: 8,
+    width: 200,
+    backgroundColor: '#8B4A52',
+    padding: 10,
+    borderRadius: 30,
+    marginVertical: 8,
     alignItems: "center",
   },
   nextBtn: {
-    marginTop: 10,
-    padding: 12,
-    backgroundColor: "#8b4a52d6",
-    borderRadius: 8,
+    width: 110,
+    backgroundColor: '#D4AF37',
+    padding: 10,
+    borderRadius: 30,
+    marginVertical: 8,
+    marginLeft: 10,
     alignItems: "center",
+  },
+  rowButtons: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 10,
   },
 });
 
