@@ -166,7 +166,7 @@ const QuizVerdFalsoScreen = ({ navigation }) => {
           </Text>
           <View  style={styles.rowButtons}>
             <TouchableOpacity onPress={() => navigation.navigate("TELA4")} >
-              <LinearGradient colors={['#8B4A52', '#5D252A', '#5D252A', '#5D252A']}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
+              <LinearGradient colors={["#8B4A52", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
                 <Text style={styles.buttonText2}>Refazer Quiz</Text>
               </LinearGradient>
             </TouchableOpacity>
@@ -293,8 +293,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imagem1: {
-    width: 250,
-    height:250,
+    width: 320,
+    height:320,
     marginTop: -10,
     borderRadius: 200,
     alignSelf: 'center',

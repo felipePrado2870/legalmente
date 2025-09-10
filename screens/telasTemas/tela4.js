@@ -9,8 +9,8 @@ const Tela4Screen = ({ navigation }) => {
       style={styles.container}
     >
       <View style={styles.content}>
-        <Text style={styles.title}>Quiz Violência Doméstica</Text>
-        <Text style={styles.subtitle}>Verdadeiro ou Falso</Text>
+        <Text style={styles.title}>Questionário Sobre</Text>
+        <Text style={styles.subtitle}>Violência Intrafamiliar</Text>
         <Image
           source={require("../../assets/verdadeOfalsoImagem.jpg")}
           style={styles.icon}
@@ -23,10 +23,7 @@ const Tela4Screen = ({ navigation }) => {
         </Text>
 
         <TouchableOpacity onPress={() => navigation.navigate("QuizVerdFalso")}>
-          <LinearGradient
-            colors={["#8B4A52", "#8B4A52", "#5D252A"]}
-            style={styles.startButton}
-          >
+          <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
             <Text style={styles.startButtonText}>INICIAR QUIZ</Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -46,22 +43,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
-    fontSize: 28,
+    fontSize: 40,
     fontWeight: "bold",
     color: "#fff",
     textAlign: "center",
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 30,
     color: "#FFD700", 
-    marginBottom: 30,
+    marginBottom: 10,
     fontWeight: "bold",
   },
   icon: {
-    width: 180,
-    height: 180,
-    borderRadius:150,
-    marginBottom: 25,
+    width: 300,
+    height: 300,
+    resizeMode: "cover",
+    alignSelf: 'center',
+    borderRadius: 200,
+    marginBottom: 10,
+    borderColor: "#fff",
+    borderWidth: 12,
   },
   description: {
     fontSize: 16,
@@ -70,10 +71,12 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   startButton: {
+    width: 250,
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 30,
     alignItems: "center",
+    alignSelf: "center",
   },
   startButtonText: {
     color: "#fff",

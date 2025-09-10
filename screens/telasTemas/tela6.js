@@ -9,7 +9,7 @@ const imagens = {
   'ViolenciaMulher': require('../../assets/violencia/violenciaMulher.png'),
 };
 
-const Tela6Screen = () => {
+const Tela6Screen = ({ navigation }) => {
   const [tipoSelecionado, setTipoSelecionado] = useState(null);
   const [perguntaIndex, setPerguntaIndex] = useState(0);
   const [respostas, setRespostas] = useState({});
@@ -53,11 +53,17 @@ const Tela6Screen = () => {
   if (!tipoSelecionado) {
     return (
       <LinearGradient colors={["#A67C7C", "#8B4A52", "#5D252A"]} style={styles.container}>
-        <Text style={styles.title}>Escolha o Tipo de Questionário</Text>
+        <Text style={styles.title}>Questionário Sobre</Text>
+        <Text style={styles.subtitle}>Diferentes tipos de Violência</Text>
         <Image source={require('../../assets/violencia/violenciaGeral.png')} style={styles.imagem1} resizeMode="cover"/>
+        <Text style={styles.description}>
+          Teste se voce ou alguem esta sofrendo algum tipo de violência ou abuso
+        </Text>
         {Object.keys(questionarioViolencia).map((tipo) => (
-          <TouchableOpacity key={tipo} style={styles.button} onPress={() => setTipoSelecionado(tipo)}>
-            <Text style={styles.buttonText}>{questionarioViolencia[tipo].titulo}</Text>
+          <TouchableOpacity key={tipo}  onPress={() => setTipoSelecionado(tipo)}>
+            <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
+              <Text style={styles.startButtonText}>{questionarioViolencia[tipo].titulo}</Text>
+            </LinearGradient>
           </TouchableOpacity>
         ))}
       </LinearGradient>
@@ -71,12 +77,14 @@ const Tela6Screen = () => {
     return (
       <LinearGradient colors={["#A67C7C", "#8B4A52", "#5D252A"]} style={styles.container}>
         <Text style={styles.title}>{quiz.titulo}</Text>
-        <Image source={imagens[quiz.imagemTema]} style={styles.imagem1} resizeMode="cover"/>
         <View style={styles.perguntaBox}>
+          <Image source={imagens[quiz.imagemTema]} style={styles.imagem1} resizeMode="cover"/>
           <Text style={styles.pergunta}>{perguntaIndex + 1}. {perguntaAtual.texto}</Text>
           {perguntaAtual.opcoes.map((opcao, i) => (
-            <TouchableOpacity key={i} style={styles.opcaoButton} onPress={() => escolherOpcao(opcao)}>
-              <Text style={styles.opcaoTexto}>{opcao}</Text>
+            <TouchableOpacity key={i} onPress={() => escolherOpcao(opcao)}>
+              <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton2}>
+                <Text style={styles.startButtonText2}>{opcao}</Text>
+              </LinearGradient>
             </TouchableOpacity>
           ))}
         </View>
@@ -96,9 +104,16 @@ const Tela6Screen = () => {
         (48) 3287-2637{"\n"}
         (48) 3287-2635
       </Text>
-      <TouchableOpacity style={styles.button} onPress={() => { setTipoSelecionado(null); setPerguntaIndex(0); setRespostas({}); setResultado(null); }}>
-        <Text style={styles.buttonText}>Voltar ao Início</Text>
-      </TouchableOpacity>
+      <View  style={styles.rowButtons}>
+        <TouchableOpacity onPress={() => navigation.navigate("TELA1")} >
+          <LinearGradient colors={['#8B4A52', '#5D252A', '#5D252A', '#5D252A']}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
+            <Text style={styles.buttonText2}>Refazer Quiz</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+        <TouchableOpacity  style={styles.homeButton} onPress={() => navigation.navigate("Home")} >
+          <Text style={styles.buttonText3}>Voltar Menu Principal</Text>
+        </TouchableOpacity>
+      </View>
     </LinearGradient>
   );
 };
@@ -111,13 +126,26 @@ const styles = StyleSheet.create({
   },
   title: { 
     color: "#fff", 
-    fontSize: 32, 
+    fontSize: 40, 
     fontWeight: "bold", 
+    textAlign: "center",  
+  },
+  subtitle: {
     textAlign: "center", 
-    marginBottom: 20 
+    fontSize: 30,
+    color: "#FFD700", 
+    marginBottom: 20,
+    fontWeight: "bold",
+  },
+  description: {
+    fontSize: 16,
+    color: "#fff",
+    textAlign: "center",
+    marginBottom: 20,
+    margin: 10,
+    marginTop: 10,
   },
   button: { 
-    backgroundColor: "#fff", 
     padding: 12, 
     borderRadius: 10, 
     marginVertical: 5, 
@@ -128,16 +156,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold" ,
     fontSize: 18,
   },
-  perguntaBox: { 
-    marginBottom: 20, 
+  perguntaBox: {  
     padding: 10, 
-    backgroundColor: "rgba(255,255,255,0.1)", 
+    backgroundColor:"#fff" , 
     borderRadius: 10 
   },
   pergunta: { 
-    fontSize: 23, 
-    color: "#fff", 
-    marginBottom: 15 
+    fontSize: 23,
+    marginTop: -10,
+    margin: 10,
+    color: "#000000",
+    textAlign: "center",
+    textAlign: "justify", 
+    fontWeight: "bold",
   },
   opcaoButton: { 
     padding: 10, 
@@ -168,13 +199,68 @@ const styles = StyleSheet.create({
     textAlign: "center" 
   },
    imagem1: {
-    width: 250,
-    height:250,
-    marginTop: -10,
+    width: 300,
+    height:300,
     borderRadius: 200,
-    marginBottom: 20,
-    margin: 25,
+    marginBottom: 10,
     alignSelf: 'center',
+    borderColor: "#fff",
+    borderWidth: 12,
+  },
+   startButton: {
+    width: 330,
+    marginTop: 10,
+    paddingVertical: 15,
+    borderRadius: 30,
+    alignItems: "center",
+    alignSelf: "center",
+  },
+  startButtonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  startButton2: {
+    marginTop: 15,
+    paddingVertical: 15,
+    borderRadius: 30,
+  },
+  startButtonText2: {
+    marginStart: 20,
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  buttonText2: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+   buttonText3: {
+    color: "#FFFFFF",
+    fontSize: 15,
+  },
+   rowButtons: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 10,
+  },
+  quizButton: {
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 20,
+    marginLeft: 10,
+    alignItems: "center",
+  },
+   homeButton: {
+    backgroundColor: '#ab8085b2',
+    padding: 15,
+    borderRadius: 10,
+    borderColor: "#fff",  
+    borderWidth: 2, 
+    marginTop: 20,
+    marginLeft: 10,
+    alignItems: "center",
   },
 });
 

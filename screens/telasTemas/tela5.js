@@ -109,9 +109,13 @@ const Tela5Screen = () => {
             showsHorizontalScrollIndicator={false}
             onScroll={onScroll}
             scrollEventThrottle={16}
+            style={styles.scrollContainer2}   // 🔹 aplica borda circular
+            contentContainerStyle={styles.scrollContent}
           >
             {images.map((img, i) => (
-              <Image key={i} source={images[i]} style={styles.image} />
+              <View key={i} style={styles.imageWrapper}>
+                <Image source={images[i]} style={styles.image} />
+              </View>
             ))}
           </ScrollView>
 
@@ -126,13 +130,13 @@ const Tela5Screen = () => {
         </View>
           {/* cards expansivos */}
         <View style={styles.cardHeader}>
-          <Text style={styles.title}>LGBTQUIAPN+</Text>
+          <Text style={styles.title1}>LGBTQUIAPN+</Text>
           <Text style={styles.textCardHeader}>Conheça seus direitos</Text>
         </View>
         {themes.map((item, index) => (
           <View key={index} style={styles.card}>
             <TouchableOpacity onPress={() => toggleAnswer(index)}>
-              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.title2}>{item.title}</Text>
             </TouchableOpacity>
 
             {expandedIndex === index && (
@@ -218,15 +222,11 @@ const styles = StyleSheet.create({
     padding: 16
   },
   header: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center',
     marginTop: 40
-  },
-  sliderContainer: {
-    height: 200,
-    marginVertical: 20
   },
   image: {
     width: width,
@@ -251,26 +251,32 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   cardHeader:{
-    width:"50%",
     alignSelf:"center",
     marginBottom:15,
   },
   textCardHeader:{
+    alignSelf:"center",
     textAlign:"right",
     color:"#fff",
     fontSize:16,
     
   },
   card: {
-    backgroundColor: 'rgba(223,218,218,0.67)',
+    backgroundColor: "#fff",
     padding: 14,
     borderRadius: 10,
     marginBottom: 12
   },
-  title: {
+  title1: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color:  '#ffffffff',
+    marginBottom: 5
+  },
+  title2: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#fff',
+    color:  '#602d32ff',
     marginBottom: 5
   },
   descriptionBody: {
@@ -438,6 +444,33 @@ const styles = StyleSheet.create({
   activeDot: {
     backgroundColor: "#fff",
   },
+    /* --- Carrossel Circular --- */
+  sliderContainer: { height: 320 },
+  scrollContainer2: {
+    alignSelf: "center",
+    borderWidth: 8,
+    borderColor: "#fff",
+    borderRadius: 160,
+    overflow: "hidden",
+    width: 320,
+    height: 320,
+  },
+  scrollContent: { alignItems: "center", justifyContent: "center" },
+  imageWrapper: {
+    width: 320,
+    height: 320,
+    borderRadius: 160,
+    overflow: "hidden",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
+    borderRadius: 30,
+  },
+
 });
 
 export default Tela5Screen;

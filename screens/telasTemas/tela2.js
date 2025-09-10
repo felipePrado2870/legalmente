@@ -126,11 +126,11 @@ const styles = StyleSheet.create({
     padding: 16 
   },
   header: { 
-    fontSize: 24, 
+    fontSize: 30, 
     fontWeight: 'bold', 
     color: '#FFFFFF', 
     textAlign: 'center',
-    marginTop: 40, 
+    marginTop: 50, 
   },
   card: { 
     backgroundColor: '#FFFFFF', 
@@ -153,11 +153,13 @@ const styles = StyleSheet.create({
      textAlign: "justify", 
   },
   imagem1: {
-    width: 250,
-    height:250,
+    width: 300,
+    height:300,
     alignSelf: 'center', 
-    borderRadius: 150,
+    borderRadius: 200,
     marginVertical: 10,
+    borderColor: "#fff",
+    borderWidth: 12,
   },
 });
 

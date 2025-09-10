@@ -16,7 +16,7 @@ import DivisionCalculator from './screens/telasTemas/secondScreen/DivisionCalcul
 import RegimeScreen from './screens/telasTemas/secondScreen/RegimeScreen';
 import tela10Final from './screens/telasTemas/secondScreen/tela10Final';
 import QuizVerdFalsoScreen from './screens/telasTemas/secondScreen/QuizVerdFalso';
-
+import QuizCasamentoScreen from './screens/telasTemas/secondScreen/QuizCasamento';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +39,7 @@ export default function App() {
         <Stack.Screen name="DivisionCalculator" component={DivisionCalculator}/>
         <Stack.Screen name="Regime" component={RegimeScreen}/>
         <Stack.Screen name="QuizVerdFalso" component={QuizVerdFalsoScreen}/>
+        <Stack.Screen name="QuizCasamento" component={QuizCasamentoScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

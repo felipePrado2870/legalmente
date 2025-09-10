@@ -5,40 +5,57 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const questions = [
   {
-    question: "O poder familiar é o conjunto de direitos e deveres dos pais em relação aos filhos menores, como o dever de cuidar, educar, sustentar e proteger. Mas em casos graves, esse poder pode ser retirado judicialmente. Com base nisso, qual das situações abaixo justifica a destituição do poder familiar?",
+    question: "1.O poder familiar reúne direitos e deveres dos pais. Em casos graves, esse poder pode ser retirado judicialmente. Qual situação justifica a destituição do poder familiar?",
     options: [
       "Apenas notificar os pais da ação",
       "Defender os interesses dos pais",
       "Atuar obrigatoriamente no processo, protegendo o interesse da criança"
     ],
     answer: "Atuar obrigatoriamente no processo, protegendo o interesse da criança",
-    explanation: "A destituição do poder familiar é uma medida extrema e só ocorre quando há situações graves, como abandono, maus-tratos, violência física ou psicológica, ou comportamento contrário à moral e aos bons costumes (art. 1.638 do Código Civil e arts. 22-24 do ECA)."
+    explanation: "A destituição só ocorre em casos graves, como abandono, maus-tratos ou violência (CC, art. 1.638; ECA, arts. 22-24)."
   },
   {
-    question: "Imagine que uma criança está sendo negligenciada pelos pais: não recebe alimentação adequada, não vai à escola e vive em situação de risco. Quem pode tomar providências legais para proteger a criança e, eventualmente, pedir a destituição do poder familiar?",
-    options: ["Apenas um parente próximo", "Ministério Público ou qualquer pessoa com legitimo interesse", "Somente a própria criança"],
+    question: "2. Uma criança sofre negligência: sem alimentação, escola e em risco. Quem pode adotar providências legais e pedir a destituição do poder familiar?",
+    options: [
+      "Apenas um parente próximo",
+      "Ministério Público ou qualquer pessoa com legitimo interesse",
+      "Somente a própria criança"
+    ],
     answer: "Ministério Público ou qualquer pessoa com legitimo interesse",
-    explanation: "O art. 155 do ECA autoriza que o Ministério Público ou qualquer pessoa com legítimo interesse proponham a ação judicial, sempre visando o melhor interesse da criança."
+    explanation: "O ECA (art. 155) autoriza o Ministério Público ou qualquer interessado a propor ação judicial para proteger a criança."
   },
   {
-    question: "A destituição do poder familiar pode ser decidida de forma rápida e sem defesa pelos pais?",
-    options: ["Sim, se for urgente", "Sim, desde que o juiz ouça o Conselho Tutelar", "Não, é preciso decisão judicial com direito à defesa e prova"],
+    question: "3. A destituição do poder familiar pode ser decidida rapidamente e sem defesa dos pais, ou é preciso processo judicial com provas e direito de defesa?",
+    options: [
+      "Sim, se for urgente",
+      "Sim, desde que o juiz ouça o Conselho Tutelar",
+      "Não, é preciso decisão judicial com direito à defesa e prova"
+    ],
     answer: "Não, é preciso decisão judicial com direito à defesa e prova",
-    explanation: "Segundo o CPC (art. 693 e seguintes) e o ECA (arts. 23 e 24), a destituição depende de processo judicial, com ampla defesa e provas. Os pais devem ser ouvidos antes da decisão do juiz."
+    explanation: "A destituição exige processo judicial com ampla defesa e provas (CPC, art. 693; ECA, arts. 23-24)."
   },
   {
-    question: "Quando o juiz decide pela destituição do poder familiar, o que acontece com os direitos dos pais sobre o filho?",
-    options: ["Eles continuam podendo visitar e decidir sobre a educação da criança", "Eles perdem todos os direitos e deveres em relação ao filho", "Eles continuam responsáveis financeiramente, mas sem convivência"],
+    question: "4. Quando o juiz determina a destituição do poder familiar, o que acontece com os direitos dos pais em relação ao filho?",
+    options: [
+      "Eles continuam podendo visitar e decidir sobre a educação da criança",
+      "Eles perdem todos os direitos e deveres em relação ao filho",
+      "Eles continuam responsáveis financeiramente, mas sem convivência"
+    ],
     answer: "Eles perdem todos os direitos e deveres em relação ao filho",
-    explanation: "A destituição do poder familiar resulta na perda completa dos direitos e deveres parentais (ECA, art. 24 e CC, art. 1.638)."
+    explanation: "Com a destituição, os pais perdem totalmente os direitos e deveres (ECA, art. 24; CC, art. 1.638)."
   },
   {
-    question: "Em casos de destituição do poder familiar, qual é o papel do Ministério Público?",
-    options: ["Apenas notificar os pais da ação", "Defender os interesses dos pais", "Atuar obrigatoriamente no processo, protegendo o interesse da criança"],
+    question: "5. Em processos de destituição do poder familiar, qual é o papel do Ministério Público?",
+    options: [
+      "Apenas notificar os pais da ação",
+      "Defender os interesses dos pais",
+      "Atuar obrigatoriamente no processo, protegendo o interesse da criança"
+    ],
     answer: "Atuar obrigatoriamente no processo, protegendo o interesse da criança",
-    explanation: "O MP atua como fiscal da lei e defensor dos interesses da criança, sendo obrigatória sua participação (CPC, art. 178, II e ECA, art. 201, III)."
+    explanation: "O MP atua obrigatoriamente, fiscalizando a lei e defendendo a criança (CPC, art. 178; ECA, art. 201)."
   },
 ];
+
 
 const Tela9Screen = () => {
   const navigation = useNavigation();
@@ -83,11 +100,14 @@ const Tela9Screen = () => {
     >
       {!quizStarted ? (
         <View style={styles.startContainer}>
-          <Text style={styles.mainTitle}>Teste seus conhecimentos!</Text>
+          <Text style={styles.homeTitle}>Curiosidades Sobre</Text>
+          <Text style={styles.subTitle}>Destituição do poder da familia</Text>
           <Image source={require('../../assets/quiz/startImg.png')} style={styles.mainImg} />
           <Text style={styles.startTitle}>Responda ao quiz sobre a destituição do poder familiar.</Text>
           <TouchableOpacity style={styles.startButton} onPress={() => setQuizStarted(true)}>
-            <Text style={styles.buttonText}>Começar Quiz</Text>
+            <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
+              <Text style={styles.buttonText}>INICIAR QUIZ</Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       ) : showResult ? (
@@ -101,23 +121,26 @@ const Tela9Screen = () => {
             Continue estudando para fortalecer seus conhecimentos em direito de família.
           </Text>
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("TELA10Final")}>
-            <Text style={styles.buttonText}>Continuar</Text>
+              <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
+                <Text style={styles.buttonText}>Continuar</Text>
+              </LinearGradient>
           </TouchableOpacity>
         </View>
       ) : (
         <ScrollView contentContainerStyle={styles.quizContainer}>
           {!showExplanation ? (
             <>
-              <Text style={styles.question}>{questions[currentIndex].question}</Text>
-              {questions[currentIndex].options.map((option, i) => (
-                <TouchableOpacity
-                  key={i}
-                  style={styles.optionButton}
-                  onPress={() => handleAnswer(option)}
-                >
-                  <Text style={styles.optionText}>{option}</Text>
-                </TouchableOpacity>
-              ))}
+              <View style={styles.card}>
+                <Image source={require('../../assets/quiz/startImg.png')} style={styles.mainImg} />
+                <Text style={styles.question}>{questions[currentIndex].question}</Text>
+                {questions[currentIndex].options.map((option, i) => (
+                  <TouchableOpacity key={i} onPress={() => handleAnswer(option)}>
+                    <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.optionButton}>
+                      <Text style={styles.optionText}>{option}</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                ))}
+              </View>
             </>
           ) : (
             <View style={styles.explanationContainer}>
@@ -134,7 +157,9 @@ const Tela9Screen = () => {
               )}
               <Text style={styles.explanationText}>{questions[currentIndex].explanation}</Text>
               <TouchableOpacity style={styles.button} onPress={handleNext}>
-                <Text style={styles.buttonText}>Próxima</Text>
+                <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
+                  <Text style={styles.buttonText}>Próxima</Text>
+                </LinearGradient>
               </TouchableOpacity>
             </View>
           )}
@@ -146,85 +171,102 @@ const Tela9Screen = () => {
 
 const styles = StyleSheet.create({
   container: { 
-    flex: 1, 
-    padding: 12 
+    flex: 1,
+    padding: 20,
+    justifyContent: "center",
   },
   startContainer: { 
-    flex: 1, 
-    justifyContent: "space-between", 
-    paddingVertical: 60, 
-    alignItems: "center" 
+    alignItems: "center",
   },
-  mainTitle: { 
-    fontSize: 40, 
-    marginTop: 60,
-    textAlign: "center", 
-    fontWeight: "bold", 
-    color: "#FFFFFF" 
+  homeTitle: {
+    textAlign: "center",
+    fontSize: 40,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  subTitle: {
+    color: '#D4AF37',
+    textAlign: "center",
+    fontSize: 30,
+    fontWeight: "bold",
   },
   mainImg: { 
-    width: 300, 
-    height: 240, 
-    resizeMode: "cover", 
-    borderRadius: 12 
+    width: 300,
+    height: 300,
+    resizeMode: "cover",
+    borderRadius: 200,
+    marginBottom: 10,
+    borderColor: "#fff",
+    borderWidth: 12,
+    alignSelf: "center",
   },
   startTitle: { 
-    fontSize: 24, 
-    marginHorizontal: 20, 
+    fontSize: 15, 
+    margin: 10, 
     textAlign: "center", 
     color: "#FFFFFF" 
   },
-  startButton: { 
-    backgroundColor: "#FFFFFF", 
-    padding: 18, 
-    borderRadius: 20, 
-    width: "80%", 
-    marginBottom: 20 
+  startButton: {
+    width: 250,
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 30,
+    alignItems: "center",
+    alignSelf: "center",
+  },
+  startButtonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
   },
   quizContainer: { 
     flexGrow: 1, 
     justifyContent: "center" 
   },
   question: { 
-    fontSize: 22, 
-    fontWeight: "bold", 
-    textAlign: "center", 
-    color: "#FFFFFF", 
-    marginBottom: 15 ,
-    marginBottom: 50,
+    fontSize: 23,
+    marginTop: -10,
+    margin: 10,
+    color: "#000000",
+    textAlign: "center",
+    textAlign: "justify", 
+    fontWeight: "bold",
   },
   optionButton: { 
-    backgroundColor: "#FFFFFF", 
-    padding: 16, 
-    borderRadius: 15, 
-    marginVertical: 8 
+    marginTop: 10,
+    paddingVertical: 15,
+    borderRadius: 30,
   },
   optionText: { 
-    color: "#5D252A", 
-    fontSize: 20, 
-    textAlign: "center",
-    fontWeight: "bold", 
+    marginStart: 20,
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "justify",
+    marginHorizontal: 15,
   },
-  explanationContainer: { 
-    marginTop: 20, 
-    alignItems: "center"
+  explanationContainer: {  
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 12,
   },
   explanationText: { 
     fontSize: 20, 
     textAlign: "center", 
-    padding: 20, 
-    color: "#562126ff",
+    padding: 20,
+    marginBottom: -20, 
+    color:  "#5D252A",
     fontWeight: "bold", 
+    textAlign: "justify",
   },
   feedbackImg: { 
     resizeMode: "cover", 
     width: 200, 
     height: 200 
   },
-  feedbackText: { 
-    margin: 5, 
-    fontSize: 45, 
-    color: "#5D252A", 
+  feedbackText: {  
+    fontSize: 40, 
+    color:  "#5D252A",
     fontWeight: "bold" 
   },
   resultContainer: { 
@@ -241,30 +283,41 @@ const styles = StyleSheet.create({
   },
   resultPhrase: { 
     textAlign: "center", 
-    fontSize: 22,
+    fontSize: 20,
     padding: 5, 
     marginBottom: 15, 
-    color: "#5D252A",
+    color: "#ffffffff",
     fontWeight: "light", 
   },
   resultText: { 
     fontSize: 24, 
     margin: 20, 
-    color: "#5D252A",
+    color: "#ffffffff",
     fontWeight: "bold",  
   },
   button: { 
-    backgroundColor: "#FFFFFF", 
     padding: 18, 
     borderRadius: 20, 
     marginVertical: 6, 
-    width: "80%" 
   },
-  buttonText: { 
-    color: "#5D252A", 
-    fontWeight: "bold", 
-    fontSize: 20, 
-    textAlign: "center" 
+  startButton: {
+    width: 250,
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 30,
+    alignItems: "center",
+    alignSelf: "center",
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+   card: {
+    backgroundColor: "#fff",
+    padding: 10,
+    borderRadius: 12,
+    shadowOffset: { width: 0, height: 2 },
   },
 });
 

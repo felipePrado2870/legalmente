@@ -6,7 +6,7 @@ const curiosities = [
   {
     title: "CURIOSIDADE 1",
     question:
-      "Você sabia que ato infracional não aparece como “antecedente criminal” quando o adolescente vira adulto?",
+      "1.Você sabia que ato infracional não aparece como “antecedente criminal” quando o adolescente vira adulto?",
     answer:
       "Porque a lei entende que erros cometidos na adolescência não podem marcar a pessoa para sempre.",
     art: "Art. 103 e 111 do ECA",
@@ -14,7 +14,7 @@ const curiosities = [
   {
     title: "CURIOSIDADE 2",
     question:
-      "Você sabia que um ato infracional pode ser só uma “bronca” do juiz?",
+      "2.Você sabia que um ato infracional pode ser só uma “bronca” do juiz?",
     answer:
       "Por quê? Porque em casos leves, o juiz pode aplicar só uma advertência (um tipo de sermão formal), sem nenhuma outra punição.",
     art: "Art. 112, I do ECA",
@@ -22,7 +22,7 @@ const curiosities = [
   {
     title: "CURIOSIDADE 3",
     question:
-      "Você sabia que a maioria dos adolescentes que cumprem medidas não fica internada?",
+      "3.Você sabia que a maioria dos adolescentes que cumprem medidas não fica internada?",
     answer:
       "Por quê? Porque existem medidas como prestação de serviços, liberdade assistida e até reparação de danos, que ajudam o jovem a repensar suas atitudes sem ser isolado da sociedade.",
     art: "Art. 112 do ECA",
@@ -30,7 +30,7 @@ const curiosities = [
   {
     title: "CURIOSIDADE 4",
     question:
-      "Você sabia que o juiz pode escolher a medida pensando no que é melhor para a vida do adolescente?",
+      "4.Você sabia que o juiz pode escolher a medida pensando no que é melhor para a vida do adolescente?",
     answer:
       "Por quê? Porque o ECA manda avaliar história de vida, família, estudo e até vícios para decidir a medida mais justa e educativa.",
     art: "Art. 112 do ECA",
@@ -38,7 +38,7 @@ const curiosities = [
   {
     title: "CURIOSIDADE 5",
     question:
-      "Você sabia que o advogado nomeado pelo juiz pode ser o único defensor do adolescente durante todo o processo?",
+      "5.Você sabia que o advogado nomeado pelo juiz pode ser o único defensor do adolescente durante todo o processo?",
     answer:
       "Por quê? Porque muitos adolescentes não têm condições de contratar um advogado, e a Justiça garante que ninguém fique sem defesa.",
     art: "Art. 111, III do ECA",
@@ -46,14 +46,14 @@ const curiosities = [
   {
     title: "CURIOSIDADE 6",
     question:
-      "Você sabia que mesmo internado o adolescente tem direito a estudar e fazer cursos?",
+      "6.Você sabia que mesmo internado o adolescente tem direito a estudar e fazer cursos?",
     answer:
       "Por quê? Porque o objetivo não é só punir, é dar ferramentas para que ele tenha um futuro melhor.",
     art: "Art. 124, VI do ECA",
   },
 ];
 
-const Tela1Screen = () => {
+const Tela1Screen = ({ navigation }) => {
   const [started, setStarted] = useState(false);
   const [finished, setFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -83,23 +83,19 @@ const Tela1Screen = () => {
         style={styles.container}
       >
         <View style={styles.header}>
-          <Text style={styles.homeTitle}>Curiosidades Sobre</Text>
+          <Text style={styles.homeTitle1}>Curiosidades Sobre</Text>
           <Text style={styles.subTitle}>Atos Infracionais</Text>
         </View>
         <View style={styles.homeBody}>
-          <Image
-            source={require("../../assets/atosInfracionaisImagem.jpg")}
-            style={styles.homeImg}
-          />
+          <Image source={require("../../assets/atosInfracionaisImagem.jpg")} style={styles.homeImg}/>
           <Text style={styles.descriptionText}>
             Descubra fatos importantes sobre o direito juvenil e o ECA
           </Text>
         </View>
-        <TouchableOpacity
-          style={styles.startBtn1}
-          onPress={() => setStarted(true)}
-        >
-          <Text style={styles.btnText}>Iniciar</Text>
+        <TouchableOpacity onPress={() => setStarted(true)}>
+          <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
+            <Text style={styles.startButtonText}>INICIAR QUIZ</Text>
+          </LinearGradient>
         </TouchableOpacity>
       </LinearGradient>
     );
@@ -115,16 +111,16 @@ const Tela1Screen = () => {
         <Text style={styles.title2}> 🎉   Parabéns!   🎉  </Text>
         <Text style={styles.question2}>Você explorou todas as ciriosidades!</Text>
         <Text style={styles.question3}>Agora você conhece mais sobre ato Infracionais a o ECA!</Text>
-        <View style={styles.rowButtons}>
-          <TouchableOpacity onPress={handleRestart}>
-            <LinearGradient colors={['#8B4A52', '#5D252A', '#5D252A', '#5D252A']}  end={{ x: 1, y: 1 }}style={styles.startBtn2}  >
-              <Text style={styles.btnText}>Ver novamente</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.startBtn3} onPress={handleRestart}>
-            <Text style={styles.btnText}>Menu Principal</Text>
-          </TouchableOpacity>
-        </View>
+        <View  style={styles.rowButtons}>
+            <TouchableOpacity onPress={handleRestart} >
+              <LinearGradient colors={["#8B4A52", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
+                <Text style={styles.buttonText2}>Refazer Quiz</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+            <TouchableOpacity  style={styles.homeButton} onPress={() => navigation.navigate("Home")} >
+              <Text style={styles.buttonText3}>Voltar Menu Principal</Text>
+            </TouchableOpacity>
+          </View>
       </LinearGradient>
     );
   }
@@ -132,12 +128,11 @@ const Tela1Screen = () => {
   // Tela das curiosidades
   const current = curiosities[currentIndex];
   return (
-    <LinearGradient
-      colors={["#A67C7C", "#8B4A52", "#5D252A"]}
-      style={styles.container}
-    >
+    <LinearGradient colors={["#A67C7C", "#8B4A52", "#5D252A"]} style={styles.container}>
+      <Text style={styles.homeTitle2}>Quiz para Atos</Text>
+      <Text style={styles.homeTitle3}>Infracionais</Text>
       <View style={styles.card}>
-        <Text style={styles.title1}>{current.title}</Text>
+        <Image source={require("../../assets/atosInfracionaisImagem.jpg")} style={styles.homeImg}/>
         <Text style={styles.question1}>{current.question}</Text>
 
         {showAnswer && (
@@ -176,71 +171,54 @@ const styles = StyleSheet.create({
   header: {
     alignSelf: "center",
   },
-  homeTitle: {
+  homeTitle1: {
     textAlign: "center",
     fontSize: 40,
     fontWeight: "bold",
     color: "#fff",
+  },
+   homeTitle2: {
+    textAlign: "center",
+    fontSize: 35,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  homeTitle3: {
+    textAlign: "center",
+    fontSize: 35,
+    fontWeight: "bold",
+    color: "#fff",
+    marginBottom: 10,
   },
   subTitle: {
     color: '#D4AF37',
     textAlign: "center",
     fontSize: 30,
     fontWeight: "bold",
-    marginBottom: 30,
   },
   homeBody: {
     alignItems: "center",
     paddingVertical: 20,
   },
   homeImg: {
-    width: 320,
-    height: 320,
+    width: 300,
+    height: 300,
     resizeMode: "cover",
     borderRadius: 200,
-    marginBottom: 50,
+    marginBottom: 10,
+    borderColor: "#fff",
+    borderWidth: 12,
+    alignSelf: 'center',
   },
   descriptionText: {
     fontSize: 15,
     textAlign: "center",
     color: "#fff",
   },
-  startBtn1: {
-    padding: 15,
-    backgroundColor: "#8B4A52",
-    borderRadius: 10,
-    alignItems: "center",
-  },
-   startBtn2: {
-    padding: 15,
-    borderRadius: 10,
-    marginTop: 20,
-    marginLeft: 10,
-    alignItems: "center",
-  },
-  startBtn3: {
-    backgroundColor: '#ab8085b2',
-    padding: 15,
-    borderRadius: 10,
-    borderColor: "#fff",  
-    borderWidth: 2, 
-    marginTop: 20,
-    marginLeft: 10,
-    alignItems: "center",
-  },
-  btnText: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize:18,
-  },
   card: {
     backgroundColor: "#fff",
-    padding: 20,
+    padding: 10,
     borderRadius: 12,
-    elevation: 4,
-    shadowColor: "#000",
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
   },
   title1: {
@@ -258,8 +236,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   question1: {
-    fontSize: 18,
-    marginBottom: 20,
+    fontSize: 23,
+    marginTop: -10,
+    margin: 10,
     color: "#000000",
     textAlign: "center",
     textAlign: "justify", 
@@ -311,10 +290,49 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     alignItems: "center",
   },
+  startButton: {
+    width: 250,
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 30,
+    alignItems: "center",
+    alignSelf: "center",
+  },
+  startButtonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+    quizButton: {
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 20,
+    marginLeft: 10,
+    alignItems: "center",
+  },
   rowButtons: {
     flexDirection: "row",
     justifyContent: "center",
     marginTop: 10,
+  }, 
+  homeButton: {
+    backgroundColor: '#ab8085b2',
+    padding: 15,
+    borderRadius: 10,
+    borderColor: "#fff",  
+    borderWidth: 2, 
+    marginTop: 20,
+    marginLeft: 10,
+    alignItems: "center",
+  },
+  buttonText2: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  buttonText3: {
+    color: "#FFFFFF",
+    fontSize: 15,
   },
 });
 
