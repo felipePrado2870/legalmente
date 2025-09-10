@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, ScrollView, View, Image, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import ExitButton from '../componentes/ExitButton';
 
 const faq = [
   {
@@ -114,6 +115,7 @@ const Tela2Screen = () => {
           </View>
         ))}
       </ScrollView>
+      <ExitButton goTo="Home" />
     </LinearGradient>
   );
 };

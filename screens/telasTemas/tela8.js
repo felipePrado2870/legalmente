@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, FlatList, Modal, TouchableOpacity, Image, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import ExitButton from '../componentes/ExitButton';
 
 // ---------- COMPONENTE CARD ----------
 function Card({ isFlipped, onPress, image, resizeModeType = "cover" }) {
@@ -176,6 +177,7 @@ export default function Tela8Screen() {
           </View>
         </View>
       </Modal>
+      <ExitButton goTo="Home" />
     </LinearGradient>
   );
 }

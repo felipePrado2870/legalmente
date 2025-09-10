@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View,Image, Text, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import ExitButton from '../../componentes/ExitButton';
 
 const questionario = [
   {
@@ -190,6 +191,7 @@ const QuizCasamentoScreen = ({ navigation}) => {
           </View>
         </ScrollView>
       )}
+      <ExitButton goTo="Home" />
     </LinearGradient>
   );
 };

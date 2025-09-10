@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+import ExitButton from '../componentes/ExitButton';
 
 const Tela3Screen = ({ navigation }) => {
   return (
@@ -27,6 +28,7 @@ const Tela3Screen = ({ navigation }) => {
           </LinearGradient>
         </TouchableOpacity>
       </View>
+      <ExitButton goTo="Home" />
     </LinearGradient>
   );
 };

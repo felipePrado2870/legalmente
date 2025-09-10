@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Text, StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+import ExitButton from '../componentes/ExitButton';
 
 const curiosities = [
   {
@@ -97,6 +98,7 @@ const Tela1Screen = ({ navigation }) => {
             <Text style={styles.startButtonText}>INICIAR QUIZ</Text>
           </LinearGradient>
         </TouchableOpacity>
+        <ExitButton goTo="Home" />
       </LinearGradient>
     );
   }
@@ -121,6 +123,7 @@ const Tela1Screen = ({ navigation }) => {
               <Text style={styles.buttonText3}>Voltar Menu Principal</Text>
             </TouchableOpacity>
           </View>
+          <ExitButton goTo="Home" />
       </LinearGradient>
     );
   }
@@ -158,6 +161,7 @@ const Tela1Screen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
+      <ExitButton goTo="Home" />
     </LinearGradient>
   );
 };

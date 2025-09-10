@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Text, StyleSheet, ScrollView, Image, TouchableOpacity, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import questionarioViolencia from "../dados/questionarioViolencia.json";
+import ExitButton from '../componentes/ExitButton';
+
 const imagens = {
   'ViolenciaCrianca': require('../../assets/violencia/violenciaCrianca.png'),
   'ViolenciaHomem': require('../../assets/violencia/violenciaHomem.png'),
@@ -66,6 +68,7 @@ const Tela6Screen = ({ navigation }) => {
             </LinearGradient>
           </TouchableOpacity>
         ))}
+        <ExitButton goTo="Home" />
       </LinearGradient>
     );
   }
@@ -88,6 +91,7 @@ const Tela6Screen = ({ navigation }) => {
             </TouchableOpacity>
           ))}
         </View>
+        <ExitButton goTo="Home" />
       </LinearGradient>
     );
   }
@@ -114,6 +118,7 @@ const Tela6Screen = ({ navigation }) => {
           <Text style={styles.buttonText3}>Voltar Menu Principal</Text>
         </TouchableOpacity>
       </View>
+      <ExitButton goTo="Home" />
     </LinearGradient>
   );
 };

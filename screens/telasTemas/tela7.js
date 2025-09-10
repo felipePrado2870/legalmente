@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {  Text, StyleSheet, View, ScrollView, TouchableOpacity, Image,  Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
+import ExitButton from '../componentes/ExitButton';
 
 const topics = [
   {
@@ -103,6 +104,7 @@ const Tela7Screen = () => {
           </View>
         </View>
       </Modal>
+      <ExitButton goTo="Home" />
     </ScrollView>
   );
 };

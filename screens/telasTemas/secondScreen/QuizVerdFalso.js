@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity,Image, StyleSheet } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+import ExitButton from '../../componentes/ExitButton';
 
 const questions = [
   {
@@ -176,6 +177,7 @@ const QuizVerdFalsoScreen = ({ navigation }) => {
           </View>
         </View>
       )}
+      <ExitButton goTo="Home" />
     </LinearGradient>
   );
 };

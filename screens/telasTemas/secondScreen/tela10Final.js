@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+import ExitButton from '../../componentes/ExitButton';
 
 export default function Tela10Final({ navigation}) {
   return (
@@ -29,6 +30,7 @@ export default function Tela10Final({ navigation}) {
             <Text style={styles.buttonText3}>Voltar Menu Principal</Text>
             </TouchableOpacity>
         </View>
+        <ExitButton goTo="Home" />
     </LinearGradient>
   );
 }

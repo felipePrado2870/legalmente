@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
+import ExitButton from '../componentes/ExitButton';
 
 const questions = [
   {
@@ -165,6 +166,7 @@ const Tela9Screen = () => {
           )}
         </ScrollView>
       )}
+      <ExitButton goTo="Home" />
     </LinearGradient>
   );
 };

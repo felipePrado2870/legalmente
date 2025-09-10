@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-
+import ExitButton from '../../componentes/ExitButton';
 
 
 const regimes = [
@@ -76,6 +76,7 @@ export default function RegimeScreen({ navigation, route }) {
           <Text style={styles.navText}>Novo Cálculo</Text>
         </TouchableOpacity>
       </View>
+      <ExitButton goTo="Home" />
     </View>
   );
 }
