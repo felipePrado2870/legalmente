@@ -101,9 +101,9 @@ const Tela9Screen = () => {
     >
       {!quizStarted ? (
         <View style={styles.startContainer}>
-          <Text style={styles.homeTitle}>Curiosidades Sobre</Text>
+          <Text style={styles.homeTitle}>Questionário Sobre</Text>
           <Text style={styles.subTitle}>Destituição do poder da familia</Text>
-          <Image source={require('../../assets/quiz/startImg.png')} style={styles.mainImg} />
+          <Image source={require('../../assets/quiz/startImg.png')} style={styles.mainImg1} />
           <Text style={styles.startTitle}>Responda ao quiz sobre a destituição do poder familiar.</Text>
           <TouchableOpacity onPress={() => setQuizStarted(true)}>
             <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
@@ -131,8 +131,10 @@ const Tela9Screen = () => {
         <ScrollView contentContainerStyle={styles.quizContainer}>
           {!showExplanation ? (
             <>
+              <Text style={styles.homeTitle2}>Questionário Sobre</Text>
+              <Text style={styles.subTitle2}>Destituição do poder da familia</Text>
               <View style={styles.card}>
-                <Image source={require('../../assets/quiz/startImg.png')} style={styles.mainImg} />
+                <Image source={require('../../assets/quiz/startImg.png')} style={styles.mainImg2} />
                 <Text style={styles.question}>{questions[currentIndex].question}</Text>
                 {questions[currentIndex].options.map((option, i) => (
                   <TouchableOpacity key={i} onPress={() => handleAnswer(option)}>
@@ -150,16 +152,25 @@ const Tela9Screen = () => {
             <View style={styles.explanationContainer}>
               {selectedAnswer === questions[currentIndex].answer ? (
                 <>
-                  <Image source={require("../../assets/quiz/correctImg.png")} style={styles.feedbackImg} />
-                  <Text style={styles.feedbackText}>Correto</Text>
+                  <View style={styles.correctBackground1}>
+                    <View style={styles.container2}>
+                      <Image source={require("../../assets/quiz/correctImg.png")} style={styles.feedbackImg} />
+                      <Text style={styles.feedbackText1}>Correto</Text>
+                    </View>
+                    <Text style={styles.explanationText}>{questions[currentIndex].explanation}</Text>
+                  </View>
                 </>
               ) : (
                 <>
-                  <Image source={require("../../assets/quiz/incorrectImg.png")} style={styles.feedbackImg} />
-                  <Text style={styles.feedbackText}>Incorreto</Text>
+                  <View style={styles.correctBackground2}>
+                    <View style={styles.container2}>
+                      <Image source={require("../../assets/quiz/incorrectImg.png")} style={styles.feedbackImg} />
+                      <Text style={styles.feedbackText2}>Incorreto</Text>
+                    </View>
+                    <Text style={styles.explanationText}>{questions[currentIndex].explanation}</Text>
+                  </View>
                 </>
               )}
-              <Text style={styles.explanationText}>{questions[currentIndex].explanation}</Text>
               <TouchableOpacity style={styles.button} onPress={handleNext}>
                 <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton2}>
                   <Text style={styles.buttonText}>Próxima</Text>
@@ -180,6 +191,11 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: "center",
   },
+  container2: { 
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   startContainer: { 
     alignItems: "center",
   },
@@ -195,7 +211,20 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
-  mainImg: { 
+   homeTitle2: {
+    textAlign: "center",
+    fontSize: 35,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  subTitle2: {
+    color: '#D4AF37',
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  mainImg1: { 
     width: 250,
     height: 250,
     resizeMode: "cover",
@@ -205,6 +234,16 @@ const styles = StyleSheet.create({
     borderColor: "#fff",
     borderWidth: 12,
     alignSelf: "center",
+  },
+   mainImg2: { 
+    width: 250,
+    height: 250,
+    resizeMode: "cover",
+    borderRadius: 200,
+    borderColor: "#ffffffff",
+    borderWidth: 10,
+    alignSelf: "center",
+    marginTop: -5,
   },
   startTitle: { 
     fontSize: 13, 
@@ -231,15 +270,19 @@ const styles = StyleSheet.create({
   },
   question: { 
     fontSize: 15,
-    marginTop: -10,
-    margin: 10,
     color: "#000000",
     textAlign: "center",
     textAlign: "justify", 
     fontWeight: "bold",
+    marginTop: -5,
+    padding: 10,
+    backgroundColor:"#f0dee064",
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
   },
   optionButton: { 
-    marginTop: 10,
+    marginTop: 7,
     paddingVertical: 15,
     borderRadius: 30,
   },
@@ -250,6 +293,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "justify",
     marginHorizontal: 15,
+    marginVertical: -5,
   },
   explanationContainer: {  
     alignItems: "center",
@@ -257,22 +301,24 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   explanationText: { 
-    fontSize: 15, 
-    textAlign: "center", 
-    padding: 20,
-    marginBottom: -20, 
+    fontSize: 15,  
     color:  "#000000ff",
     fontWeight: "bold", 
     textAlign: "justify",
   },
   feedbackImg: { 
     resizeMode: "cover", 
-    width: 60, 
-    height: 60 
+    width: 40, 
+    height: 40 
   },
-  feedbackText: {  
+  feedbackText1: {  
     fontSize: 30, 
-    color:  "#5D252A",
+    color:  "rgba(24, 91, 24, 1)",
+    fontWeight: "bold" 
+  },
+  feedbackText2: {  
+    fontSize: 30, 
+    color:  "#5e1a1fff",
     fontWeight: "bold" 
   },
   resultContainer: { 
@@ -329,9 +375,25 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
   },
    progresso: {
-    marginTop: 15,
+    marginTop: 5,
     color: '#000',
     textAlign: 'center',
+  },
+   correctBackground1: {
+    margin: 10,
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor: "rgba(0, 200, 0, 0.1)", 
+    borderLeftWidth: 4,
+    borderLeftColor: "rgba(0, 200, 0, 0.8)",
+  },
+  correctBackground2: {
+    margin: 10,
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor: "rgba(200, 0, 0, 0.1)", 
+    borderLeftWidth: 4,
+    borderLeftColor: "rgba(200, 0, 0, 0.8)",
   },
 });
 

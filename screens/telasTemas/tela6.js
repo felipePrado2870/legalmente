@@ -79,7 +79,7 @@ const Tela6Screen = ({ navigation }) => {
 
     return (
       <LinearGradient colors={["#A67C7C", "#8B4A52", "#5D252A"]} style={styles.container}>
-        <Text style={styles.title}>{quiz.titulo}</Text>
+        <Text style={styles.title2}>{quiz.titulo}</Text>
         <View style={styles.perguntaBox}>
           <Image source={imagens[quiz.imagemTema]} style={styles.imagem1} resizeMode="cover"/>
           <Text style={styles.pergunta}>{perguntaIndex + 1}. {perguntaAtual.texto}</Text>
@@ -134,6 +134,12 @@ const styles = StyleSheet.create({
   },
   title: { 
     color: "#fff", 
+    fontSize: 30, 
+    fontWeight: "bold", 
+    textAlign: "center",  
+  },
+  title2: { 
+    color:  '#D4AF37',  
     fontSize: 35, 
     fontWeight: "bold", 
     textAlign: "center",  
@@ -141,7 +147,7 @@ const styles = StyleSheet.create({
   subtitle: {
     textAlign: "center", 
     fontSize: 20,
-    color: "#FFD700", 
+    color: '#D4AF37', 
     marginBottom: 10,
     fontWeight: "bold",
   },
@@ -171,11 +177,15 @@ const styles = StyleSheet.create({
   pergunta: { 
     fontSize: 15,
     marginTop: -10,
-    margin: 10,
     color: "#000000",
     textAlign: "center",
     textAlign: "justify", 
     fontWeight: "bold",
+    padding: 10,
+    backgroundColor:"#f0dee064",
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
   },
   opcaoButton: { 
     padding: 10, 

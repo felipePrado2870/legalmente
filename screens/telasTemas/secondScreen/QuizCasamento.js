@@ -6,32 +6,32 @@ import ExitButton from '../../componentes/ExitButton';
 const questionario = [
   {
     id: 1,
-    pergunta: "Você mora junto com seu cônjuge?",
+    pergunta: "1. Você mora junto com seu cônjuge?",
     opcoes: ["Sim", "Não mas pretendemos morar juntos","Não",],
   },
   {
     id: 2,
-    pergunta: "Seus familiares e amigos veem você e seu cônjuge como um casal?",
+    pergunta: "2. Seus familiares e amigos veem você e seu cônjuge como um casal?",
     opcoes: ["Sim, todos nos veem como casal", "Não, alguns nos veem como casal", "Não, ninguem nos veem como casal"  ],
   },
   {
     id: 3,
-    pergunta: "O seu relacionamento é contínuo sem longas pausas, ou idas e vindas constantes?",
+    pergunta: "3. O seu relacionamento é contínuo sem longas pausas, ou idas e vindas constantes?",
     opcoes: ["Sim, é estável e contínuo", "Já tivemos pausas e reconciliações","Não, não é estável e contínuo",],
   },
   {
     id: 4,
-    pergunta: "O casal tem planos futuros, como filhos e casamento?",
+    pergunta: "4. O casal tem planos futuros, como filhos e casamento?",
     opcoes: ["Sim, temos esses objetivos", "Não, ainda não conversamos ", "Não, não temos esses objetivos"],
   },
   {
     id: 5,
-    pergunta: "Vocês têm algum vínculo financeiro em comum?",
+    pergunta: "5. Vocês têm algum vínculo financeiro em comum?",
     opcoes: ["Sim, temos vínculo financeiro", "Não, não temos vínculo financeiro"],
   },
   {
     id: 6,
-    pergunta: "Algum de vocês é legalmente casado com outra pessoa?",
+    pergunta: "6. Algum de vocês é legalmente casado com outra pessoa?",
     opcoes: ["Sim, casado legalmente de fato","Não, divorciado separado de fato", "Não, nunca casei"  ],
   },
 ];
@@ -211,10 +211,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#000000ff',
     marginTop: -10,
-    margin: 10,
     marginBottom: 10,
-  fontWeight: "bold",
+    fontWeight: "bold",
     textAlign: "justify",
+    padding: 10,
+    backgroundColor:"#f0dee064",
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
   },
 
   botao: {
@@ -274,7 +278,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 30,
     fontWeight: "bold",
-    color: "#fff",
+    color: '#D4AF37',
     marginBottom: 10,
   },
   quizButton: {

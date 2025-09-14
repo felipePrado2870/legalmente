@@ -2,74 +2,74 @@
   "ListaDados": [
       {
         "titulo": "titulo1",
-        "temaPinciapl": "AtosInfracionais",
-        "textAssunto": "Condutas ilegais praticadas por adolescentes menores.",
+        "temaPinciapl": "Atos Infracionais",
+        "textAssunto": "Curiosidades sobre condutas ilegais praticadas por adolescentes menores.",
         "imagemSecundari": "AtosInfracionais",
-        "tituloTela": "Quiz - Informativo",
+        "tituloTela": "Curiosidades - Informativas",
         "tela": "TELA1"
       },
       {
         "titulo": "titulo2",
-        "temaPinciapl": "Adoções",
-        "textAssunto": "Ato legal de integrar criança à família",
+        "temaPinciapl": "Adoçâo Família",
+        "textAssunto": "Curiosidades sobre ato legal de integrar criança à família",
         "imagemSecundari": "Adoções",
-        "tituloTela":"Quiz - Informativo",
+        "tituloTela":"Curiosidades - Informativas",
         "tela":"TELA2"
       },
       {
         "titulo": "titulo3",
-        "temaPinciapl": "GuiaDeCasamento",
-        "textAssunto": "Orientações práticas para vida conjugal saudável.",
+        "temaPinciapl": "Vínculo Conjugal",
+        "textAssunto": "Questionário sobre aspectos legais e afetivos para reconhecimento de vínculo conjugal.",
         "imagemSecundari": "GuiaDeCasamento",
-        "tituloTela":"titulo3",
+        "tituloTela":"Questionário - Informativo",
         "tela":"TELA3"
       },
       {
         "titulo": "titulo4",
-        "temaPinciapl": "ViolênciaIntrafamiliar",
-        "textAssunto": "Agressões ocorridas dentro do ambiente familiar.",
+        "temaPinciapl": "Violência Familiar",
+        "textAssunto": "Questionário sobre agressões ocorridas dentro do ambiente familiar.",
         "imagemSecundari": "ViolênciaIntrafamiliar",
         "tituloTela":"Quiz - Verdadeiro ou Falso",
         "tela":"TELA4"
       },
       {
         "titulo": "titulo5",
-        "temaPinciapl": "IdentidadeLegal",
-        "textAssunto": "Reconhecimento jurídico da diversidade de gênero sexual.",
+        "temaPinciapl": "Inclusão Identitária",
+        "textAssunto": "Curiosidades sobre reconhecimento jurídico da diversidade de gênero sexual.",
         "imagemSecundari": "IdentidadeLegal",
-        "tituloTela":"titulo5",
+        "tituloTela":"Curiosidades - Informativas",
         "tela":"TELA5"
       },
       {
         "titulo": "titulo6",
-        "temaPinciapl": "ViolênciaDoméstica",
-        "textAssunto": "Abusos físicos, psicológicos ou patrimoniais no lar.",
+        "temaPinciapl": "Violência Doméstica",
+        "textAssunto": "Questionário sobre abusos físicos, psicológicos ou patrimoniais no lar.",
         "imagemSecundari": "ViolênciaDoméstica",
-        "tituloTela":"Quiz - Informativo",
+        "tituloTela":"Questionário - Informativo",
         "tela":"TELA6"
       },
       {
         "titulo": "titulo7",
         "temaPinciapl": "Divisão de Bens",
-        "textAssunto": "Partilha patrimonial entre cônjuges após separação.",
+        "textAssunto": "Curiosidades e simulador sobre Partilha patrimonial entre cônjuges após separação.",
         "imagemSecundari": "GuiaDeCasamento",
-        "tituloTela":"Simulador de divisão de bens",
+        "tituloTela":"Simulador - Informativo",
         "tela":"TELA7"
       },
       {
         "titulo": "titulo8",
-        "temaPinciapl": "tipos de familias ",
+        "temaPinciapl": "Tipos de Famílias ",
         "textAssunto": "jogo da memoria, Diversidade estrutural reconhecida nas formações familiares.",
         "imagemSecundari": "TiposDeFamilias",
-        "tituloTela":"Jogo da memoria",
+        "tituloTela":"Jogo - Informativo",
         "tela":"TELA8"
       },
       {
         "titulo": "titulo9",
-        "temaPinciapl": "DestituiçãoPoderFamiliar",
-        "textAssunto": "Retirada judicial da autoridade dos pais.",
+        "temaPinciapl": "Invalidação Famíliar",
+        "textAssunto": "Questionário sobre retirada judicial da autoridade dos pais.",
         "imagemSecundari": "DestituiçãoPoderFamiliar",
-        "tituloTela":"Quiz - Informativo",
+        "tituloTela":"Questionário - Informativo",
         "tela":"TELA9"
       }
   ]

@@ -102,7 +102,8 @@ const Tela2Screen = () => {
       style={styles.container}
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.header}>Adoção no Brasil - FAQ</Text>
+        <Text style={styles.header1}>Curiosidades Sobre</Text>
+        <Text style={styles.header2}>Adoção no Brasil - FAQ</Text>
         <Image source={require('../../assets/adoçãoImagem.jpg')} style={styles.  imagem1} resizeMode='contain'/>
         {faq.map((item, index) => (
           <View key={index} style={styles.card}>
@@ -127,12 +128,18 @@ const styles = StyleSheet.create({
   scrollContainer: { 
     padding: 16 
   },
-  header: { 
+  header1: { 
     fontSize: 30, 
     fontWeight: 'bold', 
     color: '#FFFFFF', 
     textAlign: 'center',
     marginTop: 50, 
+  },
+   header2: { 
+    fontSize: 20, 
+    fontWeight: 'bold', 
+    color: '#D4AF37', 
+    textAlign: 'center',
   },
   card: { 
     backgroundColor: '#FFFFFF', 
@@ -160,8 +167,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center', 
     borderRadius: 200,
     marginVertical: 10,
-    borderColor: "#fff",
-    borderWidth: 12,
+    borderColor: "#ffffffff",
+    borderWidth: 7,
   },
 });
 

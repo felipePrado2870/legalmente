@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#D4AF37',
     marginVertical: 15
   },
   board: {
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   button: {
-    backgroundColor: '#d4af37',
+    backgroundColor: '#D4AF37',
     padding: 12,
     borderRadius: 8,
     marginTop: 10,

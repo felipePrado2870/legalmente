@@ -132,7 +132,7 @@ const Tela1Screen = ({ navigation }) => {
   // Tela das curiosidades
   return (
     <LinearGradient colors={["#A67C7C", "#8B4A52", "#5D252A"]} style={styles.container}>
-      <Text style={styles.homeTitle2}>Quiz para Atos</Text>
+      <Text style={styles.homeTitle2}>Curiosidades Sobre</Text>
       <Text style={styles.homeTitle3}>Infracionais</Text>
       <View style={styles.card}>
         <Image source={require("../../assets/atosInfracionaisImagem.jpg")} style={styles.homeImg}/>
@@ -245,11 +245,15 @@ const styles = StyleSheet.create({
   question1: {
     fontSize:15,
     marginTop: -10,
-    margin: 10,
     color: "#000000",
     textAlign: "center",
     textAlign: "justify", 
     fontWeight: "bold",
+    padding: 10,
+    backgroundColor:"#f0dee064",
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
   },
   question2: {
     fontSize: 20,
@@ -265,9 +269,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   answerBox: {
+    marginTop: 10,
     padding: 10,
-    backgroundColor:"#f0dee0ff",
+    backgroundColor:"#f0dee064",
     borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
   },
   answer: {
     fontSize: 13,
@@ -276,9 +283,14 @@ const styles = StyleSheet.create({
     textAlign: "justify",
   },
   art: {
-    fontSize: 15,
+    fontSize: 13,
     fontStyle: "italic",
-    color: "#552125ff",
+    color: "#4d1c20ff",
+     padding: 10,
+    backgroundColor:"#ffffff",
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: "#4d1c20ff",
   },
   toggleBtn: {
     width: 200,
@@ -307,6 +319,11 @@ const styles = StyleSheet.create({
     borderColor: '#D4AF37',
     borderWidth: 2,
     overflow: "hidden",
+  },
+  btnText: {
+    color: "#fff",
+    fontSize: 13,
+    fontWeight: "bold",
   },
   startButtonText: {
     color: "#fff",
@@ -345,7 +362,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   progresso: {
-    marginTop: 15,
+    marginTop: 10,
     color: '#000',
     textAlign: 'center',
   },

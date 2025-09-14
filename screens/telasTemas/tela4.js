@@ -11,7 +11,7 @@ const Tela4Screen = ({ navigation }) => {
     >
       <View style={styles.content}>
         <Text style={styles.title}>Questionário Sobre</Text>
-        <Text style={styles.subtitle}>Violência Intrafamiliar</Text>
+        <Text style={styles.subtitle}>Violência Familiar</Text>
         <Image
           source={require("../../assets/verdadeOfalsoImagem.jpg")}
           style={styles.icon}
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 20,
-    color: "#FFD700", 
+    color: '#D4AF37', 
     marginBottom: 10,
     fontWeight: "bold",
   },

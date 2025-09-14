@@ -100,7 +100,8 @@ const Tela5Screen = () => {
       style={styles.container}
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.header}>Identidade de Gênero</Text>
+        <Text style={styles.header1}>Curiosidades Sobre</Text>
+        <Text style={styles.header2}>Identidade de Gênero</Text>
 
         <View style={styles.sliderContainer}>
           <ScrollView
@@ -226,12 +227,19 @@ const styles = StyleSheet.create({
   scrollContainer: {
     padding: 16
   },
-  header: {
+  header1: {
     fontSize: 30,
     fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center',
     marginTop: 40,
+  },
+   header2: {
+    color: '#D4AF37',
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
   image: {
     width: width,
@@ -275,7 +283,7 @@ const styles = StyleSheet.create({
   title1: {
     fontSize: 25,
     fontWeight: 'bold',
-    color:  '#ffffffff',
+    color:  '#D4AF37',
     marginBottom: 5
   },
   title2: {

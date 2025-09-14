@@ -7,7 +7,7 @@ const ExitButton = ({ goTo = "Home" }) => {
 
   return (
     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(goTo)}>
-      <Text style={styles.text}>X</Text>
+      <Text style={styles.text}>🏠</Text>
     </TouchableOpacity>
   );
 };
@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
     borderColor: "#ffffffff",
     borderWidth: 2,
     borderRadius: 20,
-    paddingHorizontal: 8,
+    paddingHorizontal: 5,
     paddingVertical: 5,
   },
   text: {
-    fontSize: 15,
+    fontSize: 18,
     fontWeight: "bold",
     color: "#ffffffff",
   }

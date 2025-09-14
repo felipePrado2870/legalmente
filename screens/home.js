@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   titulo: {
     marginTop: 5,
     color: '#8B4A52',
-    fontSize: 20,
+    fontSize: 18,
   },
   postImage: {
     width: 80,

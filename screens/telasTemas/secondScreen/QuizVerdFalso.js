@@ -107,6 +107,8 @@ const QuizVerdFalsoScreen = ({ navigation }) => {
       colors={['#A67C7C', '#8B4A52', '#5D252A']}
       style={styles.container}
     >
+      <Text style={styles.title}>Questionário Sobre</Text>
+      <Text style={styles.subtitle}>Violência Familiar</Text>
       {currentQuestion < questions.length ? (
         <View style={styles.card}>
           <Image source={require('../../../assets/verdadeOfalsoImagem.jpg')} style={styles.imagem1} resizeMode="cover"/>
@@ -192,6 +194,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
+  title: {
+    fontSize: 35,
+    fontWeight: "bold",
+    color: "#fff",
+    textAlign: "center",
+  },
+  subtitle: {
+    fontSize: 20,
+    color: "#FFD700", 
+    marginBottom: 10,
+    fontWeight: "bold",
+  },
   card: {
     backgroundColor: "#FFFFFF",
     borderRadius: 15,
@@ -201,9 +215,13 @@ const styles = StyleSheet.create({
   question: {
     fontSize: 15,
     color: '#000000ff',
-    marginBottom: 20,
     fontWeight: "bold",
     textAlign: "justify",
+    padding: 10,
+    backgroundColor:"#f0dee064",
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
   },
   button1: {
     width: 150,
@@ -300,7 +318,7 @@ const styles = StyleSheet.create({
   imagem1: {
     width: 250,
     height:250,
-    marginTop: -10,
+    marginTop: -20,
     borderRadius: 200,
     alignSelf: 'center',
   },
@@ -317,13 +335,17 @@ const styles = StyleSheet.create({
 
   correctBackground: {
     backgroundColor: "rgba(0, 200, 0, 0.1)", 
+     borderLeftWidth: 4,
+    borderLeftColor: "rgba(0, 200, 0, 0.8)",
   },
 
   incorrectBackground: {
     backgroundColor: "rgba(200, 0, 0, 0.1)", 
+    borderLeftWidth: 4,
+    borderLeftColor: "rgba(200, 0, 0, 0.8)",
   },
   progresso: {
-    marginTop: 15,
+    marginTop: 10,
     color: '#000',
     textAlign: 'center',
   },
