@@ -88,6 +88,7 @@ const QuizVerdFalsoScreen = ({ navigation }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showExplanation, setShowExplanation] = useState(false);
+  const question = questions[currentQuestion];
 
   const handleAnswer = (answer) => {
     setSelectedAnswer(answer);
@@ -100,7 +101,6 @@ const QuizVerdFalsoScreen = ({ navigation }) => {
     setCurrentQuestion(currentQuestion + 1);
   };
 
-  const question = questions[currentQuestion];
 
   return (
     <LinearGradient
@@ -156,6 +156,9 @@ const QuizVerdFalsoScreen = ({ navigation }) => {
               </TouchableOpacity>
             </View>
           )}
+          <Text style={styles.progresso}>
+            Pergunta {currentQuestion + 1} de {questions.length}
+          </Text>
         </View>
       ) : (
        <View style={{ alignItems: "center" }}>
@@ -318,6 +321,11 @@ const styles = StyleSheet.create({
 
   incorrectBackground: {
     backgroundColor: "rgba(200, 0, 0, 0.1)", 
+  },
+  progresso: {
+    marginTop: 15,
+    color: '#000',
+    textAlign: 'center',
   },
 
 });

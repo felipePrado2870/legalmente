@@ -90,6 +90,9 @@ const Tela6Screen = ({ navigation }) => {
               </LinearGradient>
             </TouchableOpacity>
           ))}
+          <Text style={styles.progresso}>
+            Pergunta {perguntaIndex + 1} de {quiz.perguntas.length}
+          </Text>
         </View>
         <ExitButton goTo="Home" />
       </LinearGradient>
@@ -228,14 +231,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   startButton2: {
-    marginTop: 15,
+    marginTop: 10,
     paddingVertical: 15,
     borderRadius: 30,
   },
   startButtonText2: {
     marginStart: 20,
     color: "#fff",
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "bold",
   },
   buttonText2: {
@@ -268,6 +271,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 10,
     alignItems: "center",
+  },
+  progresso: {
+    marginTop: 15,
+    color: '#000',
+    textAlign: 'center',
   },
 });
 

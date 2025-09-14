@@ -59,6 +59,7 @@ const Tela1Screen = ({ navigation }) => {
   const [finished, setFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
+  const current = curiosities[currentIndex];
 
   const handleNext = () => {
     if (currentIndex < curiosities.length - 1) {
@@ -129,7 +130,6 @@ const Tela1Screen = ({ navigation }) => {
   }
 
   // Tela das curiosidades
-  const current = curiosities[currentIndex];
   return (
     <LinearGradient colors={["#A67C7C", "#8B4A52", "#5D252A"]} style={styles.container}>
       <Text style={styles.homeTitle2}>Quiz para Atos</Text>
@@ -160,6 +160,9 @@ const Tela1Screen = ({ navigation }) => {
             </Text>
           </TouchableOpacity>
         </View>
+        <Text style={styles.progresso}>
+          Pergunta {currentIndex + 1} de {curiosities.length}
+        </Text>
       </View>
       <ExitButton goTo="Home" />
     </LinearGradient>
@@ -340,6 +343,11 @@ const styles = StyleSheet.create({
   buttonText3: {
     color: "#FFFFFF",
     fontSize: 15,
+  },
+  progresso: {
+    marginTop: 15,
+    color: '#000',
+    textAlign: 'center',
   },
 });
 

@@ -141,6 +141,9 @@ const Tela9Screen = () => {
                     </LinearGradient>
                   </TouchableOpacity>
                 ))}
+                <Text style={styles.progresso}>
+                  Pergunta {currentIndex + 1} de {questions.length}
+                </Text>
               </View>
             </>
           ) : (
@@ -158,7 +161,7 @@ const Tela9Screen = () => {
               )}
               <Text style={styles.explanationText}>{questions[currentIndex].explanation}</Text>
               <TouchableOpacity style={styles.button} onPress={handleNext}>
-                <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
+                <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton2}>
                   <Text style={styles.buttonText}>Próxima</Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -209,7 +212,7 @@ const styles = StyleSheet.create({
     textAlign: "center", 
     color: "#FFFFFF" 
   },
-  startButton: {
+  startButton2: {
     width: 250,
     paddingVertical: 15,
     paddingHorizontal: 40,
@@ -243,7 +246,7 @@ const styles = StyleSheet.create({
   optionText: { 
     marginStart: 20,
     color: "#fff",
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "bold",
     textAlign: "justify",
     marginHorizontal: 15,
@@ -324,6 +327,11 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 12,
     shadowOffset: { width: 0, height: 2 },
+  },
+   progresso: {
+    marginTop: 15,
+    color: '#000',
+    textAlign: 'center',
   },
 });
 
