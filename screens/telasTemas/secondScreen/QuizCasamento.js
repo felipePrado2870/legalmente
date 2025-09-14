@@ -155,7 +155,7 @@ const QuizCasamentoScreen = ({ navigation}) => {
     >
       {!finalizado ? (
         <View>
-          <Text style={styles.homeTitle}>Questionário para reconhacimento de casamento</Text>
+          <Text style={styles.homeTitle}>Teste de reconhacimento para casamento</Text>
           <View style={styles.card}>
             <Image source={require('../../../assets/guiaCasamento/guiaCasamento.png')} style={styles.imagem1} resizeMode="cover"/>
             <Text style={styles.pergunta}>{perguntaAtual.pergunta}</Text>
@@ -208,12 +208,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   pergunta: {
-    fontSize: 20,
+    fontSize: 15,
     color: '#000000ff',
     marginTop: -10,
     margin: 10,
     marginBottom: 10,
-    fontWeight: "bold",
+  fontWeight: "bold",
     textAlign: "justify",
   },
 
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   textoBotao: {
     marginStart: 20,
     color: "#fff",
-    fontSize: 18,
+    fontSize: 13,
     fontWeight: "bold",
   },
 
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   resultadoTexto: {
-    fontSize: 22,
+    fontSize: 15,
     color: '#ffffff',
     textAlign: 'justify',
     lineHeight: 22,
@@ -248,8 +248,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   imagem1: {
-    width: 300,
-    height:300,
+    width: 250,
+    height:250,
     borderRadius: 200,
     marginBottom: 10,
     alignSelf: 'center',
@@ -257,8 +257,8 @@ const styles = StyleSheet.create({
     borderWidth: 12,
   },
   imagem2: {
-    width: 300,
-    height:300,
+    width: 250,
+    height:250,
     borderRadius: 200,
     alignSelf: 'center',
     borderColor: "#fff",
@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
   },
   homeTitle: {
     textAlign: "center",
-    fontSize: 35,
+    fontSize: 30,
     fontWeight: "bold",
     color: "#fff",
     marginBottom: 10,

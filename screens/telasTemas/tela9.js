@@ -105,7 +105,7 @@ const Tela9Screen = () => {
           <Text style={styles.subTitle}>Destituição do poder da familia</Text>
           <Image source={require('../../assets/quiz/startImg.png')} style={styles.mainImg} />
           <Text style={styles.startTitle}>Responda ao quiz sobre a destituição do poder familiar.</Text>
-          <TouchableOpacity style={styles.startButton} onPress={() => setQuizStarted(true)}>
+          <TouchableOpacity onPress={() => setQuizStarted(true)}>
             <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
               <Text style={styles.buttonText}>INICIAR QUIZ</Text>
             </LinearGradient>
@@ -182,28 +182,29 @@ const styles = StyleSheet.create({
   },
   homeTitle: {
     textAlign: "center",
-    fontSize: 40,
+    fontSize: 35,
     fontWeight: "bold",
     color: "#fff",
   },
   subTitle: {
     color: '#D4AF37',
     textAlign: "center",
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: "bold",
   },
   mainImg: { 
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
     resizeMode: "cover",
     borderRadius: 200,
+    marginTop: 10,
     marginBottom: 10,
     borderColor: "#fff",
     borderWidth: 12,
     alignSelf: "center",
   },
   startTitle: { 
-    fontSize: 15, 
+    fontSize: 13, 
     margin: 10, 
     textAlign: "center", 
     color: "#FFFFFF" 
@@ -218,7 +219,7 @@ const styles = StyleSheet.create({
   },
   startButtonText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
   },
   quizContainer: { 
@@ -226,7 +227,7 @@ const styles = StyleSheet.create({
     justifyContent: "center" 
   },
   question: { 
-    fontSize: 23,
+    fontSize: 15,
     marginTop: -10,
     margin: 10,
     color: "#000000",
@@ -242,7 +243,7 @@ const styles = StyleSheet.create({
   optionText: { 
     marginStart: 20,
     color: "#fff",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
     textAlign: "justify",
     marginHorizontal: 15,
@@ -253,21 +254,21 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   explanationText: { 
-    fontSize: 20, 
+    fontSize: 15, 
     textAlign: "center", 
     padding: 20,
     marginBottom: -20, 
-    color:  "#5D252A",
+    color:  "#000000ff",
     fontWeight: "bold", 
     textAlign: "justify",
   },
   feedbackImg: { 
     resizeMode: "cover", 
-    width: 200, 
-    height: 200 
+    width: 60, 
+    height: 60 
   },
   feedbackText: {  
-    fontSize: 40, 
+    fontSize: 30, 
     color:  "#5D252A",
     fontWeight: "bold" 
   },
@@ -277,7 +278,7 @@ const styles = StyleSheet.create({
     justifyContent: "center" 
   },
   resultTitle: { 
-    fontSize: 36, 
+    fontSize: 35, 
     fontWeight: "bold", 
     marginBottom: 10,
     textAlign: "center", 
@@ -285,20 +286,20 @@ const styles = StyleSheet.create({
   },
   resultPhrase: { 
     textAlign: "center", 
-    fontSize: 20,
+    fontSize: 15,
     padding: 5, 
     marginBottom: 15, 
     color: "#ffffffff",
     fontWeight: "light", 
   },
   resultText: { 
-    fontSize: 24, 
+    fontSize: 20, 
     margin: 20, 
     color: "#ffffffff",
     fontWeight: "bold",  
   },
   button: { 
-    padding: 18, 
+    padding: 15, 
     borderRadius: 20, 
     marginVertical: 6, 
   },
@@ -306,13 +307,16 @@ const styles = StyleSheet.create({
     width: 250,
     paddingVertical: 15,
     paddingHorizontal: 40,
-    borderRadius: 30,
+    borderRadius: 60,
     alignItems: "center",
     alignSelf: "center",
+    borderColor: '#D4AF37',
+    borderWidth: 2,
+    overflow: "hidden",
   },
   buttonText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
   },
    card: {

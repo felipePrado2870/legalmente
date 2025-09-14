@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
   topicBodyTitle: {
     width: 340,
     height: 35,
-    fontSize: 18,
+    fontSize: 15,
     textAlign: 'center',
     textAlignVertical: 'center',
     backgroundColor: '#5D252A',
@@ -240,9 +240,9 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   topicCardTitle: {
-    color: '#5D252A',
+    color: '#000000ff',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 15,
     textAlign: 'center',
     marginBottom: 5
   },
@@ -255,8 +255,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   topicCardText: {
-    color: '#8B4A52',
-    fontSize: 14,
+    color: '#010101ff',
+    fontSize: 13,
     textAlign: 'justify',
   },
   modalBackground: {
@@ -282,6 +282,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 15,
   }
 });

@@ -15,7 +15,7 @@ const ExitButton = ({ goTo = "Home" }) => {
 const styles = StyleSheet.create({
   button: {
     position: "absolute",
-    top: 50,       
+    top: 35,       
     right: 8,
     borderColor: "#ffffffff",
     borderWidth: 2,

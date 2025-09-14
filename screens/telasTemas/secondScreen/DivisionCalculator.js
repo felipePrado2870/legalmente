@@ -73,9 +73,10 @@ const resetStep = route?.params?.resetStep || false;
         {step === "A" ? "Bens do Cônjuge A" : step === "B" ? "Bens do Cônjuge B" : "Bens de Ambos"}
       </Text>
 
-      <TextInput placeholder="Descrição do bem" style={styles.input} value={desc} onChangeText={setDesc}/>
+      <TextInput placeholder="Descrição do bem"  placeholderTextColor={"#222222"} style={styles.input} value={desc} onChangeText={setDesc}/>
       <TextInput
         placeholder="Valor (R$)"
+        placeholderTextColor={"#222222"}
         style={styles.input}
         keyboardType="numeric"
         value={value}

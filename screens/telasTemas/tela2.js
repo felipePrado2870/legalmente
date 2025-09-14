@@ -141,9 +141,9 @@ const styles = StyleSheet.create({
     marginBottom: 12 
   },
   question: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: 'bold',
-    color: '#5D252A',
+    color: '#000000ff',
     marginBottom: 5 ,
     textAlign: "justify", 
   },
@@ -155,8 +155,8 @@ const styles = StyleSheet.create({
      textAlign: "justify", 
   },
   imagem1: {
-    width: 300,
-    height:300,
+    width: 250,
+    height:250,
     alignSelf: 'center', 
     borderRadius: 200,
     marginVertical: 10,

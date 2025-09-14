@@ -42,7 +42,9 @@ const HomeScreen = ({ navigation }) =>  {
                   <Text style={styles.titulo}>{item.tituloTela}</Text>
                 </View>
               </View>
-              <Text style={styles.assunto}>{item.textAssunto}</Text>
+              <View style={styles.assuntoBox}>
+                <Text style={styles.assuntoText}>{item.textAssunto}</Text>
+              </View>
             </LinearGradient>
           </View>
         </TouchableOpacity> 
@@ -58,6 +60,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FAF7F0',
+    marginTop: -10,
+    marginBottom: 10,
   },
   scroll: {
     paddingHorizontal: 10,
@@ -107,13 +111,25 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     marginRight: 10,
   },
-  assunto: {
-    color: '#A8A8A8',
+  assuntoBox: {
+  backgroundColor: '#d4af3750',
+  paddingVertical: 7,
+  paddingHorizontal: 10,
+  borderRadius: 12,
+  marginLeft: 7,
+  marginRight: 7,
+  marginBottom: 10,
+  borderColor: '#d4af3774',
+  borderWidth: 2,
+  overflow: "hidden",
+  },
+  assuntoText: {
+    color: '#6f6d6dff',
     fontSize: 15,
     lineHeight: 20,
-    marginLeft: 7,
     textAlign: 'justify',
   },
+
    headerScroll2: {
     alignItems: 'center',
     width: '110%',

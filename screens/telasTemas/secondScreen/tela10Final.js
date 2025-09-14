@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   text:{
     color:"#ffffffff",
-    fontSize:20,
+    fontSize:15,
     textAlign:"center",
     padding:5,
     fontWeight: "light", 
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   buttonText2: {
     color: "#FFFFFF",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
   },
   buttonText3: {

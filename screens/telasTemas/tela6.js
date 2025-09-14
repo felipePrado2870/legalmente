@@ -109,7 +109,7 @@ const Tela6Screen = ({ navigation }) => {
         (48) 3287-2635
       </Text>
       <View  style={styles.rowButtons}>
-        <TouchableOpacity onPress={() => navigation.navigate("TELA1")} >
+        <TouchableOpacity onPress={() => { setTipoSelecionado(null); setPerguntaIndex(0); setRespostas({}); setResultado(null); }}>
           <LinearGradient colors={['#8B4A52', '#5D252A', '#5D252A', '#5D252A']}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
             <Text style={styles.buttonText2}>Refazer Quiz</Text>
           </LinearGradient>
@@ -131,24 +131,23 @@ const styles = StyleSheet.create({
   },
   title: { 
     color: "#fff", 
-    fontSize: 40, 
+    fontSize: 35, 
     fontWeight: "bold", 
     textAlign: "center",  
   },
   subtitle: {
     textAlign: "center", 
-    fontSize: 30,
+    fontSize: 20,
     color: "#FFD700", 
-    marginBottom: 20,
+    marginBottom: 10,
     fontWeight: "bold",
   },
   description: {
-    fontSize: 16,
+    fontSize: 13,
     color: "#fff",
     textAlign: "center",
-    marginBottom: 20,
-    margin: 10,
-    marginTop: 10,
+    marginBottom: 10,
+    margin: 5,
   },
   button: { 
     padding: 12, 
@@ -159,7 +158,7 @@ const styles = StyleSheet.create({
   buttonText: { 
     color: "#5D252A", 
     fontWeight: "bold" ,
-    fontSize: 18,
+    fontSize: 15,
   },
   perguntaBox: {  
     padding: 10, 
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
     borderRadius: 10 
   },
   pergunta: { 
-    fontSize: 23,
+    fontSize: 15,
     marginTop: -10,
     margin: 10,
     color: "#000000",
@@ -184,28 +183,28 @@ const styles = StyleSheet.create({
   },
   opcaoTexto: { 
     color: "#fff", 
-    fontSize: 18 
+    fontSize: 15 
   },
   resultadoBox: { 
     padding: 15, 
-    backgroundColor: "rgba(0,0,0,0.5)", 
+    backgroundColor: "rgba(0, 0, 0, 0.19)", 
     borderRadius: 10,
     marginBottom: 20 
   },
   resultadoTexto: { 
     color: "#fff", 
-    fontSize: 20, 
-    marginBottom: 10 
+    fontSize: 15, 
+    marginBottom: 10,
+    textAlign: "justify"
   },
   contato: { 
-    color: "#ffdddd", 
-    margin: 15, 
-    fontSize: 20, 
+    color: "#ffdddd",  
+    fontSize: 18, 
     textAlign: "center" 
   },
    imagem1: {
-    width: 300,
-    height:300,
+    width: 250,
+    height:250,
     borderRadius: 200,
     marginBottom: 10,
     alignSelf: 'center',
@@ -215,14 +214,17 @@ const styles = StyleSheet.create({
    startButton: {
     width: 330,
     marginTop: 10,
-    paddingVertical: 15,
-    borderRadius: 30,
+    paddingVertical: 12,
+    borderRadius: 99,
     alignItems: "center",
     alignSelf: "center",
+    borderColor: "#ffffff4f",
+    borderWidth: 2,
+    overflow: "hidden",
   },
   startButtonText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
   },
   startButton2: {
@@ -233,12 +235,12 @@ const styles = StyleSheet.create({
   startButtonText2: {
     marginStart: 20,
     color: "#fff",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
   },
   buttonText2: {
     color: "#FFFFFF",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
   },
    buttonText3: {

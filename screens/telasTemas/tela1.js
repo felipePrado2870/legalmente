@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   },
   homeTitle1: {
     textAlign: "center",
-    fontSize: 40,
+    fontSize: 35,
     fontWeight: "bold",
     color: "#fff",
   },
@@ -189,15 +189,15 @@ const styles = StyleSheet.create({
   },
   homeTitle3: {
     textAlign: "center",
-    fontSize: 35,
+    fontSize: 20,
     fontWeight: "bold",
-    color: "#fff",
+    color: '#D4AF37',
     marginBottom: 10,
   },
   subTitle: {
     color: '#D4AF37',
     textAlign: "center",
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: "bold",
   },
   homeBody: {
@@ -205,8 +205,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   homeImg: {
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
     resizeMode: "cover",
     borderRadius: 200,
     marginBottom: 10,
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   descriptionText: {
-    fontSize: 15,
+    fontSize: 13,
     textAlign: "center",
     color: "#fff",
   },
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   question1: {
-    fontSize: 23,
+    fontSize:15,
     marginTop: -10,
     margin: 10,
     color: "#000000",
@@ -267,13 +267,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   answer: {
-    fontSize: 18,
+    fontSize: 13,
     color: "#000000",
     marginBottom: 5,
     textAlign: "justify",
   },
   art: {
-    fontSize: 16,
+    fontSize: 15,
     fontStyle: "italic",
     color: "#552125ff",
   },
@@ -298,9 +298,12 @@ const styles = StyleSheet.create({
     width: 250,
     paddingVertical: 15,
     paddingHorizontal: 40,
-    borderRadius: 30,
+    borderRadius: 90,
     alignItems: "center",
     alignSelf: "center",
+    borderColor: '#D4AF37',
+    borderWidth: 2,
+    overflow: "hidden",
   },
   startButtonText: {
     color: "#fff",

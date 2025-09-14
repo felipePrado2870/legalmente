@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   question: {
-    fontSize: 20,
+    fontSize: 15,
     color: '#000000ff',
     marginBottom: 20,
     fontWeight: "bold",
@@ -220,12 +220,12 @@ const styles = StyleSheet.create({
   },
   buttonText1: {
     color: "#FFFFFF",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
   },
   buttonText2: {
     color: "#FFFFFF",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
   },
   buttonText3: {
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   result: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: "bold",
   },
   correct: {
@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
     color: "red",
   },
   explanation: {
-    fontSize: 16,
+    fontSize: 13,
     fontWeight: "bold",
     color: '#000000ff',
     marginVertical: 10,
@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   type: {
-    fontSize: 22,
+    fontSize: 20,
     color: "#fff",
     fontStyle: "italic",
     marginBottom: 15,
@@ -295,8 +295,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imagem1: {
-    width: 320,
-    height:320,
+    width: 250,
+    height:250,
     marginTop: -10,
     borderRadius: 200,
     alignSelf: 'center',

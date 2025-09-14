@@ -218,7 +218,10 @@ const Tela5Screen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 16,
+  
   },
   scrollContainer: {
     padding: 16
@@ -228,7 +231,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center',
-    marginTop: 40
+    marginTop: 40,
   },
   image: {
     width: width,
@@ -260,26 +263,27 @@ const styles = StyleSheet.create({
     alignSelf:"center",
     textAlign:"right",
     color:"#fff",
-    fontSize:16,
+    fontSize:13,
     
   },
   card: {
     backgroundColor: "#fff",
     padding: 14,
     borderRadius: 10,
-    marginBottom: 12
+    marginBottom: 10
   },
   title1: {
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: 'bold',
     color:  '#ffffffff',
     marginBottom: 5
   },
   title2: {
-    fontSize: 24,
+    fontSize: 15,
     fontWeight: 'bold',
-    color:  '#602d32ff',
-    marginBottom: 5
+    color:  '#000000ff',
+    marginBottom: 5,
+    textAlign: "justify", 
   },
   descriptionBody: {
     backgroundColor: '#ffffff8e',
@@ -287,9 +291,10 @@ const styles = StyleSheet.create({
     borderRadius: 8
   },
   description: {
-    fontSize: 16,
+    fontSize: 13,
     color: '#000',
-    textAlign: "center"
+    textAlign: "center",
+    textAlign: "justify", 
   },
   descriptionBody: {
     backgroundColor: '#ffffff8e',
@@ -298,7 +303,7 @@ const styles = StyleSheet.create({
   },
   topicCard: {
     backgroundColor: "#f4efefde",
-    width: "65%",
+    width: "60%",
     height: 100,
     marginTop: 10,
     borderTopWidth: 5,
@@ -317,7 +322,7 @@ const styles = StyleSheet.create({
   },
 
   titleCard: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: 'bold',
     color: "#7f0314ff",
     textAlign: "center"
@@ -325,13 +330,14 @@ const styles = StyleSheet.create({
 
   },
   textCard: {
-    fontSize: 18,
+    marginTop: 5,
+    fontSize: 13,
     color: "#920013de",
     textAlign: "center",
 
   },
   subTitle: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 'bold',
     color: '#920013de',
     textAlign: "center",
@@ -344,7 +350,7 @@ const styles = StyleSheet.create({
 
   },
   topicText: {
-    fontSize: 18,
+    fontSize: 13,
     padding: 8,
     color:"#920013de",
     backgroundColor:"white",
@@ -362,7 +368,7 @@ const styles = StyleSheet.create({
     borderLeftColor: "#920013de"
   },
   stepIndex: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: "bold",
     color: "#920013de",
     marginRight: 8
@@ -371,13 +377,14 @@ const styles = StyleSheet.create({
     flex: 1
   },
   stepTitle: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
     color: "#920013de"
   },
   stepText: {
-    fontSize: 16,
-    color: "#4f3128ff"
+    fontSize: 13,
+    color: "#4f3128ff",
+    textAlign: "justify",
   },
   docItem: {
     paddingTop:10,
@@ -386,12 +393,12 @@ const styles = StyleSheet.create({
     marginVertical: 4,
   },
   docBullet: {
-    fontSize: 30,
+    fontSize: 15,
     color: "#920013de",
     marginRight: 6,
   },
   docText: {
-    fontSize: 18,
+    fontSize: 13,
     color: "#56000cff",
     fontWeight:"bold",
     flexShrink: 1,
@@ -406,27 +413,26 @@ const styles = StyleSheet.create({
     borderRadius:20,
   },
   importanceCard: {
-    padding: 10,
-    width: "48%",
-    marginBottom: 10,
+    padding: 5,
+    width: "50%",
   },
   importanceTitle: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "bold",
     marginBottom: 4,
     color: "#4a148c",
   },
   importanceText: {
-    fontSize: 14,
+    fontSize: 13,
     color: "#444",
   },
   sliderContainer: {
-    height: 200,
+    height: 250,
     marginVertical: 20,
   },
   image: {
     width: width,
-    height: 200,
+    height: 250,
     resizeMode: "cover",
     borderRadius: 10,
   },
@@ -447,20 +453,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
     /* --- Carrossel Circular --- */
-  sliderContainer: { height: 320 },
+  sliderContainer: { height: 250 },
   scrollContainer2: {
     alignSelf: "center",
     borderWidth: 8,
     borderColor: "#fff",
     borderRadius: 160,
     overflow: "hidden",
-    width: 320,
-    height: 320,
+    width: 250,
+    height: 250,
   },
   scrollContent: { alignItems: "center", justifyContent: "center" },
   imageWrapper: {
-    width: 320,
-    height: 320,
+    width: 250,
+    height: 250,
     borderRadius: 160,
     overflow: "hidden",
     alignItems: "center",
