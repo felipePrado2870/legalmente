@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     borderRadius: 200,
     marginBottom: 10,
-    borderColor: "#fff",
-    borderWidth: 12,
+    borderColor: '#D4AF37',
+    borderWidth:5,
   },
   description: {
     fontSize: 13,

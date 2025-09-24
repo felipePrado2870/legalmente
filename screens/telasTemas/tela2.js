@@ -102,9 +102,9 @@ const Tela2Screen = () => {
       style={styles.container}
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.header1}>Curiosidades Sobre</Text>
-        <Text style={styles.header2}>Adoção no Brasil - FAQ</Text>
-        <Image source={require('../../assets/adoçãoImagem.jpg')} style={styles.  imagem1} resizeMode='contain'/>
+        <Image source={require('../../assets/adoçãoImagem1.png')} style={styles.  imagem1} resizeMode='contain'/>
+        <Text style={styles.header1}>Adoção no Brasil - FAQ</Text>
+        <Text style={styles.header2}>Dúvidas frequentes sobre adoção, explicadas de forma clara e acolhedora.</Text>
         {faq.map((item, index) => (
           <View key={index} style={styles.card}>
             <TouchableOpacity onPress={() => toggleAnswer(index)}>
@@ -131,32 +131,36 @@ const styles = StyleSheet.create({
   header1: { 
     fontSize: 30, 
     fontWeight: 'bold', 
-    color: '#FFFFFF', 
-    textAlign: 'center',
-    marginTop: 50, 
-  },
-   header2: { 
-    fontSize: 20, 
-    fontWeight: 'bold', 
     color: '#D4AF37', 
     textAlign: 'center',
   },
+   header2: { 
+    fontSize: 15, 
+    fontWeight: 'bold', 
+    color: '#FFFFFF', 
+    textAlign: 'center',
+    margin: 10,
+    marginBottom: 20,
+  },
   card: { 
-    backgroundColor: '#FFFFFF', 
+    backgroundColor: '#a67c7c9e', 
     padding: 14, 
     borderRadius: 10, 
-    marginBottom: 12 
+    marginBottom: 12 ,
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
   },
   question: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: '#000000ff',
+    color: '#D4AF37',
     marginBottom: 5 ,
     textAlign: "justify", 
   },
   answer: { 
     fontSize: 13, 
-    color: '#000000', 
+    color: '#FFFFFF', 
     lineHeight: 20, 
     marginTop: 5 ,
      textAlign: "justify", 
@@ -167,8 +171,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center', 
     borderRadius: 200,
     marginVertical: 10,
-    borderColor: "#ffffffff",
-    borderWidth: 7,
+    borderColor: "#D4AF37",
+    borderWidth: 5,
+    marginTop:40
   },
 });
 
