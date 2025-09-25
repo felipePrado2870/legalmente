@@ -107,24 +107,26 @@ const Tela1Screen = ({ navigation }) => {
   // Tela final
   if (finished) {
     return (
-      <LinearGradient
-        colors={["#A67C7C", "#8B4A52", "#5D252A"]}
-        style={styles.container}
-      >
-        <Text style={styles.title2}> 🎉   Parabéns!   🎉  </Text>
-        <Text style={styles.question2}>Você explorou todas as ciriosidades!</Text>
-        <Text style={styles.question3}>Agora você conhece mais sobre ato Infracionais a o ECA!</Text>
-        <View  style={styles.rowButtons}>
+      <LinearGradient colors={["#A67C7C", "#8B4A52", "#5D252A"]} style={styles.container}>
+        <View style={styles.card2}>
+          <View style={styles.container2}>
+           <Text style={styles.question2}>  ✨ Muito bem! ✨  </Text>
+          </View>
+          <Text style={styles.title2}> Você concluiu o quiz </Text>
+          <Text style={styles.question3}>Você explorou todas as curiosidades e ampliou seus conhecimentos sobre os atos infracionais e a proteção ao adolescente no ECA.</Text>
+          <View  style={styles.rowButtons}>
             <TouchableOpacity onPress={handleRestart} >
-              <LinearGradient colors={["#8B4A52", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
+              <LinearGradient colors={["#9f676dff", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
                 <Text style={styles.buttonText2}>Refazer Quiz</Text>
               </LinearGradient>
             </TouchableOpacity>
             <TouchableOpacity  style={styles.homeButton} onPress={() => navigation.navigate("Home")} >
-              <Text style={styles.buttonText3}>Voltar Menu Principal</Text>
+              <Text style={styles.buttonText3}>Voltar ao Menu </Text>
             </TouchableOpacity>
           </View>
-          <ExitButton goTo="Home" />
+          <Text style={styles.question4}>⚖️ Continue aprendendo — conhecimento transforma atitudes.</Text>
+        </View>  
+        <ExitButton goTo="Home" />    
       </LinearGradient>
     );
   }
@@ -134,7 +136,7 @@ const Tela1Screen = ({ navigation }) => {
     <LinearGradient colors={["#A67C7C", "#8B4A52", "#5D252A"]} style={styles.container}>
       <Text style={styles.homeTitle2}>Curiosidades Sobre</Text>
       <Text style={styles.homeTitle3}>Infracionais</Text>
-      <View style={styles.card}>
+      <View style={styles.card1}>
         <Image source={require("../../assets/atosInfracionaisImagem.jpg")} style={styles.homeImg}/>
         <Text style={styles.question1}>{current.question}</Text>
 
@@ -173,7 +175,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    justifyContent: "center",
+    justifyContent: "center", 
   },
   header: {
     alignSelf: "center",
@@ -213,8 +215,8 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     borderRadius: 200,
     marginBottom: 10,
-    borderColor: "#fff",
-    borderWidth: 12,
+    borderColor: '#D4AF37',
+    borderWidth: 5,
     alignSelf: 'center',
   },
   descriptionText: {
@@ -222,11 +224,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#fff",
   },
-  card: {
+  card1: {
     backgroundColor: "#fff",
     padding: 10,
     borderRadius: 12,
     shadowOffset: { width: 0, height: 2 },
+  },
+  card2: {
+    padding: 25,    
+    borderRadius: 20,
+    backgroundColor:"#8B4A52",
+    elevation: 6,
   },
   title1: {
     fontSize:30,
@@ -236,7 +244,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   title2: {
-    fontSize:35,
+    fontSize:27,
     fontWeight: "bold",
     marginBottom: 20,
     color: "#FFFFFF",
@@ -256,15 +264,19 @@ const styles = StyleSheet.create({
     borderLeftColor: '#D4AF37',
   },
   question2: {
+    margin:5,
     fontSize: 20,
-    marginBottom: 20,
     color: "#FFFFFF",
-    textAlign: "center",
     fontWeight: "bold",
   },
   question3: {
     fontSize: 12,
-    marginBottom: 20,
+    color: "#FFFFFF",
+    textAlign: "center",
+  },
+  question4: {
+    fontSize: 10,
+    marginTop: 30,
     color: "#FFFFFF",
     textAlign: "center",
   },
@@ -342,6 +354,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 10,
   }, 
+  container2: {
+    backgroundColor: '#ab8085b2',
+    borderRadius: 20, 
+    alignSelf: 'center'  ,
+    alignItems: "center",
+    marginBottom: 20,
+  },
   homeButton: {
     backgroundColor: '#ab8085b2',
     padding: 15,

@@ -143,7 +143,10 @@ const QuizCasamentoScreen = ({ navigation}) => {
     }
 
     // Junta a análise com o resumo checklist
-    setResultado(resultadoFinal + "\n\n📋 Resumo:\n" + resumo.join("\n"));
+    setResultado({
+      titulo: resultadoFinal, // título principal
+      resumo: resumo,         // lista de itens
+    });
   };
 
 
@@ -156,7 +159,7 @@ const QuizCasamentoScreen = ({ navigation}) => {
       {!finalizado ? (
         <View>
           <Text style={styles.homeTitle}>Teste de reconhacimento para casamento</Text>
-          <View style={styles.card}>
+          <View style={styles.card1}>
             <Image source={require('../../../assets/guiaCasamento/guiaCasamento.png')} style={styles.imagem1} resizeMode="cover"/>
             <Text style={styles.pergunta}>{perguntaAtual.pergunta}</Text>
             <FlatList
@@ -176,12 +179,22 @@ const QuizCasamentoScreen = ({ navigation}) => {
           </View>
         </View>
       ) : (
-        <ScrollView style={styles.resultadoCard}>
+        <View style={styles.card2}>
           <Image source={require('../../../assets/guiaCasamento/imagesFinalGuiaCasamento.png')} style={styles.imagem2} resizeMode="cover"/>
-          <Text style={styles.resultadoTexto}>{resultado}</Text>
+            <Text style={styles.text1}>Resultado do Quiz</Text>
+            <Text style={styles.text2}>Análise sobre possibilidade de união estável</Text>
+            <View style={styles.card3}>
+              <Text style={styles.destaque}>{resultado.titulo}</Text>
+              <Text style={styles.subtitulo}>📋 Resumo:</Text>
+              {resultado.resumo.map((item, index) => (
+                <Text key={index} style={styles.resultadoTexto}>
+                  {item}
+                </Text>
+              ))}
+            </View>
           <View  style={styles.rowButtons}>
             <TouchableOpacity onPress={() => navigation.navigate("TELA3")} >
-              <LinearGradient colors={["#8B4A52", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
+              <LinearGradient colors={["#9f676dff", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
                 <Text style={styles.buttonText2}>Refazer Quiz</Text>
               </LinearGradient>
             </TouchableOpacity>
@@ -189,7 +202,8 @@ const QuizCasamentoScreen = ({ navigation}) => {
               <Text style={styles.buttonText3}>Voltar Menu Principal</Text>
             </TouchableOpacity>
           </View>
-        </ScrollView>
+          <Text style={styles.text3}>Análise sobre possibilidade de união estavel</Text>
+        </View>
       )}
       <ExitButton goTo="Home" />
     </LinearGradient>
@@ -202,10 +216,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
   },
-  card: {
+  card1: {
     padding: 10,
     borderRadius: 16,
     backgroundColor: '#fff',
+  },
+  card2: {
+    padding: 15,    
+    borderRadius: 20,
+    backgroundColor:"#8B4A52",
+    elevation: 6,
+  },
+  card3: {
+    padding: 15,    
+    borderRadius: 20,
+    backgroundColor:'#fff',
+    marginBottom:-8,
   },
   pergunta: {
     fontSize: 15,
@@ -239,17 +265,23 @@ const styles = StyleSheet.create({
     color: '#000',
     textAlign: 'center',
   },
-  resultadoCard: {
-    flex: 1,
-    padding: 10,
+  destaque: {
+    fontSize: 13,
+    color: '#000',
+    textAlign: 'justify',
+    fontWeight: "bold",
+    marginBottom: 10
+  },
+  subtitulo: {
+    fontSize: 13,
+    color: '#000',
+    fontWeight: "bold",
   },
   resultadoTexto: {
-    fontSize: 15,
-    color: '#ffffff',
+    fontSize: 13,
+    color: '#000',
     textAlign: 'justify',
-    lineHeight: 22,
-    margin: 10,
-    marginTop: 10,
+    lineHeight: 18,
   },
   imagem1: {
     width: 250,
@@ -265,10 +297,9 @@ const styles = StyleSheet.create({
     height:250,
     borderRadius: 200,
     alignSelf: 'center',
-    borderColor: "#fff",
     borderColor: '#D4AF37',
     borderWidth:5,
-    marginTop:35,
+    marginTop:-10
   },
   startButton2: {
     marginTop: 10,
@@ -292,7 +323,6 @@ const styles = StyleSheet.create({
   rowButtons: {
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: 10,
   }, 
   homeButton: {
     backgroundColor: '#ab8085b2',
@@ -312,6 +342,25 @@ const styles = StyleSheet.create({
   buttonText3: {
     color: "#FFFFFF",
     fontSize: 15,
+  },
+  text1: {
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: '#D4AF37',
+  },
+  text2: {
+    textAlign: "center",
+    fontSize: 13,
+    fontWeight: "bold",
+    color: "#FFFFFF",
+    marginBottom: 5,
+  },
+  text3: {
+    textAlign: "center",
+    fontSize: 13,
+    color: "#FFFFFF",
+    marginTop: 10,
   },
 
 });

@@ -318,9 +318,12 @@ const styles = StyleSheet.create({
   imagem1: {
     width: 250,
     height:250,
-    marginTop: -20,
+    marginTop: -10,
     borderRadius: 200,
     alignSelf: 'center',
+    borderColor: '#D4AF37',
+    borderWidth: 5,
+    marginBottom: 10,
   },
   rowButtons: {
     flexDirection: "row",
