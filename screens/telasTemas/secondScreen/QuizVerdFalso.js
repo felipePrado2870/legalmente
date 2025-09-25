@@ -107,79 +107,87 @@ const QuizVerdFalsoScreen = ({ navigation }) => {
       colors={['#A67C7C', '#8B4A52', '#5D252A']}
       style={styles.container}
     >
-      <Text style={styles.title}>Questionário Sobre</Text>
-      <Text style={styles.subtitle}>Violência Familiar</Text>
       {currentQuestion < questions.length ? (
-        <View style={styles.card}>
-          <Image source={require('../../../assets/verdadeOfalsoImagem.jpg')} style={styles.imagem1} resizeMode="cover"/>
-          <Text style={styles.question}>{question.question}</Text>
-          {!showExplanation ? (
-            <View style={styles.rowButtons}>
-              <TouchableOpacity
-                style={[styles.button1, { marginRight: 10 }]}
-                onPress={() => handleAnswer("VERDADEIRO")}
-              >
-                <Text style={styles.buttonText1}>Verdadeiro</Text>
-              </TouchableOpacity>
+        <View>
+          <Text style={styles.title}>Questionário Sobre</Text>
+          <Text style={styles.subtitle}>Violência Familiar</Text>
+          <View style={styles.card1}>
+            <Image source={require('../../../assets/verdadeOfalsoImagem.jpg')} style={styles.imagem1} resizeMode="cover"/>
+            <Text style={styles.question}>{question.question}</Text>
+            {!showExplanation ? (
+              <View style={styles.rowButtons}>
+                <TouchableOpacity
+                  style={[styles.button1, { marginRight: 10 }]}
+                  onPress={() => handleAnswer("VERDADEIRO")}
+                >
+                  <Text style={styles.buttonText1}>Verdadeiro</Text>
+                </TouchableOpacity>
 
-              <TouchableOpacity
-                style={styles.button2}
-                onPress={() => handleAnswer("FALSO")}
-              >
-                <Text style={styles.buttonText1}>Falso</Text>
-              </TouchableOpacity>
-            </View>
-          ) : (
-            <View>
-              <View
-                style={[
-                  styles.answerContainer,
-                  selectedAnswer === question.correctAnswer
-                    ? styles.correctBackground
-                    : styles.incorrectBackground,
-                ]}
-              >
-                <Text
+                <TouchableOpacity
+                  style={styles.button2}
+                  onPress={() => handleAnswer("FALSO")}
+                >
+                  <Text style={styles.buttonText1}>Falso</Text>
+                </TouchableOpacity>
+              </View>
+            ) : (
+              <View>
+                <View
                   style={[
-                    styles.result,
+                    styles.answerContainer,
                     selectedAnswer === question.correctAnswer
-                      ? styles.correct
-                      : styles.incorrect,
+                      ? styles.correctBackground
+                      : styles.incorrectBackground,
                   ]}
                 >
-                  {selectedAnswer === question.correctAnswer
-                    ? "✅ Resposta Correta!"
-                    : "❌ Resposta Incorreta!"}
-                </Text>
-                <Text style={styles.explanation}>{question.explanation}</Text>
+                  <Text
+                    style={[
+                      styles.result,
+                      selectedAnswer === question.correctAnswer
+                        ? styles.correct
+                        : styles.incorrect,
+                    ]}
+                  >
+                    {selectedAnswer === question.correctAnswer
+                      ? "✅ Resposta Correta!"
+                      : "❌ Resposta Incorreta!"}
+                  </Text>
+                  <Text style={styles.explanation}>{question.explanation}</Text>
+                </View>
+                <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
+                  <Text style={styles.buttonText1}>Continuar</Text>
+                </TouchableOpacity>
               </View>
-              <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
-                <Text style={styles.buttonText1}>Continuar</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          <Text style={styles.progresso}>
-            Pergunta {currentQuestion + 1} de {questions.length}
-          </Text>
+            )}
+            <Text style={styles.progresso}>
+              Pergunta {currentQuestion + 1} de {questions.length}
+            </Text>
+          </View>
         </View>
       ) : (
-       <View style={{ alignItems: "center" }}>
-          <Text style={styles.finalText1}>
-            🎉 Parabéns! 🎉 
+       <View style={styles.card2}>
+         <Text style={styles.finalText1}>
+            ✨ Quiz Concluído! ✨ 
           </Text>
           <Text style={styles.finalText2}>
-          Você completou o quiz sobre violencia domentica e medidas protetivas
+          Você finalizou o questionário sobre violência doméstica e medidas protetivas.
+          </Text>
+          <Text style={styles.finalText2}>
+          Continue praticando seus conhecimentos e ajudando a promover a proteção da família.  
           </Text>
           <View  style={styles.rowButtons}>
             <TouchableOpacity onPress={() => navigation.navigate("TELA4")} >
-              <LinearGradient colors={["#8B4A52", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
+              <LinearGradient colors={["#9f676dff", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
                 <Text style={styles.buttonText2}>Refazer Quiz</Text>
               </LinearGradient>
             </TouchableOpacity>
             <TouchableOpacity  style={styles.homeButton} onPress={() => navigation.navigate("Home")} >
-              <Text style={styles.buttonText3}>Voltar Menu Principal</Text>
+              <Text style={styles.buttonText3}>Voltar ao Menu</Text>
             </TouchableOpacity>
           </View>
+          <Text style={styles.finalText3}>
+          Dica: conhecimento salva vidas. Compartilhe e volte sempre que quiser praticar.
+          </Text>
         </View>
       )}
       <ExitButton goTo="Home" />
@@ -205,12 +213,20 @@ const styles = StyleSheet.create({
     color: "#FFD700", 
     marginBottom: 10,
     fontWeight: "bold",
+    textAlign: "center",
   },
-  card: {
+  card1: {
     backgroundColor: "#FFFFFF",
     borderRadius: 15,
     padding: 20,
     width: "100%",
+  },
+   card2: {
+    padding: 25,    
+    borderRadius: 20,
+    backgroundColor:"#8B4A52",
+    elevation: 6,
+    alignItems: "center",
   },
   question: {
     fontSize: 15,
@@ -281,13 +297,19 @@ const styles = StyleSheet.create({
   },
   finalText1: {
     fontSize: 25,
-    marginVertical:10,
-    color: "#fff",
+    color: '#D4AF37',
     fontWeight: "bold",
-    textAlign: "center",
+    marginBottom:15,
   },
   finalText2: {
-    fontSize: 18,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#fff",
+    textAlign: "justify",
+  },
+  finalText3: {
+    marginTop:20,
+    fontSize: 13,
     color: "#fff",
     textAlign: "center",
   },
@@ -328,7 +350,7 @@ const styles = StyleSheet.create({
   rowButtons: {
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: 10,
+    marginTop:10,
   },
   answerContainer: {
     borderRadius: 12,

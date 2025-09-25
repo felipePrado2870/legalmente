@@ -43,13 +43,33 @@ const Tela6Screen = ({ navigation }) => {
       }
     });
 
-    let interpretacao;
-    if (alertaCritico) interpretacao = quiz.interpretacao.critica;
-    else if (contaA > contaB && contaA > contaC) interpretacao = quiz.interpretacao.A;
-    else if (contaB > contaA && contaB > contaC) interpretacao = quiz.interpretacao.B;
-    else interpretacao = quiz.interpretacao.C;
+    let resultadoObj = {};
+    if (alertaCritico) resultadoObj = { texto: quiz.interpretacao.critica, tipo: "critica" };
+    else if (contaA > contaB && contaA > contaC) resultadoObj = { texto: quiz.interpretacao.A, tipo: "A" };
+    else if (contaB > contaA && contaB > contaC) resultadoObj = { texto: quiz.interpretacao.B, tipo: "B" };
+    else resultadoObj = { texto: quiz.interpretacao.C, tipo: "C" };
 
-    setResultado(interpretacao);
+    setResultado(resultadoObj);
+  };
+    const corResultado = () => {
+    if (!resultado) return "rgba(0,0,0,0.19)";
+    switch(resultado.tipo) {
+      case "A": return "#ff634740";       
+      case "B": return "#ffd90040";       
+      case "C": return "#32cd3240";       
+      case "critica": return "#ff440040"; 
+      default: return "rgba(0,0,0,0.19)";
+    }
+  };
+  const corBordaEsquerda = () => {
+    if (!resultado) return "rgba(0,0,0,0.19)";
+    switch(resultado.tipo) {
+      case "A": return "#FF6347";       // vermelho
+      case "B": return "#FFD700";       // amarelo
+      case "C": return "#32CD32";       // verde
+      case "critica": return "#FF4500"; // laranja/alerta
+      default: return "rgba(0,0,0,0.19)";
+    }
   };
 
   if (!tipoSelecionado) {
@@ -101,19 +121,61 @@ const Tela6Screen = ({ navigation }) => {
 
   return (
     <LinearGradient colors={["#A67C7C", "#8B4A52", "#5D252A"]} style={styles.container}>
-      <Text style={styles.title}>📊 Resultado</Text>
-      <View style={styles.resultadoBox}>
-        <Text style={styles.resultadoTexto}>{resultado}</Text>
+      <Text style={styles.title}>📊 Resultado do Questionario</Text>
+      <Text style={styles.text3}>Veja o significado do seu resultado e como agir com segurnça.</Text>
+      <View style={styles.card1}>
+        <View style={styles.card2}>
+          <Text style={styles.text1}>🟢</Text>
+          <View>
+            <Text style={styles.text2}>Sutuação</Text>
+            <Text style={styles.text2}>Positiva</Text>
+          </View>
+        </View>
+        <View style={styles.card2}>
+          <Text style={styles.text1}>🟡</Text>
+          <View>
+            <Text style={styles.text2}>Sinal de</Text>
+            <Text style={styles.text2}>Atenção</Text>
+          </View>
+        </View>
+        <View style={styles.card2}>
+          <Text style={styles.text1}>🔴</Text>
+          <View>
+            <Text style={styles.text2}>Alerta </Text>
+            <Text style={styles.text2}>Vermelho</Text>
+          </View>
+        </View>
+        <View style={styles.card2}>
+          <Text style={styles.text1}>⚠️</Text>
+          <View>
+            <Text style={styles.text2}>Alerta</Text>
+            <Text style={styles.text2}>Imedìato</Text>
+          </View>
+        </View>
       </View>
-      <Text style={styles.contato}>
-        📞 Contato do Serviço Social{"\n"}
-        CEAV{"\n"}
-        (48) 3287-2637{"\n"}
-        (48) 3287-2635
-      </Text>
+      <View style={[styles.resultadoBox, { backgroundColor: corResultado(), borderLeftWidth: 5,  borderLeftColor: corBordaEsquerda()}]}>
+        <Text style={styles.resultadoTexto}>
+          {resultado.texto.split("**").map((part, index) => 
+            index % 2 === 1 
+              ? <Text key={index} style={{ fontWeight: 'bold', fontSize: 20 }}>{part}</Text> 
+              : part
+          )}
+        </Text>
+      </View>
+      <View style={styles.card3}>
+        <Text style={styles.contato1}>
+          📞 Procure Ajuda
+        </Text>
+        <Text style={styles.contato2}>
+          CEAV{"\n"}
+          (48) 3287-2637{"\n"}
+          (48) 3287-2635{"\n"}
+          Disque 100 | 180
+        </Text>
+      </View>
       <View  style={styles.rowButtons}>
         <TouchableOpacity onPress={() => { setTipoSelecionado(null); setPerguntaIndex(0); setRespostas({}); setResultado(null); }}>
-          <LinearGradient colors={['#8B4A52', '#5D252A', '#5D252A', '#5D252A']}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
+          <LinearGradient colors={["#9f676dff", '#5D252A', '#5D252A', '#5D252A']}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
             <Text style={styles.buttonText2}>Refazer Quiz</Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -129,12 +191,44 @@ const Tela6Screen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    padding: 16, 
+    padding: 12, 
     justifyContent: "center" 
   },
+  card1: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 10,    
+    borderRadius: 12,
+    borderWidth:0.5,
+    borderColor:"#f8f1f347",
+    backgroundColor:"#c3878eaa",
+    marginBottom:10,
+    marginTop: 10
+  },
+  card2: {
+    width: 75,
+    height: 50,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginHorizontal: "auto",
+    borderRadius: 12,
+    borderWidth:1,
+    borderColor:"#f8f1f347",
+    backgroundColor:"#c3878eff",
+  },
+  card3: {
+    padding: 25,    
+    borderRadius: 20,
+    borderWidth:0.5,
+    borderColor:"#ffffff47",
+    backgroundColor:"#8B4A52",
+    elevation: 6,
+  },
   title: { 
-    color: "#fff", 
-    fontSize: 30, 
+    color: '#D4AF37', 
+    fontSize: 25, 
     fontWeight: "bold", 
     textAlign: "center",  
   },
@@ -206,14 +300,43 @@ const styles = StyleSheet.create({
   },
   resultadoTexto: { 
     color: "#fff", 
-    fontSize: 15, 
+    fontSize: 13, 
     marginBottom: 10,
     textAlign: "justify"
   },
-  contato: { 
-    color: "#ffdddd",  
+  contato1: { 
+    color: '#D4AF37',  
     fontSize: 18, 
-    textAlign: "center" 
+    textAlign: "center" ,
+    fontWeight: "bold",
+  },
+  contato2: { 
+    marginTop:10,
+    color: "#ffdddd",  
+    fontSize: 15, 
+    textAlign: "center" ,
+    fontWeight: "bold",
+  },
+  text1: { 
+    marginHorizontal:1,
+    marginStart:-4,
+    color: "#ffdddd",  
+    fontSize: 10, 
+    textAlign: "center" ,
+    fontWeight: "bold",
+  },
+  text2: { 
+    color: "#ffdddd",  
+    fontSize: 11, 
+    textAlign: "center" ,
+    fontWeight: "bold",
+  },
+  text3: { 
+    margin:10,
+    color: "#ffdddd",  
+    fontSize: 12, 
+    textAlign: "center" ,
+    fontWeight: "bold",
   },
    imagem1: {
     width: 250,
@@ -221,8 +344,8 @@ const styles = StyleSheet.create({
     borderRadius: 200,
     marginBottom: 10,
     alignSelf: 'center',
-    borderColor: "#fff",
-    borderWidth: 12,
+    borderColor: '#D4AF37',
+    borderWidth: 5,
   },
    startButton: {
     width: 330,

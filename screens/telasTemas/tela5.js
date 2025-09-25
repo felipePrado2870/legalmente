@@ -3,21 +3,21 @@ import { Text, StyleSheet, ScrollView, View, Image, TouchableOpacity, Dimensions
 import LinearGradient from 'react-native-linear-gradient';
 import ExitButton from '../componentes/ExitButton';
 
-const { width } = Dimensions.get("window");
+const SLIDE_SIZE = 250;
+
 
 const images = [
   require("../../assets/lgbt/slideImg1.png"),
   require("../../assets/lgbt/slideImg2.png"),
   require("../../assets/lgbt/slideImg3.png"),
   require("../../assets/lgbt/slideImg4.png"),
-  require("../../assets/lgbt/slideImg5.png")
 ];
 
 const themes = [
   {
     type: "cards",
     title: 'O que é o Direito à Identidade de Gênero?',
-    text: 'É o reconhecimento da autodeterminação de cada indivíduo em relação à sua experiência interna e pessoal de gênero, que pode ou não corresponder ao sexo atribuído ao nascimento. Trata-se de um direito humano fundamental, protegido contra a discriminação em diversas convenções internacionais, como as da ONU e a CEDAW..',
+    text: 'É o reconhecimento da autodeterminação de cada indivíduo em relação à sua experiência interna e pessoal de gênero, independentemente do sexo atribuído no nascimento. Esse direito garante o uso do nome, pronomes e o reconhecimento social conforme a identidade de cada pessoa, promovendo dignidade, liberdade e respeito.',
     cards: [
       { title: 'Auto determinação', text: 'A pessoa define seu próprio género' },
       { title: 'Auto determinação', text: 'Essencial para a dignidade e liberdade.' },
@@ -26,45 +26,42 @@ const themes = [
   },
   {
     type: "topics",
-    title: 'Decisão do STF de 2018 e Provimento do CNJ',
-    text: 'STF reconheceu direito à alteração de nome e gênero sem cirurgia ou laudos. Provimento CNJ nº 73/2018 garante procedimento administrativo. Inclusão do gênero "não binário" permitida em alguns estados.',
-    subTitle: "Quem pode solicitar a alteração no Registro Civil?",
+    title: 'Decisão do STF de (2018) e Provimento do CNJ',
+    text: 'O STF reconheceu o direito à alteração de nome e gênero diretamente no registro civil, sem necessidade de cirurgia, laudos médicos ou decisão judicial. O Provimento do CNJ regulamenta o procedimento nos cartórios.',
+    subTitle: "Quem pode solicitar?",
     topics: [
       "Maiores de 18 anos",
       "Travestis",
       "Pessoas transgênero",
-      "Não-binárias"
+      "Pessoas não-binárias"
     ]
   },
   {
     type: "steps",
     title: 'Alteração do nome e gênero no Registro Civil',
-    text: 'O processo para a retificação de nome e gênero é simplificado e pode ser realizado diretamente em qualquer Cartório de Registro Civil.',
     steps: [
-      { title: 'Comparecer ao cartório', text: 'Dirija-se a qualquer Cartório de Registro Civil com um documento oficial de identificação.' },
-      { title: 'Manifestar Vontade', text: 'Declare sua vontade de alterar o prenome e o gênero para que correspondam à sua identidade.' },
-      { title: 'preencher os Termos', text: ' Preencha o termo de declaração e o requerimento formal fornecidos pelo cartório.' },
-      { title: ' Registro e Averbação', text: 'O cartório registrará e averbará a alteração em seu assento de nascimento (e casamento, se houver).' },
+      { title: 'Comparecer ao cartório com documento oficial.'},
+      { title: 'Declarar a vontade de realizar a alteração.'},
+      { title: 'Preencher e assinar os termos fornecidos pelo cartório.' },
+      { title: 'Registro e averbação no assento, com emissão de nova certidão.' },
     ]
   },
   {
     type: "documents",
-    title: "Documentação necessária para o pedido",
-    text: " É importante notar que a legislação não exige laudos médicos, psicológicos, nem autorização judicial, desburocratizando o processo e respeitando a autodeterminação individual.",
+    title: "Documentação necessária",
     documents: [
-      "Documento de identidade oficial com foto: RG, CNH ou passaporte.",
-      "Certidão de nascimento original: Atualizada.",
-      "Comprovante de residência atualizado: Conta de consumo, por exemplo.",
-      "Declaração pessoal de vontade: Modelo fornecido pelo próprio cartório."
+      "Documento oficial com foto",
+      "Certidão de nascimento atualizada",
+      "Comprovante de residência",
+      "Declaração pessoal de vontade"
     ],
     importance: [
-      { title: "Educação", text: "Acesso pleno a matrículas e reconhecimento em ambientes acadêmicos." },
-      { title: "Saúde", text: "Atendimento adequado e respeitoso em hospitais e clínicas." },
-      { title: "Trabalho", text: "Oportunidades profissionais e ambiente de trabalho inclusivo." },
-      { title: "Cidadania", text: "Exercício pleno de direitos e deveres civis." }
+      { title: "Educação", text: "Acesso pleno a matrículas e reconhecimento acadêmico." },
+      { title: "Saúde", text: "Atendimento adequado e respeitoso." },
+      { title: "Trabalho", text: "Documentos alinhados ao nome social no ambiente profissional." },
+      { title: "Cidadania", text: "Pleno exercício de direitos e participação social." }
     ]
   },
-
 ];
 
 const Tela5Screen = () => {
@@ -72,20 +69,22 @@ const Tela5Screen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollRef = useRef(null);
 
-  //slider
-  useEffect(() => {
+  // Slider automático
+ useEffect(() => {
     const interval = setInterval(() => {
-      let nextIndex = (currentIndex + 1) % images.length;
+      const nextIndex = (currentIndex + 1) % images.length;
+      scrollRef.current?.scrollTo({ x: nextIndex * SLIDE_SIZE, animated: true });
       setCurrentIndex(nextIndex);
-      scrollRef.current?.scrollTo({ x: nextIndex * width, animated: true });
     }, 5000);
 
     return () => clearInterval(interval);
   }, [currentIndex]);
 
+
   const onScroll = (event) => {
-    const slideIndex = Math.round(event.nativeEvent.contentOffset.x / width);
-    setCurrentIndex(slideIndex);
+    const offsetX = event.nativeEvent.contentOffset.x;
+    const newIndex = Math.round(offsetX / SLIDE_SIZE);
+    setCurrentIndex(newIndex);
   };
 
   const toggleAnswer = (index) => {
@@ -93,52 +92,49 @@ const Tela5Screen = () => {
   };
 
   return (
-    <LinearGradient
-      colors={['#A67C7C', '#8B4A52', '#602d32ff']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
+    <LinearGradient 
+      colors={['#A67C7C', '#8B4A52', '#602d32ff']} 
+      start={{ x: 0, y: 0 }} 
+      end={{ x: 1, y: 1 }} 
       style={styles.container}
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.header1}>Curiosidades Sobre</Text>
+        <Text style={styles.header1}>CURIOSIDADES SOBRE</Text>
         <Text style={styles.header2}>Identidade de Gênero</Text>
+        <Text style={styles.header3}>Conheça seus direitos.</Text>
 
         <View style={styles.sliderContainer}>
-          <ScrollView
-            ref={scrollRef}
-            horizontal
-            pagingEnabled
-            showsHorizontalScrollIndicator={false}
-            onScroll={onScroll}
-            scrollEventThrottle={16}
-            style={styles.scrollContainer2}   // 🔹 aplica borda circular
+          <ScrollView 
+            ref={scrollRef} 
+            horizontal 
+            pagingEnabled 
+            showsHorizontalScrollIndicator={false} 
+            onScroll={onScroll} 
+            scrollEventThrottle={16} 
+            style={styles.scrollContainer2} 
             contentContainerStyle={styles.scrollContent}
           >
             {images.map((img, i) => (
               <View key={i} style={styles.imageWrapper}>
-                <Image source={images[i]} style={styles.image} />
+                <Image source={img} style={styles.image} />
               </View>
             ))}
           </ScrollView>
+        </View>
+        <View style={styles.dotsContainer}>
+          {images.map((_, index) => (
+            <Text key={index} style={[styles.dot, currentIndex === index && styles.activeDot]}> ●</Text>
+          ))}
+        </View>
 
-          <View style={styles.dotsContainer}>
-            {images.map((_, i) => (
-              <View
-                key={i}
-                style={[styles.dot, i === currentIndex ? styles.activeDot : null]}
-              />
-            ))}
-          </View>
-        </View>
-          {/* cards expansivos */}
-        <View style={styles.cardHeader}>
-          <Text style={styles.title1}>LGBTQUIAPN+</Text>
-          <Text style={styles.textCardHeader}>Conheça seus direitos</Text>
-        </View>
+
+        
+
         {themes.map((item, index) => (
-          <View key={index} style={styles.card}>
-            <TouchableOpacity onPress={() => toggleAnswer(index)}>
-              <Text style={styles.title2}>{item.title}</Text>
+          <View key={index} style={styles.themes}>
+            <TouchableOpacity onPress={() => toggleAnswer(index)} style={styles.alignThemes}>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.arrow}>{expandedIndex === index ? "▼" : "▶"}</Text>
             </TouchableOpacity>
 
             {expandedIndex === index && (
@@ -146,20 +142,14 @@ const Tela5Screen = () => {
                 <View style={styles.descriptionBody}>
                   <Text style={styles.description}>{item.text}</Text>
                 </View>
-               {/* card Identidade de genero */}
+                {/* card Identidade de genero */}
                 {item.type === "cards" && item.cards?.map((card, i) => (
-                  <View
-                    key={i}
-                    style={[
-                      styles.topicCard,
-                      i === 1 ? styles.positionCenter : i === 2 ? styles.positionRight : null
-                    ]}
-                  >
+                  <View key={i} style={styles.topicCard}>
                     <Text style={styles.titleCard}>{card.title}</Text>
                     <Text style={styles.textCard}>{card.text}</Text>
                   </View>
                 ))}
-              {/* decisão do STF*/}
+                {/* decisão do STF */}
                 {item.type === "topics" && (
                   <View>
                     {item.subTitle && (
@@ -167,36 +157,34 @@ const Tela5Screen = () => {
                     )}
                     {item.topics?.map((topic, i) => (
                       <View key={i} style={styles.topicItem}>
-                        <Text style={styles.topicText}>➤ {topic}</Text>
+                        <Text style={styles.topicText}>{topic}</Text>
                       </View>
                     ))}
                   </View>
                 )}
-              {/* Alteração nome e gênero*/}
+                {/* Alteração nome e gênero */}
                 {item.type === "steps" && (
                   <View>
                     {item.steps?.map((step, i) => (
                       <View key={i} style={styles.stepItem}>
-                        <Text style={styles.stepIndex}>{i + 1}.</Text>
                         <View style={styles.stepContent}>
+                          <Text style={styles.stepIndex}>{i + 1}.</Text>
                           <Text style={styles.stepTitle}>{step.title}</Text>
-                          <Text style={styles.stepText}>{step.text}</Text>
                         </View>
                       </View>
                     ))}
                   </View>
                 )}
-              {/* Documenteção necessária */}
+                {/* Documentação necessária */}
                 {item.type === "documents" && (
                   <View>
                     {item.documents?.map((doc, i) => (
                       <View key={i} style={styles.docItem}>
-                        <Text style={styles.docBullet}>➤</Text>
                         <Text style={styles.docText}>{doc}</Text>
                       </View>
                     ))}
                     <Text style={styles.subTitle}>Importância</Text>
-                    <View style={styles.importanceGrid}>
+                    <View>
                       {item.importance?.map((imp, i) => (
                         <View key={i} style={styles.importanceCard}>
                           <Text style={styles.importanceTitle}>{imp.title}</Text>
@@ -210,6 +198,7 @@ const Tela5Screen = () => {
             )}
           </View>
         ))}
+         <Text style={styles.endText}>Conteúdo informativo. Para casos específicos, consulte o cartório da sua cidade.</Text>
       </ScrollView>
       <ExitButton goTo="Home" />
     </LinearGradient>
@@ -221,261 +210,173 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 16,
-  
   },
   scrollContainer: {
     padding: 16
   },
   header1: {
-    fontSize: 30,
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center',
     marginTop: 40,
+    marginBottom: 5,
   },
-   header2: {
+  header2: {
     color: '#D4AF37',
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: "bold",
-    marginBottom: 10,
-  },
-  image: {
-    width: width,
-    height: 200,
-    resizeMode: "cover",
-    borderRadius: 10
-  },
-  dotsContainer: {
-    position: "absolute",
-    bottom: 10,
-    flexDirection: "row",
-    alignSelf: "center"
-  },
-  dot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: "#ccc",
-    margin: 4
-  },
-  activeDot: {
-    backgroundColor: "#fff"
-  },
-  cardHeader:{
-    alignSelf:"center",
-    marginBottom:15,
-  },
-  textCardHeader:{
-    alignSelf:"center",
-    textAlign:"right",
-    color:"#fff",
-    fontSize:13,
-    
-  },
-  card: {
-    backgroundColor: "#fff",
-    padding: 14,
-    borderRadius: 10,
-    marginBottom: 10
-  },
-  title1: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color:  '#D4AF37',
-    marginBottom: 5
-  },
-  title2: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color:  '#000000ff',
     marginBottom: 5,
-    textAlign: "justify", 
   },
-  descriptionBody: {
-    backgroundColor: '#ffffff8e',
-    padding: 5,
-    borderRadius: 8
-  },
-  description: {
-    fontSize: 13,
-    color: '#000',
+  header3:{
+    color: '#fff',
     textAlign: "center",
-    textAlign: "justify", 
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 15,
+  },
+  themes: {
+    backgroundColor: "#fff",
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 15
+  },
+  alignThemes:{
+    flexDirection: "row",
+    alignItems: "center",
+    paddingEnd:4,
+  },
+  title: {
+    fontSize: 15,
+    fontWeight:"bold",
+    color:"#D4AF37"
+  },
+  arrow:{
+    fontSize:20,
+    fontWeight: "bold",
+    color: "#D4AF37",
+    position:"absolute",
+    right:-10,
   },
   descriptionBody: {
     backgroundColor: '#ffffff8e',
     padding: 5,
     borderRadius: 8,
+    marginBottom:10,
+  },
+  description: {
+    fontSize: 14,
+    color: '#000',
+    textAlign: "justify", 
   },
   topicCard: {
-    backgroundColor: "#f4efefde",
-    width: "60%",
-    height: 100,
-    marginTop: 10,
-    borderTopWidth: 5,
-    borderWidth: 1,
-    borderColor: "#6d0000ff",
-    borderRadius: 6,
-    paddingTop: 7,
-    alignSelf: 'flex-start',
-
+    backgroundColor: "#ab828227",
+    padding:10,
+    width:"100%",
+    borderRadius:8,
+    marginBottom:5,
   },
-  positionCenter: {
-    alignSelf: "center"
-  },
-  positionRight: {
-    alignSelf: "flex-end"
-  },
-
   titleCard: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: "#7f0314ff",
+    color: "#D4AF37",
     textAlign: "center"
-
-
   },
   textCard: {
     marginTop: 5,
-    fontSize: 13,
-    color: "#920013de",
+    fontSize: 14,
+    color: "#000000de",
     textAlign: "center",
-
   },
   subTitle: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: '#920013de',
-    textAlign: "center",
+    color: '#000000de',
+    textAlign: "left",
     marginBottom: 5,
     paddingTop:10,
   },
   topicItem: {
-    alignSelf: "center",
+    alignSelf: "flex-start",
     padding:5,
-
   },
   topicText: {
-    fontSize: 13,
-    padding: 8,
-    color:"#920013de",
-    backgroundColor:"white",
-    borderRadius:8,
-    width:230,
+    fontSize: 14,
+    padding:5,
+    color:"#000000de",
+    backgroundColor:"#ab828227",
+    borderRadius:5,
+    width:"100%",
   },
   stepItem: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    backgroundColor: "#fff3e0",
-    padding: 10,
-    borderRadius: 8,
-    marginVertical: 6,
+    backgroundColor:"#ab828227",
+    borderRadius:10,
     borderLeftWidth: 6,
-    borderLeftColor: "#920013de"
+    borderLeftColor: "#cbc3c4de",
+    marginBottom:10,
+    padding:10,
   },
   stepIndex: {
     fontSize: 15,
-    fontWeight: "bold",
-    color: "#920013de",
-    marginRight: 8
+    fontWeight:"bold",
+    color: "#000000de",
+    marginRight: 8,
   },
   stepContent: {
-    flex: 1
+    flexDirection: "row",
+    alignItems:"center"
   },
   stepTitle: {
-    fontSize: 15,
-    fontWeight: "bold",
-    color: "#920013de"
-  },
-  stepText: {
-    fontSize: 13,
-    color: "#4f3128ff",
-    textAlign: "justify",
+    fontSize: 14,
+    color: "#000000de",
   },
   docItem: {
-    paddingTop:10,
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 4,
-  },
-  docBullet: {
-    fontSize: 15,
-    color: "#920013de",
-    marginRight: 6,
+    alignItems: "flex-start",
+    marginBottom: 6,
   },
   docText: {
     fontSize: 13,
-    color: "#56000cff",
+    color: "#000000ff",
     fontWeight:"bold",
-    flexShrink: 1,
-
-  },
-  importanceGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    backgroundColor:"#f1f1f1",
-    marginTop: 12,
-    borderRadius:20,
   },
   importanceCard: {
-    padding: 5,
-    width: "50%",
+    backgroundColor: "#ab828227",
+    padding: 8,
+    width: "100%",
+    borderRadius:8,
+    marginBottom:5,
   },
   importanceTitle: {
     fontSize: 15,
     fontWeight: "bold",
     marginBottom: 4,
-    color: "#4a148c",
+    color: "#000000ff",
   },
   importanceText: {
-    fontSize: 13,
+    fontSize: 12,
     color: "#444",
   },
-  sliderContainer: {
-    height: 250,
-    marginVertical: 20,
+  sliderContainer: { 
+    height: SLIDE_SIZE, 
+    marginBottom:30,
   },
-  image: {
-    width: width,
-    height: 250,
-    resizeMode: "cover",
-    borderRadius: 10,
-  },
-  dotsContainer: {
-    position: "absolute",
-    bottom: 10,
-    flexDirection: "row",
-    alignSelf: "center",
-  },
-  dot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: "#ccc",
-    margin: 4,
-  },
-  activeDot: {
-    backgroundColor: "#fff",
-  },
-    /* --- Carrossel Circular --- */
-  sliderContainer: { height: 250 },
   scrollContainer2: {
     alignSelf: "center",
     borderWidth: 8,
-    borderColor: "#fff",
-    borderRadius: 160,
+    borderColor: "#D4AF37",
+    borderRadius: SLIDE_SIZE / 2,
     overflow: "hidden",
-    width: 250,
-    height: 250,
+    width: SLIDE_SIZE,
   },
-  scrollContent: { alignItems: "center", justifyContent: "center" },
+  scrollContent: { 
+    alignItems: "center",
+
+   },
   imageWrapper: {
-    width: 250,
-    height: 250,
-    borderRadius: 160,
+    width: SLIDE_SIZE,
+    height: SLIDE_SIZE,
+    borderRadius: SLIDE_SIZE / 2,
     overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
@@ -485,7 +386,35 @@ const styles = StyleSheet.create({
     height: "100%",
     resizeMode: "cover",
     borderRadius: 30,
+    borderWidth: 2,
+    borderColor: "#D4AF37",
   },
+
+  dotsContainer: {
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
+  marginBottom: 15,
+  marginTop:-25,
+},
+
+dot: {
+  fontSize: 15,
+  color: "#888", 
+  marginHorizontal: 1,
+},
+
+activeDot: {
+  color: "#D4AF37", 
+  fontSize: 16,
+},
+endText:{
+  color: '#fff',
+  fontSize:10,
+  marginTop:10,
+  textAlign: "center" ,
+  
+}
 
 });
 

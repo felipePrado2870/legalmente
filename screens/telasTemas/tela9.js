@@ -103,8 +103,8 @@ const Tela9Screen = () => {
         <View style={styles.startContainer}>
           <Text style={styles.homeTitle}>Questionário Sobre</Text>
           <Text style={styles.subTitle}>Destituição do poder da familia</Text>
-          <Image source={require('../../assets/quiz/startImg.png')} style={styles.mainImg1} />
-          <Text style={styles.startTitle}>Responda ao quiz sobre a destituição do poder familiar.</Text>
+          <Image source={require('../../assets/quiz/destituiçãofamilia.png')} style={styles.mainImg1} />
+          <Text style={styles.startTitle}>Teste seus conhecimentos e descubra como o Direito protege crianças e adolecentes em situações delicadas. Aprenda de forma prática e divertida</Text>
           <TouchableOpacity onPress={() => setQuizStarted(true)}>
             <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
               <Text style={styles.buttonText}>INICIAR QUIZ</Text>
@@ -113,19 +113,49 @@ const Tela9Screen = () => {
         </View>
       ) : showResult ? (
         <View style={styles.resultContainer}>
-          <Image source={require('../../assets/quiz/trophyImg.png')} style={styles.feedbackImg} />
-          <Text style={styles.resultTitle}>Parabéns você concluiu o quiz!</Text>
-          <Text style={styles.resultText}>
-            Você acertou {answers.filter((a, i) => a === questions[i].answer).length} de {questions.length}
-          </Text>
-          <Text style={styles.resultPhrase}>
-            Continue estudando para fortalecer seus conhecimentos em direito de família.
-          </Text>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("TELA10Final")}>
-              <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton}>
-                <Text style={styles.buttonText}>Continuar</Text>
-              </LinearGradient>
-          </TouchableOpacity>
+          <View style={styles.card2}>
+            <Text style={styles.resultTitle}>Você chagou ao fim!</Text>
+            <Text style={styles.resultText}>
+             Você acertou {answers.filter((a, i) => a === questions[i].answer).length} de {questions.length}
+            </Text>
+            <View style={styles.card3}>
+              <Text style={styles.resultPhrase1}>
+                .
+              </Text>
+              <Text style={styles.resultPhrase2}>
+                A destituição do poder famiLiar é uma medida excepcional aplicada em situações graves, como abandono, violência ou negligência.
+              </Text>
+            </View>
+            <View style={styles.card3}>
+              <Text style={styles.resultPhrase1}>
+                .
+              </Text>
+              <Text style={styles.resultPhrase2}>
+                Ela só poder ser decidida po um juiz com participação no Ministerio Público sempre garantindo o direito de defesa.
+              </Text>
+            </View>
+            <View style={styles.card3}>
+              <Text style={styles.resultPhrase1}>
+                 .
+              </Text>
+              <Text style={styles.resultPhrase2}>
+                O objetivo principal da lei é proteger o melhor interesse da criança ou adolecente.
+              </Text>
+            </View>
+            <View style={styles.rowButtons}>
+              <TouchableOpacity onPress={() => navigation.replace("TELA9")}>
+                <LinearGradient colors={["#9f676dff", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
+                  <Text style={styles.buttonText2}>Refazer Quiz</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity  style={styles.homeButton} onPress={() => navigation.navigate("Home")} >
+                <Text style={styles.buttonText3}>Voltar ao Menu </Text>
+                </TouchableOpacity>
+            </View>
+            <Text style={styles.resultPhrase3}>
+               Dica: reveja os pontos-chave do conteudo para consolidar o aprendixado - prètrica leva á confiança.
+            </Text>
+          </View>
         </View>
       ) : (
         <ScrollView contentContainerStyle={styles.quizContainer}>
@@ -134,7 +164,7 @@ const Tela9Screen = () => {
               <Text style={styles.homeTitle2}>Questionário Sobre</Text>
               <Text style={styles.subTitle2}>Destituição do poder da familia</Text>
               <View style={styles.card}>
-                <Image source={require('../../assets/quiz/startImg.png')} style={styles.mainImg2} />
+                <Image source={require('../../assets/quiz/destituiçãofamilia.png')} style={styles.mainImg2} />
                 <Text style={styles.question}>{questions[currentIndex].question}</Text>
                 {questions[currentIndex].options.map((option, i) => (
                   <TouchableOpacity key={i} onPress={() => handleAnswer(option)}>
@@ -149,33 +179,39 @@ const Tela9Screen = () => {
               </View>
             </>
           ) : (
-            <View style={styles.explanationContainer}>
-              {selectedAnswer === questions[currentIndex].answer ? (
-                <>
-                  <View style={styles.correctBackground1}>
-                    <View style={styles.container2}>
-                      <Image source={require("../../assets/quiz/correctImg.png")} style={styles.feedbackImg} />
-                      <Text style={styles.feedbackText1}>Correto</Text>
+            <View>
+              <Text style={styles.homeTitle2}>Questionário Sobre</Text>
+              <Text style={styles.subTitle2}>Destituição do poder da familia</Text>
+              <View style={styles.explanationContainer}>
+                <View style={styles.card}>
+                  <Image source={require('../../assets/quiz/destituiçãofamilia.png')} style={styles.mainImg2} />
+                  <Text style={styles.question}>{questions[currentIndex].question}</Text>
+                </View>
+                {selectedAnswer === questions[currentIndex].answer ? (
+                  <>
+                    <View style={styles.correctBackground1}>
+                      <View style={styles.container2}>
+                        <Text style={styles.feedbackText1}>✅ Correto</Text>
+                      </View>
+                      <Text style={styles.explanationText}>{questions[currentIndex].explanation}</Text>
                     </View>
-                    <Text style={styles.explanationText}>{questions[currentIndex].explanation}</Text>
-                  </View>
-                </>
-              ) : (
-                <>
-                  <View style={styles.correctBackground2}>
-                    <View style={styles.container2}>
-                      <Image source={require("../../assets/quiz/incorrectImg.png")} style={styles.feedbackImg} />
-                      <Text style={styles.feedbackText2}>Incorreto</Text>
+                  </>
+                ) : (
+                  <>
+                    <View style={styles.correctBackground2}>
+                      <View style={styles.container2}>
+                        <Text style={styles.feedbackText2}>❌ Incorreto</Text>
+                      </View>
+                      <Text style={styles.explanationText}>{questions[currentIndex].explanation}</Text>
                     </View>
-                    <Text style={styles.explanationText}>{questions[currentIndex].explanation}</Text>
-                  </View>
-                </>
-              )}
-              <TouchableOpacity style={styles.button} onPress={handleNext}>
-                <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton2}>
-                  <Text style={styles.buttonText}>Próxima</Text>
-                </LinearGradient>
-              </TouchableOpacity>
+                  </>
+                )}
+                <TouchableOpacity style={styles.button} onPress={handleNext}>
+                  <LinearGradient colors={["#8B4A52",  "#8B4A52","#5D252A", "#45191dff"]} style={styles.startButton2}>
+                    <Text style={styles.buttonText}>Próxima</Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
         </ScrollView>
@@ -192,9 +228,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   container2: { 
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: "row"
   },
   startContainer: { 
     alignItems: "center",
@@ -230,9 +264,8 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     borderRadius: 200,
     marginTop: 10,
-    marginBottom: 10,
-    borderColor: "#fff",
-    borderWidth: 12,
+    borderColor: '#D4AF37',
+    borderWidth: 5,
     alignSelf: "center",
   },
    mainImg2: { 
@@ -240,14 +273,16 @@ const styles = StyleSheet.create({
     height: 250,
     resizeMode: "cover",
     borderRadius: 200,
-    borderColor: "#ffffffff",
-    borderWidth: 10,
+    borderColor: '#D4AF37',
+    borderWidth: 5,
     alignSelf: "center",
     marginTop: -5,
+    marginBottom: 10,
   },
   startTitle: { 
     fontSize: 13, 
-    margin: 10, 
+    margin: 10,
+    marginBottom: 20, 
     textAlign: "center", 
     color: "#FFFFFF" 
   },
@@ -301,9 +336,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   explanationText: { 
-    fontSize: 15,  
-    color:  "#000000ff",
-    fontWeight: "bold", 
+    fontSize: 13,  
+    color:  "#000000ff", 
     textAlign: "justify",
   },
   feedbackImg: { 
@@ -312,12 +346,12 @@ const styles = StyleSheet.create({
     height: 40 
   },
   feedbackText1: {  
-    fontSize: 30, 
+    fontSize: 20, 
     color:  "rgba(24, 91, 24, 1)",
     fontWeight: "bold" 
   },
   feedbackText2: {  
-    fontSize: 30, 
+    fontSize: 20, 
     color:  "#5e1a1fff",
     fontWeight: "bold" 
   },
@@ -327,23 +361,38 @@ const styles = StyleSheet.create({
     justifyContent: "center" 
   },
   resultTitle: { 
-    fontSize: 35, 
+    fontSize: 30, 
     fontWeight: "bold", 
     marginBottom: 10,
     textAlign: "center", 
-    color: "#FFFFFF" 
+    color: '#D4AF37',
   },
-  resultPhrase: { 
-    textAlign: "center", 
-    fontSize: 15,
+  resultPhrase1: {  
+    fontSize: 55, 
+    marginTop:-36,
+    color: '#D4AF37',
+    fontWeight: "bold", 
+  },
+  resultPhrase2: {  
+    fontSize: 13,
     padding: 5, 
-    marginBottom: 15, 
+    marginBottom: 10, 
+    textAlign: "justify",
+    color: "#ffffffff",
+    fontWeight: "light", 
+  },
+  resultPhrase3: {  
+    fontSize: 10,
+    padding: 5, 
+    marginTop: 10, 
+    textAlign: "center",
     color: "#ffffffff",
     fontWeight: "light", 
   },
   resultText: { 
-    fontSize: 20, 
-    margin: 20, 
+    fontSize: 22, 
+    marginBottom:15,
+    textAlign: "center",
     color: "#ffffffff",
     fontWeight: "bold",  
   },
@@ -381,6 +430,8 @@ const styles = StyleSheet.create({
   },
    correctBackground1: {
     margin: 10,
+    marginTop:-3,
+    marginBottom: -10,
     padding: 10,
     borderRadius: 8,
     backgroundColor: "rgba(0, 200, 0, 0.1)", 
@@ -389,11 +440,52 @@ const styles = StyleSheet.create({
   },
   correctBackground2: {
     margin: 10,
+    marginTop:-3,
+    marginBottom: -10,
     padding: 10,
     borderRadius: 8,
     backgroundColor: "rgba(200, 0, 0, 0.1)", 
     borderLeftWidth: 4,
     borderLeftColor: "rgba(200, 0, 0, 0.8)",
+  },
+  rowButtons: {
+   flexDirection: "row",
+    justifyContent: "center",
+  }, 
+  quizButton: {
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 20,
+    marginLeft: 10,
+    alignItems: "center",
+  },
+   buttonText2: {
+    color: "#FFFFFF",
+    fontSize: 15,
+    fontWeight: "bold",
+  },
+  buttonText3: {
+    color: "#FFFFFF",
+    fontSize: 15,
+  },
+  homeButton: {
+   backgroundColor: '#ab8085b2',
+    padding: 15,
+    borderRadius: 10,
+    borderColor: "#fff",  
+    borderWidth: 2, 
+    marginTop: 20,
+    marginLeft: 10,
+    alignItems: "center",
+  },
+  card2: {
+    padding: 25,    
+    borderRadius: 20,
+    backgroundColor:"#8B4A52",
+    elevation: 6,
+  },
+  card3: {
+   flexDirection: "row",
   },
 });
 

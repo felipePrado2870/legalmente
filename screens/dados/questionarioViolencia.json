@@ -26,10 +26,10 @@
       }
     ],
     "interpretacao": {
-        "A": "🔴 Alerta Vermelho! Foram identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
-        "B": "🟡 Sinal de Atenção! Existem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
-        "C": "🟢 Situação Positiva! No momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
-        "critica": "🚨 Alerta Imediato! Sua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
+        "A": "🔴**Alerta Vermelho!**\nForam identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
+        "B": "🟡 **Sinal de Atenção!**\nExistem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
+        "C": "🟢 **Situação Positiva!**\nNo momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
+        "critica": "⚠️ **Alerta Imediato!**\nSua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
     }
   },
 
@@ -59,11 +59,11 @@
         "opcoes": ["A) Sim", "B) Às vezes", "C) Não"]
       }
     ],
-    "interpretacao": {
-        "A": "🔴 Alerta Vermelho! Foram identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
-        "B": "🟡 Sinal de Atenção! Existem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
-        "C": "🟢 Situação Positiva! No momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
-        "critica": "🚨 Alerta Imediato! Sua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
+   "interpretacao": {
+        "A": "🔴**Alerta Vermelho!**\nForam identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
+        "B": "🟡 **Sinal de Atenção!**\nExistem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
+        "C": "🟢 **Situação Positiva!**\nNo momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
+        "critica": "⚠️ **Alerta Imediato!**\nSua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
     }
   },
 
@@ -94,10 +94,10 @@
       }
     ],
     "interpretacao": {
-        "A": "🔴 Alerta Vermelho! Foram identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
-        "B": "🟡 Sinal de Atenção! Existem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
-        "C": "🟢 Situação Positiva! No momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
-        "critica": "🚨 Alerta Imediato! Sua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
+        "A": "🔴**Alerta Vermelho!**\nForam identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
+        "B": "🟡 **Sinal de Atenção!**\nExistem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
+        "C": "🟢 **Situação Positiva!**\nNo momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
+        "critica": "⚠️ **Alerta Imediato!**\nSua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
     }
   },
 
@@ -128,10 +128,10 @@
       }
     ],
     "interpretacao": {
-        "A": "🔴 Alerta Vermelho! Foram identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
-        "B": "🟡 Sinal de Atenção! Existem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
-        "C": "🟢 Situação Positiva! No momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
-        "critica": "🚨 Alerta Imediato! Sua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
+        "A": "🔴**Alerta Vermelho!**\nForam identificados fortes indícios de abuso ou negligência. Sua situação pode envolver violência psicológica, física, financeira ou emocional. É muito importante não minimizar esses sinais e procurar ajuda o quanto antes. Entre em contato com serviços de apoio (Disque 100, 180 ou órgãos locais) para garantir sua segurança e bem-estar.",
+        "B": "🟡 **Sinal de Atenção!**\nExistem sinais de desrespeito, descuido ou situações que podem evoluir para abuso. Mesmo que ocorram de forma esporádica, precisam ser levados a sério. Converse com alguém de confiança e, se possível, busque orientação de profissionais para avaliar melhor sua situação.",
+        "C": "🟢 **Situação Positiva!**\nNo momento, suas respostas indicam respeito, segurança e autonomia. Isso é um bom sinal, mas ainda assim é importante manter-se atento(a) a mudanças de comportamento e preservar sempre o diálogo e o cuidado nas relações.",
+        "critica": "⚠️ **Alerta Imediato!**\nSua resposta indica uma situação crítica que não pode ser ignorada. Isso pode envolver agressão física, medo constante ou controle abusivo. Procure imediatamente ajuda especializada (Disque 100, 180, CREAS, Defensoria Pública ou serviços locais de apoio). Sua segurança e dignidade devem ser prioridade absoluta."
     }
 
   }

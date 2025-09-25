@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet, Alert } from "react-native";
+import ExitButton from '../../componentes/ExitButton';
 
 export default function DivisionCalculator({ navigation, route }) {
   const [itemsA, setItemsA] = useState([]);
@@ -108,6 +109,7 @@ const resetStep = route?.params?.resetStep || false;
           </Text>
         </TouchableOpacity>
       </View>
+      <ExitButton goTo="Home" />
     </View>
   );
 }

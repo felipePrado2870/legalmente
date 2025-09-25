@@ -5,9 +5,16 @@ import LinearGradient from 'react-native-linear-gradient';
 import ExitButton from '../componentes/ExitButton';
 
 // ---------- COMPONENTE CARD ----------
-function Card({ isFlipped, onPress, image, resizeModeType = "cover" }) {
+function Card({ isFlipped, onPress, image, resizeModeType = "cover", borderColor = "#000" }) {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.card} activeOpacity={0.8}>
+    <TouchableOpacity 
+      onPress={onPress} 
+      style={[
+        styles.card, 
+        { borderWidth: isFlipped ? 3 : 0, borderColor: isFlipped ? borderColor : "transparent" }
+      ]} 
+      activeOpacity={0.8}
+    >
       <Image
         source={isFlipped ? image : require('../../assets/jogoMemoria/backCard1.jpg')}
         style={styles.image}
@@ -17,17 +24,19 @@ function Card({ isFlipped, onPress, image, resizeModeType = "cover" }) {
   );
 }
 
+
 // ---------- LISTA DE IMAGENS DO JOGO ----------
 const images = [
-  { img: require('../../assets/jogoMemoria/frontCard1.png'), pairId: 1 },
-  { img: require('../../assets/jogoMemoria/frontCard2.png'), pairId: 2 },
-  { img: require('../../assets/jogoMemoria/frontCard3.png'), pairId: 3 },
-  { img: require('../../assets/jogoMemoria/frontCard4.png'), pairId: 4 },
-  { img: require('../../assets/jogoMemoria/frontCard5.png'), pairId: 5 },
-  { img: require('../../assets/jogoMemoria/frontCard6.png'), pairId: 6 },
-  { img: require('../../assets/jogoMemoria/frontCard7.png'), pairId: 7 },
-  { img: require('../../assets/jogoMemoria/frontCard8.png'), pairId: 8 },
+  { img: require('../../assets/jogoMemoria/frontCard1.png'), pairId: 1, borderColor: '#008000' }, 
+  { img: require('../../assets/jogoMemoria/frontCard2.png'), pairId: 2, borderColor: '#1E90FF' }, 
+  { img: require('../../assets/jogoMemoria/frontCard3.png'), pairId: 3, borderColor: '#FF0000' }, 
+  { img: require('../../assets/jogoMemoria/frontCard4.png'), pairId: 4, borderColor: '#FF8C00' }, 
+  { img: require('../../assets/jogoMemoria/frontCard5.png'), pairId: 5, borderColor: '#BA55D3' }, 
+  { img: require('../../assets/jogoMemoria/frontCard6.png'), pairId: 6, borderColor: '#8B4513' }, 
+  { img: require('../../assets/jogoMemoria/frontCard7.png'), pairId: 7, borderColor: '#000080' }, 
+  { img: require('../../assets/jogoMemoria/frontCard8.png'), pairId: 8, borderColor: '#FFD700' }, 
 ];
+
 
 // ---------- LISTA DE TÓPICOS ----------
 const familyTopics = [
@@ -83,6 +92,7 @@ const createShuffledDeck = () => {
       id: index + '_' + Math.random(),
       image: card.img,
       pairId: card.pairId,
+      borderColor: card.borderColor,
       isFlipped: false,
       isMatched: false,
     }))
@@ -142,6 +152,7 @@ export default function Tela8Screen() {
           renderItem={({ item, index }) => (
             <Card image={item.image} isFlipped={item.isFlipped || item.isMatched} 
               onPress={() => handleCardPress(index)}resizeModeType="stretch" 
+              borderColor={item.borderColor}
             />
           )}
           scrollEnabled={false}
@@ -201,7 +212,9 @@ const styles = StyleSheet.create({
     height: 145,
     margin: 2,
     marginHorizontal: 3,
-    borderRadius: 8,
+    borderRadius: 13,
+    borderWidth: 5, 
+    borderColor: '#000',
   },
   image: {
     width: '100%',
