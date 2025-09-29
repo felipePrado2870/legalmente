@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet, Alert } from "react-native";
+import { View, Text,Image, TextInput, TouchableOpacity, FlatList, StyleSheet, Alert } from "react-native";
 import ExitButton from '../../componentes/ExitButton';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function DivisionCalculator({ navigation, route }) {
   const [itemsA, setItemsA] = useState([]);
   const [itemsB, setItemsB] = useState([]);
   const [itemsBoth, setItemsBoth] = useState([]);
-
   const [desc, setDesc] = useState("");
   const [value, setValue] = useState("");
-  const [step, setStep] = useState("A"); // etapas: "A" → "B" → "Both"
+  const [step, setStep] = useState("A"); 
 
   const addItem = () => {
     const v = parseFloat(value.replace(",", "."));
@@ -26,7 +26,6 @@ export default function DivisionCalculator({ navigation, route }) {
     } else {
       setItemsBoth((s) => [newItem, ...s]);
     }
-
     setDesc("");
     setValue("");
   };
@@ -53,27 +52,35 @@ export default function DivisionCalculator({ navigation, route }) {
     } else {
       navigation.goBack();
     }
-};
+  };
 
-const resetStep = route?.params?.resetStep || false;
-  
-  React.useEffect(() => {
-    if (resetStep) {
-      setStep("A");
-      navigation.setParams({ resetStep: false }); 
-    }
-  }, [resetStep]);
+  useFocusEffect(
+    React.useCallback(() => {
+      if (route.params?.resetStep) {
+        setStep("A");
+        setItemsA([]);
+        setItemsB([]);
+        setItemsBoth([]);
+        navigation.setParams({ resetStep: false });
+      }
+    }, [route.params])
+  );
 
-  return (
-    
+  const images = {
+    A: require("../../../assets/calculadorabens/imagem2.png"),
+    B: require("../../../assets/calculadorabens/imagem3.png"),
+    Both: require("../../../assets/calculadorabens/imagem1.png"),
+  };
+
+
+  return ( 
     <View style={styles.container}>
-      <View style={styles.head}>
-        <Text style={styles.head}>Divisão de Bens</Text>
-      </View>
+      <View style={styles.card2}>
+      <Text style={styles.head}>Divisão de Bens</Text>
       <Text style={styles.header}>
         {step === "A" ? "Bens do Cônjuge A" : step === "B" ? "Bens do Cônjuge B" : "Bens de Ambos"}
       </Text>
-
+      <Image source={images[step]} style={styles.img1} />
       <TextInput placeholder="Descrição do bem"  placeholderTextColor={"#222222"} style={styles.input} value={desc} onChangeText={setDesc}/>
       <TextInput
         placeholder="Valor (R$)"
@@ -96,7 +103,12 @@ const resetStep = route?.params?.resetStep || false;
             <Text>{item.desc} — R$ {item.value.toFixed(2)}</Text>
           </View>
         )}
-        ListEmptyComponent={<Text style={{ color: "#666", textAlign:"center"}}>Nenhum bem ainda</Text>}
+        ListEmptyComponent={
+          <Text style={{ color: "#666", textAlign:"center" }}>
+            Nenhum bem ainda
+          </Text>
+        }
+        style={styles.list}
       />
 
       <View style={styles.navRow}>
@@ -109,74 +121,110 @@ const resetStep = route?.params?.resetStep || false;
           </Text>
         </TouchableOpacity>
       </View>
+      </View>
       <ExitButton goTo="Home" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-     container: { flex: 1,
-     backgroundColor: "#ffffffff",
-    marginBottom: 40,
-    
-
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: "#ecc8ccff",
+    justifyContent: "center",
+    alignItems: "center",
+  }, 
+  card2: {
+    width: "90%", 
+    padding: 20,    
+    borderRadius: 20,
+    backgroundColor: "#ffffffff",
+    alignItems: "center",   
+    elevation: 6,
   },
-  header: { fontSize: 20, fontWeight: "700", marginBottom: 10, textAlign: "center" 
+  header: { 
+    fontSize: 15,
+    fontWeight: 'bold', 
+    textAlign: "center" ,
+    marginBottom: 5,
+  },
+  img1: {
+    width: 250,
+    height: 250,
+    resizeMode: "stretch",
+    borderRadius: 200,
+    marginBottom: 10,
+    borderColor: '#D4AF37',
+    backgroundColor:"#fff6dd",
+    borderWidth: 5,
+    alignSelf: 'center',
   },
   head: {
     width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
     textAlign: 'center',
-    textAlignVertical: 'bottom',
-    height: 115,
-    fontSize: 28,
-    color: '#fff',
+    fontSize: 25,
+    color: '#5D252A',
     fontWeight: 'bold',
-    backgroundColor: '#5D252A',
-    marginBottom: 20,
+    marginTop: -10,
   },
   input: {
-    backgroundColor: "#fff",
+    width: "100%",
+    backgroundColor: "#ecc8ccff",
     borderWidth: 1,
     borderColor: "#ddd",
     padding: 10,
     marginHorizontal: 20,
     marginBottom: 8,
-    borderRadius: 6,
+    borderRadius: 10,
   },
   addBtn: {
-    backgroundColor: "#8B4A52",
-    padding: 15,
+    width: "100%",  
+    backgroundColor:  '#D4AF37',
+    padding: 10,
+    marginTop: 10,
     borderRadius: 10,
-    marginHorizontal: 60,
-    marginBottom: 45,
+    marginBottom: 10,
   },
-  addBtnText: { color: "#fff",
-     textAlign: "center",
-      fontWeight: "600" 
-
+  addBtnText: { 
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "600",
   },
-
   itemRow: { 
-     paddingVertical: 6,
-     borderBottomWidth: 1,
-     borderColor: "#eee",
-     padding:40,
-
- },
-
+    paddingVertical: 6,
+    borderBottomWidth: 1,
+    borderColor: "#eee",
+    padding:10,
+  },
   navRow: { 
-     flexDirection: "row",
-     justifyContent: "space-between",
-     marginHorizontal: 15,
-     marginBottom: 30,
- },
- 
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+  },
   navBtn: { 
-     padding: 12,
-     backgroundColor: "#8B4A52",
-     borderRadius: 8
+    flex: 1,
+    alignItems:"center",
+    marginTop: 20,
+    marginHorizontal: 10,
+    padding: 12,
+    backgroundColor: "#8B4A52",
+    borderRadius: 8
  },
-  navText: { color: "#fff", fontWeight: "600", textAlign: "center" },
+ list: {
+    marginTop: 10,
+    maxHeight: 80, 
+    width: "100%", 
+  },
+  itemRow: { 
+    paddingVertical: 3,
+    borderBottomWidth: 1,
+    borderColor:'#d4af3780',
+    paddingHorizontal: 10,
+  },
+  navText: { 
+    color: "#fff", 
+    fontWeight: "600", 
+    textAlign: "center" 
+  },
 });

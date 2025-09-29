@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, Image, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import ExitButton from '../componentes/ExitButton';
@@ -27,6 +27,7 @@ const Tela7Screen = () => {
       <View style={styles.body}>
         <View style={styles.cardSimulator}>
           <Text style={styles.simulatorTitle}>Simulador</Text>
+          <Image source={require("../../assets/calculadorabens/imagem1.png")} style={styles.img1}/>
           <Text style={styles.text}>
             Uma forma rápida e educativa de estimar uma divisão de bens em união estável usando regras simplificadas. O resultado é apenas informativo.
           </Text>
@@ -102,6 +103,17 @@ const styles = StyleSheet.create({
   body: {
     padding: 10,
   },
+  img1: {
+    width: 200,
+    height: 200,
+    resizeMode: "stretch",
+    borderRadius: 200,
+    marginBottom: 10,
+    borderColor: '#D4AF37',
+    backgroundColor:"#fff6dd",
+    borderWidth: 5,
+    alignSelf: 'center',
+  },
   headerText1: {
     marginTop: 50,
     fontSize: 24,
@@ -131,7 +143,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#5D252A",
     fontWeight: "bold",
-    paddingBottom:10,
     textAlign: "center",
   },
   text: {

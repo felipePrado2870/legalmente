@@ -17,7 +17,7 @@ const themes = [
   {
     type: "cards",
     title: 'O que é o Direito à Identidade de Gênero?',
-    text: 'É o reconhecimento da autodeterminação de cada indivíduo em relação à sua experiência interna e pessoal de gênero, independentemente do sexo atribuído no nascimento. Esse direito garante o uso do nome, pronomes e o reconhecimento social conforme a identidade de cada pessoa, promovendo dignidade, liberdade e respeito.',
+    text: 'É o reconhecimento da autodeterminação de cada indivíduo em relação à sua experiência interna e pessoal de gênero, que pode ou não corresponder ao sexo atribuído ao nascimento. Trata-se de um direito humano fundamental, protegido contra a discriminação em diversas convenções internacionais, como as da ONU e a CEDAW..',
     cards: [
       { title: 'Auto determinação', text: 'A pessoa define seu próprio género' },
       { title: 'Auto determinação', text: 'Essencial para a dignidade e liberdade.' },
@@ -27,7 +27,7 @@ const themes = [
   {
     type: "topics",
     title: 'Decisão do STF de (2018) e Provimento do CNJ',
-    text: 'O STF reconheceu o direito à alteração de nome e gênero diretamente no registro civil, sem necessidade de cirurgia, laudos médicos ou decisão judicial. O Provimento do CNJ regulamenta o procedimento nos cartórios.',
+    text: 'STF reconheceu direito à alteração de nome e gênero sem cirurgia ou laudos. Provimento CNJ nº 73/2018 garante procedimento administrativo. Inclusão do gênero "não binário" permitida em alguns estados.',
     subTitle: "Quem pode solicitar?",
     topics: [
       "Maiores de 18 anos",
@@ -39,29 +39,32 @@ const themes = [
   {
     type: "steps",
     title: 'Alteração do nome e gênero no Registro Civil',
+    text: 'O processo para a retificação de nome e gênero é simplificado e pode ser realizado diretamente em qualquer Cartório de Registro Civil.',
     steps: [
-      { title: 'Comparecer ao cartório com documento oficial.'},
-      { title: 'Declarar a vontade de realizar a alteração.'},
-      { title: 'Preencher e assinar os termos fornecidos pelo cartório.' },
-      { title: 'Registro e averbação no assento, com emissão de nova certidão.' },
+      { title: 'Comparecer ao cartório', text: 'Dirija-se a qualquer Cartório de Registro Civil com um documento oficial de identificação.' },
+      { title: 'Manifestar Vontade', text: 'Declare sua vontade de alterar o prenome e o gênero para que correspondam à sua identidade.' },
+      { title: 'preencher os Termos', text: ' Preencha o termo de declaração e o requerimento formal fornecidos pelo cartório.' },
+      { title: ' Registro e Averbação', text: 'O cartório registrará e averbará a alteração em seu assento de nascimento (e casamento, se houver).' },
     ]
   },
   {
     type: "documents",
-    title: "Documentação necessária",
+    title: "Documentação necessária para o pedido",
+    text: " É importante notar que a legislação não exige laudos médicos, psicológicos, nem autorização judicial, desburocratizando o processo e respeitando a autodeterminação individual.",
     documents: [
-      "Documento oficial com foto",
-      "Certidão de nascimento atualizada",
-      "Comprovante de residência",
-      "Declaração pessoal de vontade"
+      "Documento de identidade oficial com foto: RG, CNH ou passaporte.",
+      "Certidão de nascimento original: Atualizada.",
+      "Comprovante de residência atualizado: Conta de consumo, por exemplo.",
+      "Declaração pessoal de vontade: Modelo fornecido pelo próprio cartório."
     ],
     importance: [
-      { title: "Educação", text: "Acesso pleno a matrículas e reconhecimento acadêmico." },
-      { title: "Saúde", text: "Atendimento adequado e respeitoso." },
-      { title: "Trabalho", text: "Documentos alinhados ao nome social no ambiente profissional." },
-      { title: "Cidadania", text: "Pleno exercício de direitos e participação social." }
+      { title: "Educação", text: "Acesso pleno a matrículas e reconhecimento em ambientes acadêmicos." },
+      { title: "Saúde", text: "Atendimento adequado e respeitoso em hospitais e clínicas." },
+      { title: "Trabalho", text: "Oportunidades profissionais e ambiente de trabalho inclusivo." },
+      { title: "Cidadania", text: "Exercício pleno de direitos e deveres civis." }
     ]
   },
+
 ];
 
 const Tela5Screen = () => {
@@ -171,6 +174,7 @@ const Tela5Screen = () => {
                           <Text style={styles.stepIndex}>{i + 1}.</Text>
                           <Text style={styles.stepTitle}>{step.title}</Text>
                         </View>
+                        <Text style={styles.stepText}>{step.text}</Text>
                       </View>
                     ))}
                   </View>
@@ -414,7 +418,14 @@ endText:{
   marginTop:10,
   textAlign: "center" ,
   
-}
+},
+stepText: {
+  fontSize: 13,
+  color: "#333",
+  marginTop: 4,
+  textAlign: "justify",
+},
+
 
 });
 

@@ -10,7 +10,7 @@
       },
       {
         "titulo": "titulo2",
-        "temaPinciapl": "Adoçâo Família",
+        "temaPinciapl": "Adoção Família",
         "textAssunto": "Curiosidades sobre ato legal de integrar criança à família",
         "imagemSecundari": "Adoções",
         "tituloTela":"Curiosidades - Informativas",
@@ -18,7 +18,7 @@
       },
       {
         "titulo": "titulo3",
-        "temaPinciapl": "Vínculo Conjugal",
+        "temaPinciapl": "Vínculo Matrimonial",
         "textAssunto": "Questionário sobre aspectos legais e afetivos para reconhecimento de vínculo conjugal.",
         "imagemSecundari": "GuiaDeCasamento",
         "tituloTela":"Questionário - Informativo",
@@ -66,7 +66,7 @@
       },
       {
         "titulo": "titulo9",
-        "temaPinciapl": "Invalidação Famíliar",
+        "temaPinciapl": "Destituição Famíliar",
         "textAssunto": "Questionário sobre retirada judicial da autoridade dos pais.",
         "imagemSecundari": "DestituiçãoPoderFamiliar",
         "tituloTela":"Questionário - Informativo",
