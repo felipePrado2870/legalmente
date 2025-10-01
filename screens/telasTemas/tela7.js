@@ -16,8 +16,8 @@ const Tela7Screen = () => {
     <ScrollView  style={{ flex: 1, backgroundColor:"#ffd8d88f" }} contentContainerStyle={{ paddingBottom:30 }}>
       <LinearGradient colors={['#A67C7C', '#8B4A52', '#5D252A']} style={styles.head}>
         <View style={styles.header}>
+          <Image source={require("../../assets/UniãoEstável.png")} style={styles.img1}/>
           <Text style={styles.headerText1}>União Estável e Sucessão</Text>
-          <Text style={styles.headerText2}>Entenda e Simule</Text>
           <Text style={styles.headerText3}>
             Informações essenciais e um simulador educativo para visualizar a divisão de bens.
           </Text>
@@ -26,10 +26,10 @@ const Tela7Screen = () => {
 
       <View style={styles.body}>
         <View style={styles.cardSimulator}>
-          <Text style={styles.simulatorTitle}>Simulador</Text>
-          <Image source={require("../../assets/calculadorabens/imagem1.png")} style={styles.img1}/>
-          <Text style={styles.text}>
-            Uma forma rápida e educativa de estimar uma divisão de bens em união estável usando regras simplificadas. O resultado é apenas informativo.
+          <Image source={require("../../assets/iconCalculadora.png")} style={styles.img2}/>
+          <Text style={styles.simulatorTitle}> Simulador de Sucessâo</Text>
+          <Text style={styles.text1}> 
+            Calcule de forma educativa como seria a divisão de bens em diferentes cenários de união estável.
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate('DivisionCalculator')}>
             <Text style={styles.startButton}>Iniciar Simulação</Text>
@@ -37,16 +37,23 @@ const Tela7Screen = () => {
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.titleCard}>O que é União Estável</Text>
-          <Text style={styles.text}>
-            Convivência pública, contínua e duradoura entre duas pessoas com objetivo de constituir família, sem exigir casamento formal.
+          <Text style={styles.titleCard}>📋  O que é União Estável</Text>
+          <Text style={styles.text2}>
+            A união estável é reconhecida como entidade familiar, caracterizada pela convivência pública, contínua e duradoura entre duas pessoas, com objetivo de constituir família.
           </Text>
 
           {showUniao && (
             <View style={styles.extraBox}>
+              <Text style={styles.textCardTitulo}>Características principais:</Text>
               <Text style={styles.textCard}>
-                Pode ser reconhecida:
+                {"\n"}• Convivência pública e notória
+                {"\n"}• Continuidade temporal
+                {"\n"}• Objetivo de constituir família
+                {"\n"}• Ausência de impedimentos matrimoniais
                 {"\n"}
+              </Text>
+              <Text style={styles.textCardTitulo}>Pode ser reconhecida:</Text>
+              <Text style={styles.textCard}>
                 {"\n"}• Por escritura pública em cartório;
                 {"\n"}• Judicialmente, em caso de disputa.
               </Text>
@@ -62,19 +69,18 @@ const Tela7Screen = () => {
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.titleCard}>Direito de Sucessão</Text>
-          <Text style={styles.text}>
-            O companheiro(a) possui proteção sucessória; a extensão depende do regime de bens e da existência de descendentes.
+          <Text style={styles.titleCard}> 🏛️  Direito de Sucessão</Text>
+          <Text style={styles.text2}>
+            O companheiro(a) possui direitos sucessórios que variam conforme o regime de bens adotado e a existência de outros herdeiros.
           </Text>
-
           {showSucessao && (
             <View style={styles.extraBox}>
+              <Text style={styles.textCardTitulo}>Fatores que influenciam:</Text>
               <Text style={styles.textCard}>
-                Direitos variam com a existência de descendentes, ascendentes e pactos.
-                {"\n"}
-                {"\n"}• Deve ser pública, contínua e duradoura;
-                {"\n"}
-                {"\n"}• As regras de herança podem mudar com filhos, ascendentes e pactos.
+                {"\n"}• Regime de bens escolhido
+                {"\n"}• Existência de filhos
+                {"\n"}• Presença de outros herdeiros
+                {"\n"}• Duração da união
               </Text>
               <Text style={styles.baseLegal}>Referência: Código Civil, Art. 1.723 e seguintes.</Text>
             </View>
@@ -101,7 +107,7 @@ const styles = StyleSheet.create({
     marginBottom:15,
   },
   body: {
-    padding: 10,
+    padding: 15,
   },
   img1: {
     width: 200,
@@ -109,20 +115,24 @@ const styles = StyleSheet.create({
     resizeMode: "stretch",
     borderRadius: 200,
     marginBottom: 10,
+    marginTop: 40,
     borderColor: '#D4AF37',
     backgroundColor:"#fff6dd",
     borderWidth: 5,
     alignSelf: 'center',
   },
-  headerText1: {
-    marginTop: 50,
-    fontSize: 24,
-    color: "#fff",
-    fontWeight: "bold",
-    textAlign: "center",
+  img2: {
+    width: 45,
+    height: 45,
+    marginTop: 10,
+    marginBottom: 10,
+    resizeMode: "stretch",
+    alignSelf: 'center',
+    borderColor: "#5D252A",
+    borderWidth: 1,
   },
-  headerText2: {
-    fontSize: 24,
+  headerText1: {
+    fontSize: 28,
     color: "#fff",
     fontWeight: "bold",
     textAlign: "center",
@@ -134,27 +144,36 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   cardSimulator: {
-    backgroundColor: "#fff",
+    backgroundColor: "#5D252A",
     borderRadius: 8,
-    padding: 10,
+    padding: 15,
     marginBottom: 15,
   },
   simulatorTitle: {
-    fontSize: 20,
-    color: "#5D252A",
+    fontSize: 22,
+    color: "#fff",
     fontWeight: "bold",
     textAlign: "center",
+    marginBottom: 10,
   },
-  text: {
+  text1: {
     fontSize: 15,
     marginBottom: 10,
+    color: "#fff",
+    textAlign: "justify",
+  },
+  text2: {
+    fontSize: 15,
+    marginBottom: 10,
+    color: "#000000ff",
     textAlign: "justify",
   },
   startButton: {
     backgroundColor: "#D4AF37",
-    width: "100%",
+    width: "50%",
     padding: 10,
-    borderRadius: 10,
+    borderRadius: 17,
+    alignSelf:"center",
     textAlign: "center",
     color: "#fff",
     fontWeight: "bold",
@@ -162,9 +181,8 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
     borderRadius: 8,
-    padding: 12,
+    padding: 15,
     marginBottom: 15,
-    alignItems:"center",
   },
   titleCard: {
     fontSize: 20,
@@ -174,30 +192,37 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   toggleButton: {
-    backgroundColor: "#D4AF37",
+    backgroundColor: "#5D252A",
     padding: 8,
-    borderRadius: 8,
+    borderRadius: 17,
     textAlign: "center",
     color: "#fff",
     fontWeight: "bold",
-    width:120,
+    width:130,
   },
   extraBox: {
     width:"100%",
-    backgroundColor: "#fff6dd",
     padding: 8,
-    borderRadius: 6,
     marginBottom: 10,
-    borderWidth:2,
-    borderColor:"#ffebb3ff"
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
+  },
+  textCardTitulo:{
+    justifyContent:"flex-start",
+    padding:5,
+    fontSize: 15,
+    color: "#000000",
+    textAlign: "justify",
+    fontWeight: "bold",
   },
   textCard:{
     justifyContent:"flex-start",
     padding:5,
     fontSize: 13,
+    marginTop: -15,
     color: "#000000",
     textAlign: "justify",
-    
   },
   baseLegal: {
     fontSize: 13,

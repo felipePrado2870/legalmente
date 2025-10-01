@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import ExitButton from "../../componentes/ExitButton";
+import LinearGradient from "react-native-linear-gradient";
 
 const regimes = [
   { key: "partial", label: "Comunhão Parcial" },
@@ -12,6 +13,7 @@ const regimes = [
 export default function RegimeScreen({ navigation, route }) {
   const { itemsA = [], itemsB = [], itemsBoth = [] } = route.params || {};
   const [items] = useState([...itemsA, ...itemsB, ...itemsBoth]);
+ 
 
   const [regime, setRegime] = useState(null);     
   const [showOptions, setShowOptions] = useState(true); 
@@ -23,22 +25,34 @@ export default function RegimeScreen({ navigation, route }) {
   let note = "";
 
   if (regime === "partial") {
-    shareA = grandTotal / 2;
-    shareB = grandTotal / 2;
+    const totalBoth = itemsBoth.reduce((s, it) => s + it.value, 0);
+    const totalA = itemsA.reduce((s, it) => s + it.value, 0);
+    const totalB = itemsB.reduce((s, it) => s + it.value, 0);
+
+    shareA = totalA + totalBoth / 2;
+    shareB = totalB + totalBoth / 2;
     note = "Na comunhão parcial, divide-se apenas os bens adquiridos após a união.";
   } else if (regime === "universal") {
     shareA = grandTotal / 2;
     shareB = grandTotal / 2;
     note = "Na comunhão universal, todo patrimônio é dividido igualmente.";
   } else if (regime === "separation") {
-    shareA = 0;
-    shareB = grandTotal;
-    note = "Na separação total, cada cônjuge fica com o que está em seu nome.";
+    shareA = itemsA.reduce((s, it) => s + it.value, 0);
+    shareB = itemsB.reduce((s, it) => s + it.value, 0);
+    const shared = itemsBoth.reduce((s, it) => s + it.value, 0);
+    shareA += shared / 2;
+    shareB += shared / 2;
+    note = "Na separação total, cada cônjuge fica com o que está em seu nome. Bens adquiridos em conjunto são divididos igualmente.";
   } else if (regime === "participation") {
-    shareA = grandTotal / 2;
-    shareB = grandTotal / 2;
+    const totalBoth = itemsBoth.reduce((s, it) => s + it.value, 0);
+    const totalA = itemsA.reduce((s, it) => s + it.value, 0);
+    const totalB = itemsB.reduce((s, it) => s + it.value, 0);
+
+    shareA = totalA + totalBoth / 2;
+    shareB = totalB + totalBoth / 2;
     note = "Na participação final nos aquestos, divide-se o adquirido onerosamente.";
   }
+
 
   const toggleRegime = (key) => {
     if (regime === key) {
@@ -55,7 +69,6 @@ export default function RegimeScreen({ navigation, route }) {
       <View style={styles.card}>
         <Text style={styles.head}>Divisão de Bens</Text>
         <Text style={styles.header}>Escolha o Regime de Bens</Text>
-        <Image source={require("../../../assets/calculadorabens/imagem1.png")}style={styles.img1} />
         {showOptions ? (
           regimes.map((r) => (
             <TouchableOpacity key={r.key} style={[styles.regimeBtn, regime === r.key && styles.regimeBtnActive]} onPress={() => toggleRegime(r.key)}>
@@ -72,19 +85,42 @@ export default function RegimeScreen({ navigation, route }) {
           </TouchableOpacity>
         )}
         {regime ? (
-          <View style={styles.resultBox}>
-            <Text style={styles.resultTitle}>Resultado</Text>
-            <Text>Patrimônio Total: R$ {grandTotal.toFixed(2)}</Text>
-            <Text>Parte Cônjuge A: R$ {shareA.toFixed(2)}</Text>
-            <Text>Parte Cônjuge B: R$ {shareB.toFixed(2)}</Text>
-            <Text style={{ marginTop: 10, color: "#444" }}>{note}</Text>
+          <View style={styles.containerResultBox}>
+            <View style={styles.resultBox1}>
+             <Text style={{ color: "#000000ff", fontSize: 15, fontWeight: 'bold'}}>👤 Cônjuge A - Seus Bens</Text>
+              {itemsA.map((item) => (
+                <View key={item.id} style={styles.itemRow}>
+                  <Text>{item.desc} — R$ {item.value.toFixed(2)}</Text>
+                </View>
+              ))}
+              <Text style={{marginTop: 15, color: "#000000ff", fontSize: 13, fontWeight: 'bold'}}>Valor final da separação R$ {shareA.toFixed(2)}</Text>
+            </View>
+            <View style={styles.resultBox1}>
+              <Text style={{ color: "#000000ff", fontSize: 15, fontWeight: 'bold'}} >👤 Cônjuge B - Seus Bens</Text>
+              {itemsB.map((item) => (
+                <View key={item.id} style={styles.itemRow}>
+                  <Text>{item.desc} — R$ {item.value.toFixed(2)}</Text>
+                </View>
+              ))}
+              <Text style={{marginTop: 15, color: "#000000ff", fontSize: 13, fontWeight: 'bold'}}>Valor final da separação R${shareB.toFixed(2)}</Text>
+            </View>
+            <View style={styles.resultBox2}>
+              <Text style={{ color: "#fffafaff", fontSize: 13, fontWeight: 'bold'}}>💰  {regimes.find((r) => r.key === regime)?.label}</Text>
+              <Text style={{ marginTop: 5, color: "#fffafaff", fontSize: 20 , fontWeight: 'bold',}}>R$ {grandTotal.toFixed(2)}</Text>
+              <Text style={{ marginTop: 10, color: "#fffafaff", textAlign: "center" , fontSize: 10 }}>{note}</Text>
+            </View>
           </View>
         ) : null}
-        <View style={styles.navRow}>
-          <TouchableOpacity  style={styles.navBtn} onPress={() => navigation.navigate("DivisionCalculator", { resetStep: true })}>
-            <Text style={styles.navText}>Novo Cálculo</Text>
-          </TouchableOpacity>
-        </View>
+        <View  style={styles.rowButtons}>
+            <TouchableOpacity onPress={() => navigation.navigate("DivisionCalculator", { resetStep: true })}>
+              <LinearGradient colors={["#9f676dff", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
+                <Text style={styles.buttonText2}>Novo Cálculo</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+            <TouchableOpacity  style={styles.homeButton} onPress={() => navigation.navigate("Home")} >
+              <Text style={styles.buttonText3}>Voltar ao Menu</Text>
+            </TouchableOpacity>
+          </View>
       </View>
       <ExitButton goTo="Home" />
     </View>
@@ -94,7 +130,7 @@ export default function RegimeScreen({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ecc8ccff",
+    backgroundColor: "#8B4A52",
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
@@ -109,40 +145,32 @@ const styles = StyleSheet.create({
   },
   head: {
     marginTop: -10,
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: "bold",
-    color: "#5D252A",
+    color: "#8B4A52",
     textAlign: "center",
   },
   header: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "600",
     marginBottom: 5,
+    color: "#333",
     textAlign: "center",
-  },
-  img1: {
-    width: 220,
-    height: 220,
-    resizeMode: "stretch",
-    borderRadius: 200,
-    marginBottom: 5,
-    borderColor: "#D4AF37",
-    backgroundColor: "#fff6dd",
-    borderWidth: 5,
-    alignSelf: "center",
+    marginBottom: 10,
   },
   regimeBtn: {
     borderWidth: 2,
-    borderColor:"#d4af375b",
+    borderColor:"#D4AF37",
     padding: 10,
-    borderRadius: 10,
-    marginBottom: 5,
+    borderRadius: 12,
+    marginBottom: 8,
     width: "100%",
   },
   regimeBtnActive: {
     backgroundColor: "#D4AF37",
   },
   regimeText: {
+    fontSize: 13,
     color: "#333",
     textAlign: "center",
   },
@@ -153,17 +181,28 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "600",
   },
-  resultBox: {
+  containerResultBox: {
+    width: "100%",
+  },
+  resultBox1: {
     backgroundColor: "#fff",
     borderWidth: 1,
     borderColor: "#ddd",
+    alignItems: "center",
     padding: 16,
     borderRadius: 8,
     marginTop: 10,
     width: "100%",
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  resultBox2: {
+    backgroundColor: "#8B4A52",
+    alignItems: "center",
+    padding: 16,
+    borderRadius: 8,
+    marginTop: 20,
+    width: "100%",
     shadowRadius: 4,
     elevation: 3,
   },
@@ -173,21 +212,35 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: "center",
   },
-  navRow: {
+   rowButtons: {
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: 10,
-    width: "100%",
+    marginTop:10,
   },
-  navBtn: {
-    flex: 1,
-    padding: 12,
-    backgroundColor: "#8B4A52",
-    borderRadius: 8,
+  quizButton: {
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 12,
+    marginLeft: 10,
     alignItems: "center",
   },
-  navText: {
-    color: "#fff",
-    fontWeight: "600",
+   buttonText2: {
+    color: "#FFFFFF",
+    fontSize: 15,
+    fontWeight: "bold",
   },
+  homeButton: {
+    backgroundColor: '#ab8085b2',
+    padding: 15,
+    borderRadius: 10,
+    borderColor: "#fff",  
+    borderWidth: 2, 
+    marginTop: 10,
+    marginLeft: 10,
+    alignItems: "center",
+  },
+  buttonText3: {
+    color: "#FFFFFF",
+    fontSize: 15,
+  }
 });

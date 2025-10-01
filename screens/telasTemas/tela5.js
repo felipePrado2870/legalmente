@@ -30,10 +30,7 @@ const themes = [
     text: 'STF reconheceu direito à alteração de nome e gênero sem cirurgia ou laudos. Provimento CNJ nº 73/2018 garante procedimento administrativo. Inclusão do gênero "não binário" permitida em alguns estados.',
     subTitle: "Quem pode solicitar?",
     topics: [
-      "Maiores de 18 anos",
-      "Travestis",
-      "Pessoas transgênero",
-      "Pessoas não-binárias"
+      "Qualquer pessoa com mais de 18 anos",
     ]
   },
   {
@@ -102,7 +99,6 @@ const Tela5Screen = () => {
       style={styles.container}
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.header1}>CURIOSIDADES SOBRE</Text>
         <Text style={styles.header2}>Identidade de Gênero</Text>
         <Text style={styles.header3}>Conheça seus direitos.</Text>
 
@@ -218,20 +214,13 @@ const styles = StyleSheet.create({
   scrollContainer: {
     padding: 16
   },
-  header1: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#fff',
-    textAlign: 'center',
-    marginTop: 40,
-    marginBottom: 5,
-  },
   header2: {
     color: '#D4AF37',
     textAlign: "center",
     fontSize: 30,
     fontWeight: "bold",
     marginBottom: 5,
+    marginTop: 40,
   },
   header3:{
     color: '#fff',

@@ -41,9 +41,8 @@ export default function DivisionCalculator({ navigation, route }) {
       navigation.navigate("Regime", { itemsA, itemsB, itemsBoth });
     }
   };
-
   const currentItems = step === "A" ? itemsA : step === "B" ? itemsB : itemsBoth;
-
+  const total = currentItems.reduce((acc, item) => acc + item.value, 0);
   const prevStep = () => {
     if (step === "B") {
       setStep("A"); 
@@ -66,51 +65,46 @@ export default function DivisionCalculator({ navigation, route }) {
     }, [route.params])
   );
 
-  const images = {
-    A: require("../../../assets/calculadorabens/imagem2.png"),
-    B: require("../../../assets/calculadorabens/imagem3.png"),
-    Both: require("../../../assets/calculadorabens/imagem1.png"),
-  };
-
-
   return ( 
-    <View style={styles.container}>
+    <View style={styles.container1}>
       <View style={styles.card2}>
-      <Text style={styles.head}>Divisão de Bens</Text>
+      <Text style={styles.head}> ⚖️ Divisão de Bens</Text>
+      <View style={styles.container2}>
+        <Text style={[ styles.text2,step === "A" && { backgroundColor:'#D4AF37',borderColor: '#D4AF37', color: "#fff", elevation: 6},]}> A </Text>
+        <Text style={[ styles.text2,step === "B" && { backgroundColor: '#D4AF37',borderColor: '#D4AF37', color: "#fff", elevation: 6},]}> B </Text>
+        <Text style={[ styles.text2,step === "Both" && { backgroundColor: '#D4AF37',borderColor: '#D4AF37',color: "#fff", elevation: 6},]}>📊</Text>
+      </View>
       <Text style={styles.header}>
-        {step === "A" ? "Bens do Cônjuge A" : step === "B" ? "Bens do Cônjuge B" : "Bens de Ambos"}
+        {step === "A" ? "  👤 Cônjuge A  " : step === "B" ? "  👤 Cônjuge B  " : "  Bens de Ambos  "}
       </Text>
-      <Image source={images[step]} style={styles.img1} />
-      <TextInput placeholder="Descrição do bem"  placeholderTextColor={"#222222"} style={styles.input} value={desc} onChangeText={setDesc}/>
-      <TextInput
-        placeholder="Valor (R$)"
-        placeholderTextColor={"#222222"}
-        style={styles.input}
-        keyboardType="numeric"
-        value={value}
-        onChangeText={setValue}
-      />
-
+      <Text style={styles.text1}> 📝 Descrição do Bem</Text>
+      <TextInput placeholder="Ex: Casa, Carro, Conta Bancária..."  placeholderTextColor={"#2222226e"} style={styles.input} value={desc} onChangeText={setDesc}/>
+      <Text style={styles.text1}> 💰 Valor (R$)</Text>
+      <TextInput placeholder="0,00" placeholderTextColor={"#2222226e"}style={styles.input}keyboardType="numeric" value={value} onChangeText={setValue} />
       <TouchableOpacity style={styles.addBtn} onPress={addItem}>
-        <Text style={styles.addBtnText}>Adicionar Bem</Text>
+        <Text style={styles.addBtnText}>➕ Adicionar Bem</Text>
       </TouchableOpacity>
-
-      <FlatList
-        data={currentItems}
-        keyExtractor={(it) => it.id}
-        renderItem={({ item }) => (
+      <FlatList data={currentItems} keyExtractor={(it) => it.id} renderItem={({ item }) => (
           <View style={styles.itemRow}>
             <Text>{item.desc} — R$ {item.value.toFixed(2)}</Text>
           </View>
         )}
         ListEmptyComponent={
-          <Text style={{ color: "#666", textAlign:"center" }}>
-            Nenhum bem ainda
-          </Text>
+          <View>
+            <Text style={{ color: "#666", textAlign:"center", fontSize: 35 }}>
+              📦
+            </Text>
+            <Text style={{ color: "#666", textAlign:"center", fontSize: 13 }}>
+              Nenhum bem ainda
+            </Text>
+          </View>
         }
         style={styles.list}
       />
-
+      <View style={styles.card3}>
+        <Text style={styles.totalText1}>Total dos bens</Text>
+        <Text style={styles.totalText2}>R$  {total.toFixed(2)}</Text>
+      </View>
       <View style={styles.navRow}>
         <TouchableOpacity style={styles.navBtn} onPress={prevStep}>
           <Text style={styles.navText}>⬅ Voltar</Text>
@@ -128,12 +122,19 @@ export default function DivisionCalculator({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container1: {
     flex: 1,
     padding: 16,
-    backgroundColor: "#ecc8ccff",
+    backgroundColor: "#8B4A52",
     justifyContent: "center",
     alignItems: "center",
+  }, 
+  container2: {
+    flexDirection: "row", 
+    justifyContent: "space-around",
+    width: "80%",
+    marginBottom: 10,
+    marginTop: 10,
   }, 
   card2: {
     width: "90%", 
@@ -143,36 +144,77 @@ const styles = StyleSheet.create({
     alignItems: "center",   
     elevation: 6,
   },
+  card3: {
+    width: "100%", 
+    padding: 10,  
+    marginTop: 20,  
+    borderRadius: 10,
+    backgroundColor: '#D4AF37',
+    alignItems: "center",
+    textAlign: "center",   
+   
+  },
   header: { 
     fontSize: 15,
     fontWeight: 'bold', 
     textAlign: "center" ,
     marginBottom: 5,
-  },
-  img1: {
-    width: 250,
-    height: 250,
-    resizeMode: "stretch",
-    borderRadius: 200,
-    marginBottom: 10,
-    borderColor: '#D4AF37',
-    backgroundColor:"#fff6dd",
-    borderWidth: 5,
-    alignSelf: 'center',
+    backgroundColor: "#8B4A52",
+    padding: 8,
+    elevation: 6,
+    borderRadius: 20,
+    color: "#fff",
   },
   head: {
     width: '100%',
     textAlign: 'center',
-    fontSize: 25,
+    fontSize: 20,
     color: '#5D252A',
     fontWeight: 'bold',
     marginTop: -10,
   },
+  text1: {
+    marginTop: 10,
+    width: '100%',
+    fontSize: 15,
+    color: '#5D252A',
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+   text2: {
+    fontSize: 15,
+    fontWeight: 'bold', 
+    textAlign: "center" ,
+    marginBottom: 5,
+    borderColor: "#8B4A52",
+    borderWidth: 2,
+    marginHorizontal: 10,
+    padding: 7,
+    borderRadius: 20,
+    color: "#000000ff",
+  },
+  text3: {
+    fontSize: 15,
+    textAlign: "center" ,
+    marginBottom: 5,
+    padding: 7,
+  },
+  totalText1: {
+    fontSize: 10,
+    color: "#ffffffff",
+    textAlign: "center",
+  },
+   totalText2: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#ffffffff",
+    textAlign: "center",
+  },
   input: {
     width: "100%",
-    backgroundColor: "#ecc8ccff",
+    backgroundColor: "#ffffffff",
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: '#d4af3739',
     padding: 10,
     marginHorizontal: 20,
     marginBottom: 8,
@@ -190,6 +232,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     fontWeight: "600",
+    elevation: 6,
   },
   itemRow: { 
     paddingVertical: 6,
@@ -209,7 +252,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     padding: 12,
     backgroundColor: "#8B4A52",
-    borderRadius: 8
+    borderRadius: 8,
+    elevation: 6,
  },
  list: {
     marginTop: 10,
