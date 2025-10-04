@@ -16,38 +16,46 @@ const images = [
 const themes = [
   {
     type: "cards",
-    title: 'O que é o Direito à Identidade de Gênero?',
-    text: 'É o reconhecimento da autodeterminação de cada indivíduo em relação à sua experiência interna e pessoal de gênero, que pode ou não corresponder ao sexo atribuído ao nascimento. Trata-se de um direito humano fundamental, protegido contra a discriminação em diversas convenções internacionais, como as da ONU e a CEDAW..',
+    title: ' O que é o Direito à Identidade de Gênero?',
+    text: 'É reconhecimento da forma como cada pessoa se identifica, independentemente do sexo que foi registrado no nascimento.\nEsse direito garante que todas as pessoas possam ser reconhecidas social e legalmente pelo seu nome (prenome) e gênero, mesmo que não tenham feito cirurgias, tratamentos hormonais ou apresentado laudos médicos.\nTrata-se de um direito humano fundamental, protegido por leis e convenções internacionais, que assegura a dignidade, a liberdade e a proteção contra qualquer tipo de discriminação.',
     cards: [
-      { title: 'Auto determinação', text: 'A pessoa define seu próprio género' },
-      { title: 'Auto determinação', text: 'Essencial para a dignidade e liberdade.' },
-      { title: 'Auto determinação', text: 'Contra qualquer tipo de discriminação.' }
-    ]
+      { title: 'Auto determinação', text: '• A pessoa define seu próprio género \n•	Essencial para garantir dignidade e liberdade.\n•	Protege contra qualquer tipo de discriminação.' },
+      ]
   },
   {
     type: "topics",
-    title: 'Decisão do STF de (2018) e Provimento do CNJ',
-    text: 'STF reconheceu direito à alteração de nome e gênero sem cirurgia ou laudos. Provimento CNJ nº 73/2018 garante procedimento administrativo. Inclusão do gênero "não binário" permitida em alguns estados.',
-    subTitle: "Quem pode solicitar?",
-    topics: [
-      "Qualquer pessoa com mais de 18 anos",
+    title: ' Decisão do STF de (2018) e Provimento do CNJ',
+    text: 'O STF reconheceu o direito à alteração de prenome e do gênero nos assentos de nascimento e casamento de pessoa transgênero no Registro Civil das Pessoas Naturais (RCPN), diretamente no registro civil, sem necessidade de cirurgia, laudos médicos ou decisão judicial. O Provimento 73/20218 do CNJ regulamenta o procedimento nos cartórios.',
+    sections: [
+      {
+        subTitle: "Quem pode solicitar?",
+        topics: [
+          "Toda pessoa maior de 18 anos completos pode requerer a alteração e a averbação do prenome e do gênero (masculino/feminino) diretamente em cartório nos documentos civis, a fim de adequá-los à identidade autopercebida",
+        ]
+      },
+      {
+        subTitle: "Não é necessário:",
+        topics: [
+          "• Cirurgia de redesignação sexual\n• Tratamento hormonal\n• Laudo psicológico ou psiquiátrico\n• Autorização judicial"
+        ]
+      }
     ]
   },
   {
     type: "steps",
-    title: 'Alteração do nome e gênero no Registro Civil',
+    title: ' Alteração do nome e gênero no Registro Civil',
     text: 'O processo para a retificação de nome e gênero é simplificado e pode ser realizado diretamente em qualquer Cartório de Registro Civil.',
     steps: [
       { title: 'Comparecer ao cartório', text: 'Dirija-se a qualquer Cartório de Registro Civil com um documento oficial de identificação.' },
       { title: 'Manifestar Vontade', text: 'Declare sua vontade de alterar o prenome e o gênero para que correspondam à sua identidade.' },
       { title: 'preencher os Termos', text: ' Preencha o termo de declaração e o requerimento formal fornecidos pelo cartório.' },
-      { title: ' Registro e Averbação', text: 'O cartório registrará e averbará a alteração em seu assento de nascimento (e casamento, se houver).' },
+      { title: 'Registro e Averbação', text: 'O cartório registrará e averbará a alteração em seu assento de nascimento (e casamento, se houver).' },
     ]
   },
   {
     type: "documents",
-    title: "Documentação necessária para o pedido",
-    text: " É importante notar que a legislação não exige laudos médicos, psicológicos, nem autorização judicial, desburocratizando o processo e respeitando a autodeterminação individual.",
+    title: " Documentação necessária para o pedido",
+    text: "É importante notar que a legislação não exige laudos médicos, psicológicos, nem autorização judicial, desburocratizando o processo e respeitando a autodeterminação individual.",
     documents: [
       "Documento de identidade oficial com foto: RG, CNH ou passaporte.",
       "Certidão de nascimento original: Atualizada.",
@@ -99,7 +107,10 @@ const Tela5Screen = () => {
       style={styles.container}
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.header2}>Identidade de Gênero</Text>
+        <Text style={styles.header2}>DIREITO À IDENTIDADE
+          {"\n"}
+           DE GÊNERO
+           </Text>
         <Text style={styles.header3}>Conheça seus direitos.</Text>
 
         <View style={styles.sliderContainer}>
@@ -151,12 +162,16 @@ const Tela5Screen = () => {
                 {/* decisão do STF */}
                 {item.type === "topics" && (
                   <View>
-                    {item.subTitle && (
-                      <Text style={styles.subTitle}>{item.subTitle}</Text>
-                    )}
-                    {item.topics?.map((topic, i) => (
-                      <View key={i} style={styles.topicItem}>
-                        <Text style={styles.topicText}>{topic}</Text>
+                    {item.sections?.map((section, si) => (
+                      <View key={si}>
+                        {section.subTitle && (
+                          <Text style={styles.subTitle}>{section.subTitle}</Text>
+                        )}
+                        {section.topics?.map((topic, ti) => (
+                          <View key={ti} style={styles.topicItem}>
+                            <Text style={styles.topicText}>{topic}</Text>
+                          </View>
+                        ))}
                       </View>
                     ))}
                   </View>
@@ -217,7 +232,7 @@ const styles = StyleSheet.create({
   header2: {
     color: '#D4AF37',
     textAlign: "center",
-    fontSize: 30,
+    fontSize: 28,
     fontWeight: "bold",
     marginBottom: 5,
     marginTop: 40,
@@ -225,9 +240,9 @@ const styles = StyleSheet.create({
   header3:{
     color: '#fff',
     textAlign: "center",
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
-    marginBottom: 15,
+    marginBottom: 10,
   },
   themes: {
     backgroundColor: "#fff",
@@ -259,16 +274,17 @@ const styles = StyleSheet.create({
     marginBottom:10,
   },
   description: {
-    fontSize: 14,
+    fontSize: 15,
     color: '#000',
     textAlign: "justify", 
   },
   topicCard: {
-    backgroundColor: "#ab828227",
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
     padding:10,
     width:"100%",
-    borderRadius:8,
-    marginBottom:5,
+    marginBottom:10,
   },
   titleCard: {
     fontSize: 15,
@@ -278,12 +294,12 @@ const styles = StyleSheet.create({
   },
   textCard: {
     marginTop: 5,
-    fontSize: 14,
+    fontSize: 13,
     color: "#000000de",
-    textAlign: "center",
   },
   subTitle: {
     fontSize: 15,
+    marginLeft: 10,
     fontWeight: 'bold',
     color: '#000000de',
     textAlign: "left",
@@ -295,18 +311,20 @@ const styles = StyleSheet.create({
     padding:5,
   },
   topicText: {
-    fontSize: 14,
+    fontSize: 13,
     padding:5,
     color:"#000000de",
-    backgroundColor:"#ab828227",
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
     borderRadius:5,
-    width:"100%",
+    textAlign: "justify",
   },
   stepItem: {
-    backgroundColor:"#ab828227",
     borderRadius:10,
-    borderLeftWidth: 6,
-    borderLeftColor: "#cbc3c4de",
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
     marginBottom:10,
     padding:10,
   },
@@ -321,7 +339,8 @@ const styles = StyleSheet.create({
     alignItems:"center"
   },
   stepTitle: {
-    fontSize: 14,
+    fontSize: 15,
+    fontWeight:"bold",
     color: "#000000de",
   },
   docItem: {
@@ -329,16 +348,18 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   docText: {
-    fontSize: 13,
+    fontSize: 15,
     color: "#000000ff",
     fontWeight:"bold",
+     textAlign: "justify",
   },
   importanceCard: {
-    backgroundColor: "#ab828227",
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#D4AF37',
     padding: 8,
     width: "100%",
-    borderRadius:8,
-    marginBottom:5,
+    marginBottom:10,
   },
   importanceTitle: {
     fontSize: 15,
@@ -347,8 +368,9 @@ const styles = StyleSheet.create({
     color: "#000000ff",
   },
   importanceText: {
-    fontSize: 12,
+    fontSize: 13,
     color: "#444",
+     textAlign: "justify",
   },
   sliderContainer: { 
     height: SLIDE_SIZE, 
@@ -406,6 +428,7 @@ endText:{
   fontSize:10,
   marginTop:10,
   textAlign: "center" ,
+  marginBottom: 30,
   
 },
 stepText: {
