@@ -1,0 +1,79 @@
+{
+  "informacoes_gerais": {
+    "instituicao": {
+      "nome": "Universidade do Grande Vale (UGV - Canoinhas)",
+      "descricao": "Projeto desenvolvido em parceria interdisciplinar"
+    },
+    "desenvolvedores": [
+      "Antonio Carlos Marko",
+      "Danieli Soares",
+      "Felipe do Prado Padilha"
+    ],
+    "Mentores": [
+      {
+        "nome": "Professor:   Fabio Spak",
+        "cargo": "Coordenador de Engenharia de Software"
+      },
+      {
+        "nome": "Professora: Camila Hacker Fleith",
+        "cargo": "Coordenadora de Direito"
+      }
+    ],
+    "turma_de_direito": {
+      "descricao": "Projeto desenvolvido com colaboração dos alunos do curso de Direito \n",
+      "alunos": [
+        "Adrian Gabriel Metka de Oliveira",
+        "Alice Estefani Ignaszevski",
+        "Alice Mirena Silveira",
+        "Aline Isabela Padilha",
+        "Allana Luisa Pessoa da Silva",
+        "Amanda Batista Fernandes",
+        "Amarildo Meireles da Silva Junior",
+        "Anderson Rodrigo Martins Voigt",
+        "Anelise Paulina Kieski",
+        "Beatriz Mattos de Melo",
+        "Bruna Carla de Lima",
+        "Bruno de Oliveira Titon",
+        "Carlos Eduardo da Silva",
+        "Carlos Eduardo Gudas da Silva",
+        "Cauane Maíse Gurzinski",
+        "Claudio Leandro de Souza",
+        "Cristian Schermach",
+        "Davi Hinke Soares",
+        "Eduarda Khristyne Souza Ribeiro",
+        "Emanuela Votcoski",
+        "Évelin Elis Herbst Ferreir",
+        "Fernando de Oliveira",
+        "Gabriel Henrique Dittrich Guesser",
+        "Gabriele Koaski",
+        "Gabrieli Miranda do Prado",
+        "Giulia Rodrigues Moro",
+        "Heloísa Pickisius",
+        "Iasmin Stange Pereira",
+        "Isabele dos Santos Corrêa",
+        "Isabella de Souza Caldas",
+        "Isac da Silva",
+        "Jaciara de Fátima Pires",
+        "Jean Pierri Lipka da Silva",
+        "João Otávio Simões De Oliveira",
+        "Juliano Fernandes de Jesus Veiga",
+        "Karen Eliza Ribas Bueno",
+        "Luana Aparecida Baptista",
+        "Luiz Gustavo Rodrigues",
+        "Márcia Oleskovicz de Moraes",
+        "Mateus Leite Lemos",
+        "Milena Ferreira da Silva",
+        "Nataly Jientara",
+        "Nathália Beatriz Pazda Todt",
+        "Roselei Caroline Raddatz Simão",
+        "Sandra Mara Pereira",
+        "Silvane Sonia Bojarski",
+        "Suelen Soares de Lima",
+        "Tamires Novaes dos Santos Leite",
+        "Thainá Pacheco Carvalho",
+        "Valéria Ferreira dos Santos"
+      ]
+    }
+  }
+}
+
