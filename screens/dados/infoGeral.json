@@ -5,9 +5,18 @@
       "descricao": "Projeto desenvolvido em parceria interdisciplinar"
     },
     "desenvolvedores": [
-      "Antonio Carlos Marko",
-      "Danieli Soares",
-      "Felipe do Prado Padilha"
+      {
+        "nome": "Antonio Carlos Marko",
+        "github": "https://github.com/Antonio-Marko-br"
+      },
+      {
+        "nome": "Danieli Soares",
+        "github": "https://github.com/danielidev"
+      },
+      {
+        "nome": "Felipe do Prado Padilha",
+        "github": "https://github.com/felipePrado2870"
+      }
     ],
     "Mentores": [
       {

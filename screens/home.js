@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, LayoutAnimation, Platform, UIManager, Linking }  from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const lista = require('./dados/informacoes.json');
@@ -16,21 +16,15 @@ const imagens = {
   'DestituiçãoPoderFamiliar': require('../assets/destituiçãoPoderFamiliar1.png'),
 };
 
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
+  const HomeScreen = ({ navigation }) => {
+    const [showInfo, setShowInfo] = useState(false);
+    const [expanded, setExpanded] = useState({});
 
-const HomeScreen = ({ navigation }) => {
-  const [showInfo, setShowInfo] = useState(false);
-  const [expanded, setExpanded] = useState({});
-
-  const toggleInfo = () => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    const toggleInfo = () => {
     setShowInfo(!showInfo);
   };
 
   const toggleSection = (key) => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setExpanded(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
@@ -111,16 +105,31 @@ const HomeScreen = ({ navigation }) => {
               <TouchableOpacity onPress={() => toggleSection('devs')} style={styles.sectionHeader}>
                 <Text style={styles.sectionTitle}>💻 Desenvolvedores</Text>
               </TouchableOpacity>
+
               {expanded.devs && (
                 <View style={styles.sectionBody}>
                   {infoGeral.informacoes_gerais.desenvolvedores.map((dev, i) => (
-                    <Text key={i} style={styles.sectionText2}>
-                      <Text style={styles.bullet}>•  </Text>
-                      {dev}
-                    </Text>
+                    <View key={i} style={styles.devRow}>
+                      <Text style={styles.sectionText}>
+                        <Text style={styles.bullet}>• </Text>
+                        {dev.nome}
+                      </Text>
+
+                      <TouchableOpacity
+                        style={styles.githubButton}
+                        onPress={() => Linking.openURL(dev.github)}
+                      >
+                        <Image
+                          source={require('../assets/githubIcon.png')} 
+                          style={styles.githubIcon}
+                        />
+                        <Text style={styles.githubText}>GitHub</Text>
+                      </TouchableOpacity>
+                    </View>
                   ))}
                 </View>
               )}
+
               {/* Turma de Direito */}
               <TouchableOpacity onPress={() => toggleSection('direito')} style={styles.sectionHeader}>
                 <Text style={styles.sectionTitle}>⚖️ Turma de Direito</Text>
@@ -310,6 +319,35 @@ const styles = StyleSheet.create({
   bullet: {
     color: '#D4AF37',
     fontWeight: 'bold',
+  },
+  devRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+    paddingRight: 10,
+  },
+
+  githubButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#5D252A',
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+
+  githubIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 6,
+    tintColor: '#FFFFFF',
+  },
+
+  githubText: {
+    color: '#FFFFFF',
+    fontSize: 13,
+    fontWeight: '600',
   },
 
 });
