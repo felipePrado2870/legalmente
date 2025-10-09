@@ -275,6 +275,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderColor: '#D4AF37',
     borderWidth: 0.3,
+    borderTopWidth: 3,
   },
   sectionHeader: {
     marginBottom: 15,
