@@ -71,6 +71,8 @@ const imagens = {
 
           {showInfo && (
             <View style={styles.infoContent}>
+              <Image source={require('../assets/LogoLegalmente.png')} style={styles.ImageLogo}/>
+              <Text style={styles.nomeAplicativo}> Legalmente </Text>
               {/* Instituição */}
               <TouchableOpacity onPress={() => toggleSection('instituicao')} style={styles.sectionHeader}>
                 <Text style={styles.sectionTitle}>🏛 Instituição</Text>
@@ -110,7 +112,7 @@ const imagens = {
                 <View style={styles.sectionBody}>
                   {infoGeral.informacoes_gerais.desenvolvedores.map((dev, i) => (
                     <View key={i} style={styles.devRow}>
-                      <Text style={styles.sectionText}>
+                      <Text style={styles.sectionText2}>
                         <Text style={styles.bullet}>• </Text>
                         {dev.nome}
                       </Text>
@@ -245,34 +247,42 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 10,
     borderRadius: 12,
+    width: '100%',
+    shadowColor: '#000000',
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 4,
+    
   },
   infoHeader: {
+    margin: 10,
     alignItems: 'center',
     backgroundColor:'#8B4A52',
     padding: 12,
     borderRadius: 20,
-    width: '65%',
     alignSelf: 'center',
+    borderColor: '#D4AF37',
+    borderWidth: 2,
   },
   infoTitle: {
     fontSize: 15,
     color: '#ffffffff',
+    fontWeight: "bold",
   },
   infoContent: {
     marginTop: 20,
     padding: 10,
     borderRadius: 12,
     borderColor: '#D4AF37',
-    borderWidth: 0.2,
-    borderTopWidth: 2,
+    borderWidth: 0.3,
   },
   sectionHeader: {
     marginBottom: 15,
     padding: 12,
     borderRadius: 12,
     borderColor: '#D4AF37',
-    borderLeftWidth: 2,
-    borderWidth: 0.2,
+    borderLeftWidth: 3,
+    borderWidth: 0.3,
   },
   sectionTitle: {
     fontSize: 17,
@@ -349,5 +359,20 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
   },
+  ImageLogo: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    borderColor: '#D4AF37',
+    borderWidth: 3,
+    alignSelf: 'center'
+  },
+  nomeAplicativo: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+     color: '#D4AF37',
+     marginBottom: 20,
+  }
 
 });
