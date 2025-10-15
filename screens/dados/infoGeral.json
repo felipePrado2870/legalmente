@@ -21,11 +21,11 @@
     "Mentores": [
       {
         "nome": "Professor:   Fabio Spak",
-        "cargo": "Coordenador de Engenharia de Software"
+        "cargo": "Mentor de  Engenharia de Software"
       },
       {
         "nome": "Professora: Camila Hacker Fleith",
-        "cargo": "Coordenadora de Direito"
+        "cargo": "Mentor de Direito"
       }
     ],
     "turma_de_direito": {
