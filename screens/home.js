@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   temaPinciapl: {
     color: '#5D252A',
     fontWeight: 'bold',
-    fontSize: 25,
+    fontSize: 23,
   },
   titulo: {
     marginTop: 5,
