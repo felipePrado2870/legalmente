@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text,Image, TextInput, TouchableOpacity, FlatList, StyleSheet, Alert } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, FlatList, StyleSheet, Modal, Animated, Easing } from "react-native";
 import ExitButton from '../../componentes/ExitButton';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -9,12 +9,15 @@ export default function DivisionCalculator({ navigation, route }) {
   const [itemsBoth, setItemsBoth] = useState([]);
   const [desc, setDesc] = useState("");
   const [value, setValue] = useState("");
-  const [step, setStep] = useState("A"); 
+  const [step, setStep] = useState("A");
+  const [showError, setShowError] = useState(false);
+  const [fadeAnim] = useState(new Animated.Value(0));
 
   const addItem = () => {
-    const v = parseFloat(value.replace(",", "."));
+    const v = parseFloat(value.replace(/\./g, "").replace(",", "."));
     if (!desc.trim() || isNaN(v) || v < 0) {
-      Alert.alert("Erro", "Informe descrição válida e valor numérico ≥ 0.");
+      showErrorModal();
+
       return;
     }
     const newItem = { id: Date.now().toString(), desc: desc.trim(), value: v };
@@ -28,6 +31,25 @@ export default function DivisionCalculator({ navigation, route }) {
     }
     setDesc("");
     setValue("");
+  };
+
+  const showErrorModal = () => {
+    setShowError(true);
+    fadeAnim.setValue(0);
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 300,
+      easing: Easing.out(Easing.ease),
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const hideErrorModal = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 200,
+      useNativeDriver: true,
+    }).start(() => setShowError(false));
   };
 
   
@@ -65,6 +87,24 @@ export default function DivisionCalculator({ navigation, route }) {
     }, [route.params])
   );
 
+  // Formata número em R$ brasileiro (milhares e decimais)
+  const formatCurrency = (text) => {
+    // Remove tudo que não for número
+    let cleaned = text.replace(/\D/g, "");
+
+    // Se estiver vazio, retorna string vazia
+    if (!cleaned) return "";
+
+    // Converte para número com 2 casas decimais
+    let number = parseFloat(cleaned) / 100;
+
+    // Retorna no formato brasileiro
+    return number.toLocaleString("pt-BR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  };
+
   return ( 
     <View style={styles.container1}>
       <View style={styles.card2}>
@@ -80,13 +120,15 @@ export default function DivisionCalculator({ navigation, route }) {
       <Text style={styles.text1}> 📝 Descrição do Bem</Text>
       <TextInput placeholder="Ex: Casa, Carro, Conta Bancária..."  placeholderTextColor={"#2222226e"} style={styles.input} value={desc} onChangeText={setDesc}/>
       <Text style={styles.text1}> 💰 Valor (R$)</Text>
-      <TextInput placeholder="0,00" placeholderTextColor={"#2222226e"}style={styles.input}keyboardType="numeric" value={value} onChangeText={setValue} />
+      <TextInput placeholder="0,00" placeholderTextColor={"#2222226e"} style={styles.input} keyboardType="numeric" value={value} onChangeText={(text) => setValue(formatCurrency(text))}/>
       <TouchableOpacity style={styles.addBtn} onPress={addItem}>
         <Text style={styles.addBtnText}>➕ Adicionar Bem</Text>
       </TouchableOpacity>
       <FlatList data={currentItems} keyExtractor={(it) => it.id} renderItem={({ item }) => (
           <View style={styles.itemRow}>
-            <Text>{item.desc} — R$ {item.value.toFixed(2)}</Text>
+            <Text style={styles.itemText}>
+              {item.desc} — R$ {item.value.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+            </Text>
           </View>
         )}
         ListEmptyComponent={
@@ -103,7 +145,9 @@ export default function DivisionCalculator({ navigation, route }) {
       />
       <View style={styles.card3}>
         <Text style={styles.totalText1}>Total dos bens</Text>
-        <Text style={styles.totalText2}>R$  {total.toFixed(2)}</Text>
+          <Text style={styles.totalText2}>
+            R$ {total.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+          </Text>
       </View>
       <View style={styles.navRow}>
         <TouchableOpacity style={styles.navBtn} onPress={prevStep}>
@@ -117,6 +161,27 @@ export default function DivisionCalculator({ navigation, route }) {
       </View>
       </View>
       <ExitButton goTo="Home" />
+
+     
+      <Modal visible={showError} transparent animationType="none">
+        <View style={styles.modalOverlay}>
+          <Animated.View
+            style={[
+              styles.modalContent,
+              { opacity: fadeAnim, transform: [{ scale: fadeAnim }] },
+            ]}
+          >
+            <Text style={styles.modalIcon}>🕵️</Text>
+            <Text style={styles.modalTitle}>Ops...</Text>
+            <Text style={styles.modalMessage}>
+              Parece que esqueceu de preencher a descrição ou valor do bem !
+            </Text>
+            <TouchableOpacity style={styles.modalButton} onPress={hideErrorModal}>
+              <Text style={styles.modalButtonText}>OK</Text>
+            </TouchableOpacity>
+          </Animated.View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -270,5 +335,56 @@ const styles = StyleSheet.create({
     color: "#fff", 
     fontWeight: "600", 
     textAlign: "center" 
+  },
+   activeTab: {
+    backgroundColor: "#D4AF37",
+    borderColor: "#D4AF37",
+    color: "#fff",
+    elevation: 6,
+  },
+
+  // error message modal styles
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.4)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    width: "80%",
+    borderRadius: 20,
+    alignItems: "center",
+    padding: 20,
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 10,
+  },
+  modalIcon: {
+    fontSize: 50,
+    color: "#8B4A52",
+  },
+  modalTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#8B4A52",
+    marginTop: 10,
+  },
+  modalMessage: {
+    textAlign: "center",
+    color: "#333",
+    marginVertical: 10,
+  },
+  modalButton: {
+    backgroundColor: "#D4AF37",
+    paddingHorizontal: 30,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginTop: 10,
+  },
+  modalButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
   },
 });

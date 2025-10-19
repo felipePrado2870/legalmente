@@ -10,13 +10,21 @@ const regimes = [
   { key: "participation", label: "Participação Final nos Aquestos" },
 ];
 
+const formatCurrency = (value) => {
+  if (isNaN(value)) return "0,00";
+  return value.toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+};
+
 export default function RegimeScreen({ navigation, route }) {
   const { itemsA = [], itemsB = [], itemsBoth = [] } = route.params || {};
   const [items] = useState([...itemsA, ...itemsB, ...itemsBoth]);
- 
 
-  const [regime, setRegime] = useState(null);     
-  const [showOptions, setShowOptions] = useState(true); 
+
+  const [regime, setRegime] = useState(null);
+  const [showOptions, setShowOptions] = useState(true);
 
   const grandTotal = items.reduce((sum, it) => sum + it.value, 0);
 
@@ -87,40 +95,47 @@ export default function RegimeScreen({ navigation, route }) {
         {regime ? (
           <View style={styles.containerResultBox}>
             <View style={styles.resultBox1}>
-             <Text style={{ color: "#000000ff", fontSize: 15, fontWeight: 'bold'}}>👤 Cônjuge A - Seus Bens</Text>
+              <Text style={{ color: "#000000ff", fontSize: 15, fontWeight: 'bold' }}>👤 Cônjuge A - Seus Bens</Text>
               {itemsA.map((item) => (
                 <View key={item.id} style={styles.itemRow}>
-                  <Text>{item.desc} — R$ {item.value.toFixed(2)}</Text>
+                  <Text>{item.desc} — R$ {formatCurrency(item.value)}</Text>
+
                 </View>
               ))}
-              <Text style={{marginTop: 15, color: "#000000ff", fontSize: 13, fontWeight: 'bold'}}>Valor final da separação R$ {shareA.toFixed(2)}</Text>
+              <Text style={{marginTop: 15, color: "#000000ff", fontSize: 13, fontWeight: 'bold'}}> Valor final da separação R$ {formatCurrency(shareA)}</Text>
+
             </View>
             <View style={styles.resultBox1}>
-              <Text style={{ color: "#000000ff", fontSize: 15, fontWeight: 'bold'}} >👤 Cônjuge B - Seus Bens</Text>
+              <Text style={{ color: "#000000ff", fontSize: 15, fontWeight: 'bold' }} >👤 Cônjuge B - Seus Bens</Text>
               {itemsB.map((item) => (
                 <View key={item.id} style={styles.itemRow}>
-                  <Text>{item.desc} — R$ {item.value.toFixed(2)}</Text>
+                  <Text>{item.desc} — R$ {formatCurrency(item.value)}</Text>
+
                 </View>
               ))}
-              <Text style={{marginTop: 15, color: "#000000ff", fontSize: 13, fontWeight: 'bold'}}>Valor final da separação R${shareB.toFixed(2)}</Text>
+              <Text style={{ marginTop: 15, color: "#000000ff", fontSize: 13, fontWeight: 'bold' }}>
+                Valor final da separação R$ {formatCurrency(shareA)}
+              </Text>
+
             </View>
             <View style={styles.resultBox2}>
-              <Text style={{ color: "#fffafaff", fontSize: 13, fontWeight: 'bold'}}>💰  {regimes.find((r) => r.key === regime)?.label}</Text>
-              <Text style={{ marginTop: 5, color: "#fffafaff", fontSize: 20 , fontWeight: 'bold',}}>R$ {grandTotal.toFixed(2)}</Text>
-              <Text style={{ marginTop: 10, color: "#fffafaff", textAlign: "center" , fontSize: 10 }}>{note}</Text>
+              <Text style={{ color: "#fffafaff", fontSize: 13, fontWeight: 'bold' }}>💰  {regimes.find((r) => r.key === regime)?.label}</Text>
+              <Text style={{ marginTop: 5, color: "#fffafaff", fontSize: 20 , fontWeight: 'bold',}}>R$ {formatCurrency(grandTotal)}</Text>
+
+              <Text style={{ marginTop: 10, color: "#fffafaff", textAlign: "center", fontSize: 10 }}>{note}</Text>
             </View>
           </View>
         ) : null}
-        <View  style={styles.rowButtons}>
-            <TouchableOpacity onPress={() => navigation.navigate("DivisionCalculator", { resetStep: true })}>
-              <LinearGradient colors={["#9f676dff", "#5D252A","#5D252A", "#411619ff"]}  end={{ x: 1, y: 1 }}style={styles.quizButton}  >
-                <Text style={styles.buttonText2}>Novo Cálculo</Text>
-              </LinearGradient>
-            </TouchableOpacity>
-            <TouchableOpacity  style={styles.homeButton} onPress={() => navigation.navigate("Home")} >
-              <Text style={styles.buttonText3}>Voltar ao Menu</Text>
-            </TouchableOpacity>
-          </View>
+        <View style={styles.rowButtons}>
+          <TouchableOpacity onPress={() => navigation.navigate("DivisionCalculator", { resetStep: true })}>
+            <LinearGradient colors={["#9f676dff", "#5D252A", "#5D252A", "#411619ff"]} end={{ x: 1, y: 1 }} style={styles.quizButton}  >
+              <Text style={styles.buttonText2}>Novo Cálculo</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.homeButton} onPress={() => navigation.navigate("Home")} >
+            <Text style={styles.buttonText3}>Voltar ao Menu</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <ExitButton goTo="Home" />
     </View>
@@ -160,7 +175,7 @@ const styles = StyleSheet.create({
   },
   regimeBtn: {
     borderWidth: 2,
-    borderColor:"#D4AF37",
+    borderColor: "#D4AF37",
     padding: 10,
     borderRadius: 12,
     marginBottom: 8,
@@ -212,10 +227,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: "center",
   },
-   rowButtons: {
+  rowButtons: {
     flexDirection: "row",
     justifyContent: "center",
-    marginTop:10,
+    marginTop: 10,
   },
   quizButton: {
     padding: 15,
@@ -224,7 +239,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     alignItems: "center",
   },
-   buttonText2: {
+  buttonText2: {
     color: "#FFFFFF",
     fontSize: 15,
     fontWeight: "bold",
@@ -233,8 +248,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ab8085b2',
     padding: 15,
     borderRadius: 10,
-    borderColor: "#fff",  
-    borderWidth: 2, 
+    borderColor: "#fff",
+    borderWidth: 2,
     marginTop: 10,
     marginLeft: 10,
     alignItems: "center",

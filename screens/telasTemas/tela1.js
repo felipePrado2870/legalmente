@@ -134,8 +134,7 @@ const Tela1Screen = ({ navigation }) => {
   // Tela das curiosidades
   return (
     <LinearGradient colors={["#A67C7C", "#8B4A52", "#5D252A"]} style={styles.container}>
-      <Text style={styles.homeTitle2}>Curiosidades Sobre</Text>
-      <Text style={styles.homeTitle3}>Infracionais</Text>
+      <Text style={styles.homeTitle2}>Atos Infracionais</Text>
       <View style={styles.card1}>
         <Image source={require("../../assets/atosInfracionaisImagem.jpg")} style={styles.homeImg}/>
         <Text style={styles.question1}>{current.question}</Text>
@@ -189,12 +188,6 @@ const styles = StyleSheet.create({
    homeTitle2: {
     textAlign: "center",
     fontSize: 35,
-    fontWeight: "bold",
-    color: "#fff",
-  },
-  homeTitle3: {
-    textAlign: "center",
-    fontSize: 20,
     fontWeight: "bold",
     color: '#D4AF37',
     marginBottom: 10,
