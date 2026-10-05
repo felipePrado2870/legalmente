@@ -19,8 +19,8 @@ android {
         applicationId "com.legalmente"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "2.0"
     }
 
     /** --- CONFIGURAÇÃO DE ASSINATURA --- **/
